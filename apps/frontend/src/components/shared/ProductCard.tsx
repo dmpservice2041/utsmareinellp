@@ -15,10 +15,11 @@ export default function ProductCard({ title, image, category, slug }: ProductCar
                 <Image
                     src={image}
                     alt={`${title} - ${category} - UTS Marine LLP`}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    width={400}
+                    height={240}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    priority={false}
+                    unoptimized={false}
                 />
                 <span className="absolute top-4 left-4 bg-teal-600 text-white text-xs font-bold px-3 py-1 rounded z-10">
                     {category}

@@ -45,7 +45,7 @@ export default function Services() {
 
             <div className="container mx-auto px-4 relative z-10">
                 <ScrollReveal delay={0}>
-                    <div className="text-center mb-16">
+                <div className="text-center mb-16">
                         <div className="inline-block mb-6 px-6 py-3 bg-teal-100 rounded-full shadow-sm">
                             <span className="text-teal-600 text-sm font-semibold uppercase tracking-wider">Our Services</span>
                         </div>
@@ -56,7 +56,7 @@ export default function Services() {
                         <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                             Providing quality marine spare parts and exceptional service to clients worldwide
                         </p>
-                    </div>
+                </div>
                 </ScrollReveal>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
@@ -74,7 +74,7 @@ export default function Services() {
                                     </div>
                                     <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center group-hover:text-teal-600 transition-colors duration-300">
                                         {service.title}
-                                    </h3>
+                                </h3>
                                     <p className="text-gray-600 text-center mb-6 leading-relaxed">
                                         {service.description}
                                     </p>

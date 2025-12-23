@@ -50,12 +50,12 @@ export default function About() {
                     <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40" />
                 </div>
                 <div className="relative z-10 h-full flex items-center justify-center">
-                    <div className="container mx-auto px-4 text-center">
+                <div className="container mx-auto px-4 text-center">
                         <ScrollReveal delay={0}>
                             <h1 className="text-5xl lg:text-7xl font-bold text-white mb-6">About Us</h1>
                             <div className="flex justify-center text-sm text-gray-300 space-x-2">
                                 <Link href="/" className="hover:text-teal-400 transition-colors">Home</Link>
-                                <span>/</span>
+                        <span>/</span>
                                 <span className="text-white">About Us</span>
                             </div>
                         </ScrollReveal>
@@ -70,14 +70,14 @@ export default function About() {
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                         <ScrollReveal delay={0}>
-                            <div className="relative">
+                        <div className="relative">
                                 <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1558486012-817176f84c6d?q=80&w=1970&auto=format&fit=crop"
-                                        alt="UTS Marine Engine"
-                                        className="absolute inset-0 w-full h-full object-cover"
-                                    />
-                                </div>
+                                <img
+                                    src="https://images.unsplash.com/photo-1558486012-817176f84c6d?q=80&w=1970&auto=format&fit=crop"
+                                    alt="UTS Marine Engine"
+                                    className="absolute inset-0 w-full h-full object-cover"
+                                />
+                            </div>
                                 {/* Decorative element */}
                                 <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-teal-600 rounded-full opacity-20 blur-2xl" />
                             </div>
@@ -180,8 +180,8 @@ export default function About() {
                 <div className="absolute inset-0 opacity-10">
                     <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl" />
                     <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl" />
-                </div>
-                
+                    </div>
+
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
                         {stats.map((stat, index) => (
@@ -202,15 +202,15 @@ export default function About() {
                 <div className="container mx-auto px-4 relative z-10">
                     {/* Global Presence */}
                     <ScrollReveal delay={0}>
-                        <div className="mb-20">
+                    <div className="mb-20">
                             <div className="inline-block mb-6 px-6 py-3 bg-teal-100 rounded-full">
                                 <span className="text-teal-600 text-sm font-semibold uppercase tracking-wider">Global Reach</span>
-                            </div>
+                        </div>
                             <h3 className="text-4xl font-bold text-gray-900 mb-6">UTS Global Presence</h3>
                             <p className="text-xl text-gray-700 leading-relaxed max-w-4xl">
-                                We also have a very strong global presence and have many international clients in the countries like Greece, Italy, Germany, Cyprus, Netherlands, USA, UK, Poland, Turkey, U.A.E, South Africa, Singapore, Bangladesh, Philippines, Indonesia, Sri Lanka & many more...
-                            </p>
-                        </div>
+                            We also have a very strong global presence and have many international clients in the countries like Greece, Italy, Germany, Cyprus, Netherlands, USA, UK, Poland, Turkey, U.A.E, South Africa, Singapore, Bangladesh, Philippines, Indonesia, Sri Lanka & many more...
+                        </p>
+                    </div>
                     </ScrollReveal>
 
                     {/* Stock List */}
@@ -272,8 +272,8 @@ export default function About() {
                                             <span className="text-teal-600 text-sm font-semibold uppercase tracking-wider">Our Services</span>
                                         </div>
                                         <h3 className="text-3xl lg:text-4xl font-bold text-gray-900">Expansion in Scope of Work</h3>
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                                     {[
@@ -341,8 +341,8 @@ export default function About() {
                                                 <h4 className="text-lg font-bold text-gray-900 mb-2">IACS Member Inspection</h4>
                                                 <p className="text-gray-700 leading-relaxed">
                                                     All this new supply. And if any <strong className="text-teal-600">IACS MEMBER inspection</strong> required will be conducted from our end.
-                                                </p>
-                                            </div>
+                        </p>
+                    </div>
                                         </div>
                                     </div>
                                 </ScrollReveal>

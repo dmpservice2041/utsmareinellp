@@ -39,9 +39,9 @@ export default function Header() {
 
     return (
         <header className="fixed w-full top-0 z-50 py-3 px-4 sm:px-6">
-                <div className="container mx-auto">
-                    {/* White Rounded Navigation Bar */}
-                    <nav className="bg-white rounded-2xl shadow-lg px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+            <div className="container mx-auto">
+                {/* White Rounded Navigation Bar */}
+                <nav className="bg-white rounded-2xl shadow-lg px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-2 flex-shrink-0">
                         <img 
@@ -115,8 +115,8 @@ export default function Header() {
                             <button
                                 onClick={() => handleDropdownToggle('ship')}
                                 className="px-4 py-2 text-sm font-semibold tracking-wide text-blue-900 hover:text-blue-700 transition-colors rounded-lg hover:bg-blue-50 flex items-center gap-1 dropdown-button"
-                            >
-                                Ship Machinery
+                        >
+                            Ship Machinery
                                 <svg 
                                     className={`w-4 h-4 transition-transform ${activeDropdown === 'ship' ? 'rotate-180' : ''}`} 
                                     fill="none" 
@@ -162,14 +162,14 @@ export default function Header() {
                                         onClick={() => setActiveDropdown(null)}
                                     >
                                         Deck Equipment
-                                    </Link>
-                                    <Link 
+                        </Link>
+                        <Link 
                                         href="/products" 
                                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900 transition-colors font-semibold"
                                         onClick={() => setActiveDropdown(null)}
-                                    >
+                        >
                                         View All Products
-                                    </Link>
+                        </Link>
                                 </div>
                             )}
                         </div>
@@ -319,20 +319,20 @@ export default function Header() {
                                         >
                                             Navigation Equipment
                                         </Link>
-                                        <Link 
+                            <Link 
                                             href="/products?category=deck" 
                                             className="block py-2 text-sm text-gray-700 hover:text-blue-900 transition-colors"
-                                            onClick={() => setIsMobileMenuOpen(false)}
-                                        >
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
                                             Deck Equipment
-                                        </Link>
-                                        <Link 
+                            </Link>
+                            <Link 
                                             href="/products" 
                                             className="block py-2 text-sm text-gray-700 hover:text-blue-900 transition-colors font-semibold"
-                                            onClick={() => setIsMobileMenuOpen(false)}
-                                        >
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
                                             View All Products
-                                        </Link>
+                            </Link>
                                     </div>
                                 )}
                             </div>
@@ -356,7 +356,7 @@ export default function Header() {
                         </div>
                     </div>
                 )}
-                </div>
+            </div>
         </header>
     );
 }
