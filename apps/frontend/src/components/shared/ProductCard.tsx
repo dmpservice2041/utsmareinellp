@@ -11,13 +11,13 @@ interface ProductCardProps {
 export default function ProductCard({ title, image, category, slug }: ProductCardProps) {
     return (
         <div className="bg-white border rounded-lg overflow-hidden hover:shadow-lg transition-shadow group">
-            <div className="relative h-60 bg-gray-100 overflow-hidden">
+            <div className="relative h-60 bg-gray-100 overflow-hidden flex items-center justify-center">
                 <Image
                     src={image}
                     alt={`${title} - ${category} - UTS Marine LLP`}
                     width={400}
                     height={240}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     unoptimized={false}
                 />
