@@ -74,13 +74,6 @@ export default function Header() {
                             Services
                         </Link>
 
-                        <Link 
-                            href="/new-arrival" 
-                            className="px-4 py-2 text-sm font-semibold tracking-wide text-blue-900 hover:text-blue-700 transition-colors rounded-lg hover:bg-blue-50"
-                        >
-                            New Arrival
-                        </Link>
-
                         {/* Engine Parts Dropdown */}
                         <div className="relative group dropdown-menu">
                             <button
@@ -181,14 +174,18 @@ export default function Header() {
                             )}
                         </div>
 
-                        <a 
-                            href="https://uts-marine-llp.blogspot.com/" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
+                        <Link 
+                            href="/new-arrival" 
+                            className="px-4 py-2 text-sm font-semibold tracking-wide text-blue-900 hover:text-blue-700 transition-colors rounded-lg hover:bg-blue-50"
+                        >
+                            New Arrival
+                        </Link>
+                        <Link 
+                            href="/blog" 
                             className="px-4 py-2 text-sm font-semibold tracking-wide text-blue-900 hover:text-blue-700 transition-colors rounded-lg hover:bg-blue-50"
                         >
                             Blog
-                        </a>
+                        </Link>
                         <Link 
                             href="/contact" 
                             className="px-4 py-2 text-sm font-semibold tracking-wide text-blue-900 hover:text-blue-700 transition-colors rounded-lg hover:bg-blue-50"
@@ -242,13 +239,6 @@ export default function Header() {
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 Services
-                            </Link>
-                            <Link 
-                                href="/new-arrival" 
-                                className="px-6 py-3 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 transition-colors"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                                New Arrival
                             </Link>
                             
                             {/* Engine Parts Mobile Submenu */}
@@ -351,15 +341,20 @@ export default function Header() {
                                 )}
                             </div>
 
-                            <a 
-                                href="https://uts-marine-llp.blogspot.com/" 
-                                target="_blank" 
-                                rel="noopener noreferrer"
+                            <Link 
+                                href="/new-arrival" 
+                                className="px-6 py-3 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 transition-colors"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                New Arrival
+                            </Link>
+                            <Link 
+                                href="/blog" 
                                 className="px-6 py-3 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 transition-colors"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 Blog
-                            </a>
+                            </Link>
                             <Link 
                                 href="/contact" 
                                 className="px-6 py-3 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 transition-colors"
