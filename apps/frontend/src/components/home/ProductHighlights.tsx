@@ -6,10 +6,10 @@ import ScrollReveal from '@/components/shared/ScrollReveal';
 
 export default function ProductHighlights() {
     const products = [
-        { title: "Main Engine Piston", category: "Engine Parts", slug: "piston-ring", image: "https://images.unsplash.com/photo-1549106765-3d312a9425e1?q=80&w=2076&auto=format&fit=crop" },
-        { title: "Turbocharger Unit", category: "Machinery", slug: "turbo-unit", image: "https://images.unsplash.com/photo-1580910543623-1d9865672808?q=80&w=2070&auto=format&fit=crop" },
-        { title: "Hydraulic Pump", category: "Hydraulics", slug: "hydraulic-pump", image: "https://images.unsplash.com/photo-1565492987258-45ec33918544?q=80&w=2670&auto=format&fit=crop" },
-        { title: "Air Compressor", category: "Compressors", slug: "air-compressor", image: "https://images.unsplash.com/photo-1574689049597-7e6fabd218d5?q=80&w=2669&auto=format&fit=crop" },
+        { title: "Main Engine Piston", category: "Engine Parts", slug: "piston-ring", image: "/piston.jpg" },
+        { title: "Turbocharger Unit", category: "Machinery", slug: "turbo-unit", image: "/turbocharger.jpg" },
+        { title: "Hydraulic Pump", category: "Hydraulics", slug: "hydraulic-pump", image: "/hydraulic-pump.jpg" },
+        { title: "Air Compressor", category: "Compressors", slug: "air-compressor", image: "/air-compressor.jpg" },
     ];
 
     return (
