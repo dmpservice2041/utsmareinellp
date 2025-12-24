@@ -1,6 +1,7 @@
 "use client";
 
 import Link from 'next/link';
+import { Ship } from 'lucide-react';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 
 export default function Services() {
@@ -20,9 +21,7 @@ export default function Services() {
             description: 'Complete range of ship machinery and equipment',
             link: '/ship-machinery',
             icon: (
-                <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" clipRule="evenodd" />
-                </svg>
+                <Ship className="w-12 h-12" />
             )
         },
         {
@@ -45,7 +44,7 @@ export default function Services() {
 
             <div className="container mx-auto px-4 relative z-10">
                 <ScrollReveal delay={0}>
-                <div className="text-center mb-16">
+                    <div className="text-center mb-16">
                         <div className="inline-block mb-6 px-6 py-3 bg-teal-100 rounded-full shadow-sm">
                             <span className="text-teal-600 text-sm font-semibold uppercase tracking-wider">Our Services</span>
                         </div>
@@ -56,7 +55,7 @@ export default function Services() {
                         <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                             Providing quality marine spare parts and exceptional service to clients worldwide
                         </p>
-                </div>
+                    </div>
                 </ScrollReveal>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
@@ -65,7 +64,7 @@ export default function Services() {
                             <div className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-100 overflow-hidden">
                                 {/* Hover Effect Background */}
                                 <div className="absolute inset-0 bg-gradient-to-br from-teal-50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                
+
                                 <div className="relative z-10">
                                     <div className="mb-6 flex justify-center transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                                         <div className="p-6 bg-gradient-to-br from-teal-50 to-teal-100 rounded-2xl text-teal-600 shadow-md group-hover:shadow-xl transition-all duration-500">
@@ -74,7 +73,7 @@ export default function Services() {
                                     </div>
                                     <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center group-hover:text-teal-600 transition-colors duration-300">
                                         {service.title}
-                                </h3>
+                                    </h3>
                                     <p className="text-gray-600 text-center mb-6 leading-relaxed">
                                         {service.description}
                                     </p>

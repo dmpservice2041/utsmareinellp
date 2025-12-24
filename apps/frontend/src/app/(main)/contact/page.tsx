@@ -19,7 +19,7 @@ export default function Contact() {
         setStatus('loading');
 
         try {
-            const res = await fetch(API_ENDPOINTS.contact, {
+            const res = await fetch(API_ENDPOINTS.CONTACT, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -80,7 +80,7 @@ export default function Contact() {
         <main className="pt-24 sm:pt-28">
             {/* Banner Header */}
             <section className="relative h-[450px] lg:h-[550px] overflow-hidden">
-                <div 
+                <div
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                     style={{ backgroundImage: "url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2070&auto=format&fit=crop')" }}
                 >
@@ -88,7 +88,7 @@ export default function Contact() {
                 </div>
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(20,184,166,0.1),transparent_50%)]" />
                 <div className="relative z-10 h-full flex items-center justify-center">
-                <div className="container mx-auto px-4 text-center">
+                    <div className="container mx-auto px-4 text-center">
                         <ScrollReveal delay={0}>
                             <div className="inline-block mb-6 px-6 py-3 bg-teal-500/20 backdrop-blur-sm rounded-full border border-teal-400/30">
                                 <span className="text-teal-300 text-sm font-semibold uppercase tracking-wider">Get In Touch</span>
@@ -101,7 +101,7 @@ export default function Contact() {
                             </p>
                             <div className="flex justify-center text-sm text-gray-300 space-x-2">
                                 <Link href="/" className="hover:text-teal-400 transition-colors">Home</Link>
-                        <span>/</span>
+                                <span>/</span>
                                 <span className="text-white">Contact</span>
                             </div>
                         </ScrollReveal>
@@ -137,7 +137,7 @@ export default function Contact() {
                     <div className="absolute top-20 left-10 w-72 h-72 bg-teal-400/10 rounded-full blur-3xl animate-pulse" />
                     <div className="absolute bottom-20 right-10 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
                 </div>
-                
+
                 <div className="container mx-auto px-4 relative z-10">
                     <ScrollReveal delay={0}>
                         <div className="text-center mb-20">
@@ -168,7 +168,7 @@ export default function Contact() {
                                                     <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
                                                         <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
                                                             <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                                        </svg>
+                                                        </svg>
                                                     </div>
                                                 </div>
                                                 <div className="flex-1 pt-1">
@@ -218,7 +218,7 @@ export default function Contact() {
                                         </div>
                                     </div>
                                 </ScrollReveal>
-                                </div>
+                            </div>
 
                             {/* Right Side - Phone & Email */}
                             <div className="space-y-6">
@@ -232,8 +232,8 @@ export default function Contact() {
                                                     <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
                                                         <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
                                                             <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                                        </svg>
-                                    </div>
+                                                        </svg>
+                                                    </div>
                                                 </div>
                                                 <div className="flex-1 pt-1">
                                                     <h3 className="text-2xl font-bold text-gray-900 mb-6 group-hover:text-teal-600 transition-colors">Phone Contacts</h3>
@@ -286,14 +286,14 @@ export default function Contact() {
                                                         <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
                                                             <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                                                             <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                                        </svg>
-                                    </div>
+                                                        </svg>
+                                                    </div>
                                                 </div>
                                                 <div className="flex-1 pt-1">
                                                     <h3 className="text-2xl font-bold text-gray-900 mb-6 group-hover:text-teal-600 transition-colors">Email Us</h3>
                                                     <div className="p-5 bg-gradient-to-br from-teal-50 via-teal-50/80 to-teal-50 rounded-xl border-2 border-teal-200 hover:border-teal-300 hover:shadow-lg transition-all duration-300">
-                                                        <a 
-                                                            href="mailto:sales@utsmarinellp.com" 
+                                                        <a
+                                                            href="mailto:sales@utsmarinellp.com"
                                                             className="text-teal-700 hover:text-teal-800 font-bold transition-colors flex items-center gap-3 group/email text-lg"
                                                         >
                                                             <svg className="w-6 h-6 group-hover/email:scale-110 transition-transform flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -339,79 +339,78 @@ export default function Contact() {
                                         Fill out the form below and our team will get back to you within 24 hours.
                                     </p>
 
-                            <form onSubmit={handleSubmit} className="space-y-6">
+                                    <form onSubmit={handleSubmit} className="space-y-6">
                                         <div className="relative">
                                             <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
                                                 Your Name <span className="text-red-500">*</span>
                                             </label>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        id="name"
-                                        value={formData.name}
-                                        onChange={handleChange}
-                                        required
+                                            <input
+                                                type="text"
+                                                name="name"
+                                                id="name"
+                                                value={formData.name}
+                                                onChange={handleChange}
+                                                required
                                                 className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all bg-white hover:border-teal-300"
                                                 placeholder="Enter your full name"
-                                    />
-                                </div>
+                                            />
+                                        </div>
 
                                         <div className="relative">
                                             <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
                                                 Email Address <span className="text-red-500">*</span>
                                             </label>
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        id="email"
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        required
+                                            <input
+                                                type="email"
+                                                name="email"
+                                                id="email"
+                                                value={formData.email}
+                                                onChange={handleChange}
+                                                required
                                                 className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all bg-white hover:border-teal-300"
                                                 placeholder="your.email@example.com"
-                                    />
-                                </div>
+                                            />
+                                        </div>
 
                                         <div className="relative">
                                             <label htmlFor="subject" className="block text-sm font-semibold text-gray-700 mb-2">
                                                 Subject
                                             </label>
-                                    <input
-                                        type="text"
-                                        name="subject"
-                                        id="subject"
-                                        value={formData.subject}
-                                        onChange={handleChange}
+                                            <input
+                                                type="text"
+                                                name="subject"
+                                                id="subject"
+                                                value={formData.subject}
+                                                onChange={handleChange}
                                                 className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all bg-white hover:border-teal-300"
                                                 placeholder="What is this regarding?"
-                                    />
-                                </div>
+                                            />
+                                        </div>
 
                                         <div className="relative">
                                             <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
                                                 Message <span className="text-red-500">*</span>
                                             </label>
-                                    <textarea
-                                        name="message"
-                                        id="message"
+                                            <textarea
+                                                name="message"
+                                                id="message"
                                                 rows={6}
-                                        value={formData.message}
-                                        onChange={handleChange}
-                                        required
+                                                value={formData.message}
+                                                onChange={handleChange}
+                                                required
                                                 className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all bg-white resize-none hover:border-teal-300"
                                                 placeholder="Tell us about your requirements..."
-                                    ></textarea>
-                                </div>
+                                            ></textarea>
+                                        </div>
 
-                                <button
-                                    type="submit"
-                                    disabled={status === 'loading'}
-                                            className={`w-full py-4 px-6 text-white font-bold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:transform-none disabled:cursor-not-allowed ${
-                                                status === 'loading' 
-                                                    ? 'bg-gray-400' 
+                                        <button
+                                            type="submit"
+                                            disabled={status === 'loading'}
+                                            className={`w-full py-4 px-6 text-white font-bold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:transform-none disabled:cursor-not-allowed ${status === 'loading'
+                                                    ? 'bg-gray-400'
                                                     : 'bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800'
-                                            }`}
-                                >
+                                                }`}
+                                        >
                                             {status === 'loading' ? (
                                                 <span className="flex items-center justify-center gap-3">
                                                     <svg className="animate-spin h-5 w-5" fill="none" viewBox="0 0 24 24">
@@ -428,9 +427,9 @@ export default function Contact() {
                                                     </svg>
                                                 </span>
                                             )}
-                                </button>
+                                        </button>
 
-                                {status === 'success' && (
+                                        {status === 'success' && (
                                             <div className="p-4 bg-gradient-to-r from-green-50 to-emerald-50 text-green-700 rounded-xl border-2 border-green-200 animate-fade-in">
                                                 <div className="flex items-center gap-3">
                                                     <svg className="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -441,9 +440,9 @@ export default function Contact() {
                                                         <div className="text-sm">We will get back to you soon.</div>
                                                     </div>
                                                 </div>
-                                    </div>
-                                )}
-                                {status === 'error' && (
+                                            </div>
+                                        )}
+                                        {status === 'error' && (
                                             <div className="p-4 bg-gradient-to-r from-red-50 to-rose-50 text-red-700 rounded-xl border-2 border-red-200 animate-fade-in">
                                                 <div className="flex items-center gap-3">
                                                     <svg className="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -454,9 +453,9 @@ export default function Contact() {
                                                         <div className="text-sm">Please try again later or contact us directly.</div>
                                                     </div>
                                                 </div>
-                                    </div>
-                                )}
-                            </form>
+                                            </div>
+                                        )}
+                                    </form>
                                 </div>
                             </div>
                         </ScrollReveal>
@@ -513,7 +512,7 @@ export default function Contact() {
                                 </p>
                             </div>
                         </ScrollReveal>
-                        
+
                         <div className="space-y-4">
                             {contactFAQs.map((faq, index) => (
                                 <ScrollReveal key={index} delay={index * 100}>

@@ -128,48 +128,9 @@ export default function Header() {
                             </button>
                             {activeDropdown === 'ship' && (
                                 <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50">
-                                    <Link 
-                                        href="/products?category=turbochargers" 
-                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900 transition-colors"
-                                        onClick={() => setActiveDropdown(null)}
-                                    >
-                                        Turbochargers
-                                    </Link>
-                                    <Link 
-                                        href="/products?category=generators" 
-                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900 transition-colors"
-                                        onClick={() => setActiveDropdown(null)}
-                                    >
-                                        Generators
-                                    </Link>
-                                    <Link 
-                                        href="/products?category=pumps" 
-                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900 transition-colors"
-                                        onClick={() => setActiveDropdown(null)}
-                                    >
-                                        Pumps & Motors
-                                    </Link>
-                                    <Link 
-                                        href="/products?category=navigation" 
-                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900 transition-colors"
-                                        onClick={() => setActiveDropdown(null)}
-                                    >
-                                        Navigation Equipment
-                                    </Link>
-                                    <Link 
-                                        href="/products?category=deck" 
-                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900 transition-colors"
-                                        onClick={() => setActiveDropdown(null)}
-                                    >
-                                        Deck Equipment
-                        </Link>
-                        <Link 
-                                        href="/products" 
-                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900 transition-colors font-semibold"
-                                        onClick={() => setActiveDropdown(null)}
-                        >
-                                        View All Products
-                        </Link>
+                                    <div className="px-4 py-2 text-sm text-gray-500 italic">
+                                        Coming Soon
+                                    </div>
                                 </div>
                             )}
                         </div>
@@ -295,48 +256,9 @@ export default function Header() {
                                 </button>
                                 {activeDropdown === 'ship-mobile' && (
                                     <div className="mt-2 pl-4 space-y-2">
-                                        <Link 
-                                            href="/products?category=turbochargers" 
-                                            className="block py-2 text-sm text-gray-700 hover:text-blue-900 transition-colors"
-                                            onClick={() => setIsMobileMenuOpen(false)}
-                                        >
-                                            Turbochargers
-                                        </Link>
-                                        <Link 
-                                            href="/products?category=generators" 
-                                            className="block py-2 text-sm text-gray-700 hover:text-blue-900 transition-colors"
-                                            onClick={() => setIsMobileMenuOpen(false)}
-                                        >
-                                            Generators
-                                        </Link>
-                                        <Link 
-                                            href="/products?category=pumps" 
-                                            className="block py-2 text-sm text-gray-700 hover:text-blue-900 transition-colors"
-                                            onClick={() => setIsMobileMenuOpen(false)}
-                                        >
-                                            Pumps & Motors
-                                        </Link>
-                                        <Link 
-                                            href="/products?category=navigation" 
-                                            className="block py-2 text-sm text-gray-700 hover:text-blue-900 transition-colors"
-                                            onClick={() => setIsMobileMenuOpen(false)}
-                                        >
-                                            Navigation Equipment
-                                        </Link>
-                            <Link 
-                                            href="/products?category=deck" 
-                                            className="block py-2 text-sm text-gray-700 hover:text-blue-900 transition-colors"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                                            Deck Equipment
-                            </Link>
-                            <Link 
-                                            href="/products" 
-                                            className="block py-2 text-sm text-gray-700 hover:text-blue-900 transition-colors font-semibold"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                                            View All Products
-                            </Link>
+                                        <div className="py-2 text-sm text-gray-500 italic">
+                                            Coming Soon
+                                        </div>
                                     </div>
                                 )}
                             </div>

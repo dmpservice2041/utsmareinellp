@@ -20,11 +20,11 @@ export default function ProductHighlights() {
                 <ScrollReveal delay={0}>
                     <div className="text-center mb-16">
                         <span className="inline-block px-4 py-2 bg-teal-100 rounded-full text-teal-600 font-semibold tracking-wider uppercase text-sm mb-4">
-                            Recent Projects
+                            Our Products
                         </span>
-                        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mt-4 text-gray-900">
-                            Explore the Recent Works
-                            <span className="block text-teal-600 mt-2">We Have Done!</span>
+                        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mt-4 text-gray-900 leading-tight">
+                            Explore Our Extensive
+                            <span className="block text-teal-600 mt-2">Marine Inventory</span>
                         </h2>
                     </div>
                 </ScrollReveal>

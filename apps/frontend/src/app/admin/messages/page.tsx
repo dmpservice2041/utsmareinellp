@@ -12,12 +12,9 @@ export default function AdminMessages() {
     }, []);
 
     const fetchMessages = async () => {
-        const token = localStorage.getItem('adminToken');
         try {
-            const res = await fetch(API_ENDPOINTS.contact, {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
+            const res = await fetch(API_ENDPOINTS.CONTACT, {
+                credentials: 'include',
             });
             if (res.ok) {
                 const data = await res.json();

@@ -1,80 +1,155 @@
-"use client";
+'use client';
 
 import { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
+import {
+  LayoutDashboard,
+  Package,
+  FileText,
+  Image,
+  LogOut,
+  Menu,
+  X,
+  Settings,
+} from 'lucide-react';
+import { API_ENDPOINTS } from '@/config/api';
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
-    const router = useRouter();
-    const pathname = usePathname();
-    const [authorized, setAuthorized] = useState(false);
+interface AdminLayoutProps {
+  children: React.ReactNode;
+}
 
-    useEffect(() => {
-        const token = localStorage.getItem('adminToken');
-        if (!token) {
-            router.push('/admin/login');
+export default function AdminLayout({ children }: AdminLayoutProps) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      if (pathname === '/admin/login') {
+        setIsLoading(false);
+        return;
+      }
+
+      try {
+        const response = await fetch(API_ENDPOINTS.GET_CURRENT_USER, {
+          credentials: 'include',
+        });
+
+        if (response.ok) {
+          setIsAuthenticated(true);
         } else {
-            setAuthorized(true);
+          router.push('/admin/login');
         }
-    }, [router]);
+      } catch (error) {
+        console.error('Auth check error:', error);
+        router.push('/admin/login');
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-    if (pathname === '/admin/login') {
-        return <>{children}</>;
+    checkAuth();
+  }, [pathname, router]);
+
+  const handleLogout = async () => {
+    try {
+      await fetch(API_ENDPOINTS.LOGOUT, {
+        method: 'POST',
+        credentials: 'include',
+      });
+    } catch (error) {
+      console.error('Logout error:', error);
     }
+    router.push('/admin/login');
+  };
 
-    if (!authorized) return null;
-
+  if (isLoading) {
     return (
-        <div className="min-h-screen bg-gray-100 flex font-sans">
-            {/* Sidebar */}
-            <aside className="w-64 bg-gray-900 text-white flex-shrink-0">
-                <div className="p-6">
-                    <h2 className="text-xl font-bold">Marine Admin</h2>
-                </div>
-                <nav className="mt-6 px-4 space-y-2">
-                    <Link
-                        href="/admin/dashboard"
-                        className={`block px-4 py-2 rounded transition ${pathname === '/admin/dashboard' ? 'bg-teal-600' : 'hover:bg-gray-800'}`}
-                    >
-                        Dashboard
-                    </Link>
-                    <Link
-                        href="/admin/products"
-                        className={`block px-4 py-2 rounded transition ${pathname.startsWith('/admin/products') ? 'bg-teal-600' : 'hover:bg-gray-800'}`}
-                    >
-                        Products
-                    </Link>
-                    <Link
-                        href="/admin/blogs"
-                        className={`block px-4 py-2 rounded transition ${pathname.startsWith('/admin/blogs') ? 'bg-teal-600' : 'hover:bg-gray-800'}`}
-                    >
-                        Blogs
-                    </Link>
-                    <Link
-                        href="/admin/messages"
-                        className={`block px-4 py-2 rounded transition ${pathname.startsWith('/admin/messages') ? 'bg-teal-600' : 'hover:bg-gray-800'}`}
-                    >
-                        Messages
-                    </Link>
-
-                    <div className="pt-8 mt-8 border-t border-gray-700">
-                        <button
-                            onClick={() => {
-                                localStorage.removeItem('adminToken');
-                                router.push('/admin/login');
-                            }}
-                            className="w-full text-left px-4 py-2 text-red-400 hover:text-red-300 hover:bg-gray-800 rounded transition"
-                        >
-                            Logout
-                        </button>
-                    </div>
-                </nav>
-            </aside>
-
-            {/* Content */}
-            <main className="flex-1 p-8 overflow-y-auto">
-                {children}
-            </main>
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading...</p>
         </div>
+      </div>
     );
+  }
+
+  if (pathname === '/admin/login') {
+    return <>{children}</>;
+  }
+
+  if (!isAuthenticated) {
+    return null;
+  }
+
+  const menuItems = [
+    { icon: LayoutDashboard, label: 'Dashboard', href: '/admin/dashboard' },
+    { icon: Package, label: 'New Arrivals', href: '/admin/products' },
+    { icon: FileText, label: 'Blogs', href: '/admin/blogs' },
+    { icon: Image, label: 'Media', href: '/admin/media' },
+    { icon: Settings, label: 'Settings', href: '/admin/settings' },
+  ];
+
+  return (
+    <div className="flex h-screen bg-gray-50">
+      {/* Sidebar */}
+      <aside
+        className={`${isSidebarOpen ? 'w-64' : 'w-20'
+          } bg-gray-900 text-white transition-all duration-300 flex flex-col`}
+      >
+        <div className="p-4 flex items-center justify-between">
+          {isSidebarOpen && (
+            <div>
+              <h1 className="text-xl font-bold text-teal-400">UTS Marine</h1>
+              <p className="text-xs text-gray-400">Admin Panel</p>
+            </div>
+          )}
+          <button
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            className="p-2 hover:bg-gray-800 rounded-lg"
+          >
+            {isSidebarOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
+
+        <nav className="flex-1 px-2 py-4 space-y-2">
+          {menuItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = pathname === item.href;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${isActive
+                  ? 'bg-teal-600 text-white'
+                  : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+                  }`}
+              >
+                <Icon size={20} />
+                {isSidebarOpen && <span>{item.label}</span>}
+              </Link>
+            );
+          })}
+        </nav>
+
+        <div className="p-4 border-t border-gray-800">
+          <button
+            onClick={handleLogout}
+            className="flex items-center gap-3 px-3 py-2 w-full text-gray-300 hover:bg-gray-800 hover:text-white rounded-lg transition-colors"
+          >
+            <LogOut size={20} />
+            {isSidebarOpen && <span>Logout</span>}
+          </button>
+        </div>
+      </aside>
+
+      {/* Main Content */}
+      <main className="flex-1 overflow-y-auto">
+        <div className="p-8">{children}</div>
+      </main>
+    </div>
+  );
 }

@@ -7,6 +7,13 @@ class User extends Model {
     public email!: string;
     public password!: string;
     public role!: string;
+    public two_factor_secret!: string | null;
+    public two_factor_enabled!: boolean;
+    public password_reset_otp!: string | null;
+    public password_reset_expiry!: Date | null;
+    public two_factor_method!: 'app' | 'email';
+    public two_factor_otp!: string | null;
+    public two_factor_otp_expiry!: Date | null;
 
     public async validatePassword(password: string): Promise<boolean> {
         return bcrypt.compare(password, this.password);
@@ -35,6 +42,35 @@ User.init(
         role: {
             type: DataTypes.STRING,
             defaultValue: 'admin',
+        },
+        two_factor_secret: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        two_factor_enabled: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+        },
+        password_reset_otp: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        password_reset_expiry: {
+            type: DataTypes.DATE,
+            allowNull: true,
+        },
+        two_factor_method: {
+            type: DataTypes.ENUM('app', 'email'),
+            defaultValue: 'app',
+            allowNull: false,
+        },
+        two_factor_otp: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        two_factor_otp_expiry: {
+            type: DataTypes.DATE,
+            allowNull: true,
         },
     },
     {

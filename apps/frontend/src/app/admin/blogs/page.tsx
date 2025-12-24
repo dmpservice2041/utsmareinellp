@@ -1,70 +1,236 @@
-"use client";
+'use client';
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { Plus, Edit, Trash2, Eye, Search } from 'lucide-react';
 import { API_ENDPOINTS } from '@/config/api';
 
-export default function AdminBlogs() {
-    const [blogs, setBlogs] = useState([]);
-    const [loading, setLoading] = useState(true);
+interface Blog {
+  id: number;
+  title: string;
+  slug: string;
+  status: string;
+  category: string | null;
+  excerpt: string;
+  createdAt: string;
+}
 
-    useEffect(() => {
+export default function BlogsPage() {
+  const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [statusFilter, setStatusFilter] = useState('all');
+
+  useEffect(() => {
+    fetchBlogs();
+  }, [statusFilter]);
+
+  const fetchBlogs = async () => {
+    try {
+      const token = localStorage.getItem('adminToken');
+      let url = API_ENDPOINTS.BLOGS;
+      
+      if (statusFilter !== 'all') {
+        url += `?status=${statusFilter}`;
+      }
+
+      const response = await fetch(url, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setBlogs(Array.isArray(data.data) ? data.data : data.data?.data || []);
+      }
+    } catch (error) {
+      console.error('Error fetching blogs:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDelete = async (id: number) => {
+    if (!confirm('Are you sure you want to delete this blog post?')) return;
+
+    try {
+      const token = localStorage.getItem('adminToken');
+      const response = await fetch(API_ENDPOINTS.BLOG(id), {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      if (response.ok) {
         fetchBlogs();
-    }, []);
+      }
+    } catch (error) {
+      console.error('Error deleting blog:', error);
+    }
+  };
 
-    const fetchBlogs = async () => {
-        try {
-            const res = await fetch(API_ENDPOINTS.blogs.list(100));
-            const data = await res.json();
-            setBlogs(data.blogs || []);
-            setLoading(false);
-        } catch (error) {
-            console.error(error);
-            setLoading(false);
-        }
+  const filteredBlogs = blogs.filter(blog =>
+    blog.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const getStatusBadge = (status: string) => {
+    const styles = {
+      published: 'bg-green-100 text-green-800',
+      draft: 'bg-yellow-100 text-yellow-800',
+      disabled: 'bg-red-100 text-red-800',
     };
+    return styles[status as keyof typeof styles] || styles.draft;
+  };
 
-    if (loading) return <div>Loading...</div>;
-
+  if (loading) {
     return (
-        <div>
-            <div className="flex justify-between items-center mb-6">
-                <h1 className="text-2xl font-bold text-gray-900">Blogs</h1>
-                <Link
-                    href="/admin/blogs/new"
-                    className="px-4 py-2 bg-teal-600 text-white rounded hover:bg-teal-700"
-                >
-                    New Article
-                </Link>
-            </div>
-
-            <div className="bg-white rounded shadow text-gray-900">
-                <table className="min-w-full">
-                    <thead>
-                        <tr className="border-b border-gray-200">
-                            <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">ID</th>
-                            <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Title</th>
-                            <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Published At</th>
-                            <th className="px-6 py-3 text-right text-sm font-semibold text-gray-600">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {blogs.map((b: any) => (
-                            <tr key={b.id} className="border-b border-gray-100 hover:bg-gray-50">
-                                <td className="px-6 py-4 text-sm">{b.id}</td>
-                                <td className="px-6 py-4 text-sm font-medium">{b.title}</td>
-                                <td className="px-6 py-4 text-sm text-gray-500">
-                                    {new Date(b.published_at).toLocaleDateString()}
-                                </td>
-                                <td className="px-6 py-4 text-sm text-right">
-                                    <button className="text-teal-600 hover:text-teal-800 mr-3">Edit</button>
-                                    <button className="text-red-600 hover:text-red-800">Delete</button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
-        </div>
+      <div className="flex items-center justify-center h-64">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600"></div>
+      </div>
     );
+  }
+
+  return (
+    <div>
+      <div className="flex justify-between items-center mb-6">
+        <div>
+          <h1 className="text-3xl font-bold text-gray-900">Blogs</h1>
+          <p className="text-gray-600 mt-1">Manage your blog posts and articles</p>
+        </div>
+        <Link
+          href="/admin/blogs/new"
+          className="flex items-center gap-2 bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-lg transition-colors"
+        >
+          <Plus size={20} />
+          Add New Blog
+        </Link>
+      </div>
+
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 mb-6">
+        <div className="p-4 border-b border-gray-200">
+          <div className="flex flex-col md:flex-row gap-4">
+            <div className="relative flex-1">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+              <input
+                type="text"
+                placeholder="Search blogs..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none"
+              />
+            </div>
+            <select
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value)}
+              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none"
+            >
+              <option value="all">All Status</option>
+              <option value="published">Published</option>
+              <option value="draft">Draft</option>
+              <option value="disabled">Disabled</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead className="bg-gray-50 border-b border-gray-200">
+              <tr>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  ID
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Title
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Category
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Status
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Date
+                </th>
+                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {filteredBlogs.length === 0 ? (
+                <tr>
+                  <td colSpan={6} className="px-6 py-8 text-center text-gray-500">
+                    No blog posts found
+                  </td>
+                </tr>
+              ) : (
+                filteredBlogs.map((blog) => (
+                  <tr key={blog.id} className="hover:bg-gray-50">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      #{blog.id}
+                    </td>
+                    <td className="px-6 py-4">
+                      <div className="text-sm font-medium text-gray-900">{blog.title}</div>
+                      {blog.excerpt && (
+                        <div className="text-sm text-gray-500 truncate max-w-md">
+                          {blog.excerpt.substring(0, 80)}...
+                        </div>
+                      )}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      {blog.category || '-'}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <span
+                        className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusBadge(
+                          blog.status
+                        )}`}
+                      >
+                        {blog.status}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      {new Date(blog.createdAt).toLocaleDateString()}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                      <div className="flex items-center justify-end gap-2">
+                        <button
+                          onClick={() => {
+                            const url = blog.status === 'published' 
+                              ? `/blog/${blog.slug}`
+                              : `/blog/${blog.slug}?preview=true`;
+                            window.open(url, '_blank');
+                          }}
+                          className="text-gray-600 hover:text-gray-900"
+                          title="View"
+                        >
+                          <Eye size={18} />
+                        </button>
+                        <Link
+                          href={`/admin/blogs/${blog.id}/edit`}
+                          className="text-teal-600 hover:text-teal-900"
+                          title="Edit"
+                        >
+                          <Edit size={18} />
+                        </Link>
+                        <button
+                          onClick={() => handleDelete(blog.id)}
+                          className="text-red-600 hover:text-red-900"
+                          title="Delete"
+                        >
+                          <Trash2 size={18} />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
 }

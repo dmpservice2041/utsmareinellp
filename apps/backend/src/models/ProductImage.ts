@@ -1,6 +1,5 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '../config/database';
-import Product from './Product';
 
 class ProductImage extends Model {
     public id!: number;
@@ -20,24 +19,25 @@ ProductImage.init(
             type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
             references: {
-                model: Product,
+                model: 'products',
                 key: 'id',
             },
             onDelete: 'CASCADE',
         },
         url: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(255),
             allowNull: false,
         },
         sort_order: {
             type: DataTypes.INTEGER,
             defaultValue: 0,
+            allowNull: true,
         },
     },
     {
         sequelize,
         tableName: 'product_images',
-        timestamps: false,
+        timestamps: false, // Table doesn't have created_at/updated_at columns
     }
 );
 
