@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { authenticateToken } from '../middleware/authMiddleware';
+import { authenticateToken, requireAdmin } from '../middleware/authMiddleware';
 import { logActivity } from '../middleware/activityLogMiddleware';
 import { invalidateCache } from '../middleware/cacheMiddleware';
 import { handleValidationErrors } from '../middleware/validationMiddleware';
@@ -14,8 +14,9 @@ import { validateNewArrival, validateBlog } from '../middleware/validationMiddle
 
 const router = Router();
 
-// All admin routes require authentication
+// All admin routes require authentication AND admin privileges
 router.use(authenticateToken);
+router.use(requireAdmin);
 router.use(logActivity);
 
 // Dashboard

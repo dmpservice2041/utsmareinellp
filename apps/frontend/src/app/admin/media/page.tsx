@@ -13,6 +13,7 @@ import {
   Download,
 } from 'lucide-react';
 import { API_ENDPOINTS, getUploadUrl } from '@/config/api';
+import Pagination from '@/components/admin/Pagination';
 
 interface MediaItem {
   id: number;
@@ -49,20 +50,30 @@ export default function MediaPage() {
   const [editData, setEditData] = useState({ alt_text: '', caption: '' });
   const [dragActive, setDragActive] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+
+  useEffect(() => {
+    setCurrentPage(1); // Reset to page 1 when search changes
+  }, [searchTerm]);
 
   useEffect(() => {
     fetchMedia();
-  }, [searchTerm]);
+  }, [searchTerm, currentPage]);
 
   const fetchMedia = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const url = new URL(API_ENDPOINTS.MEDIA);
+      const params = new URLSearchParams();
+      params.append('page', currentPage.toString());
+      params.append('limit', '20');
+
       if (searchTerm) {
-        url.searchParams.append('search', searchTerm);
+        params.append('search', searchTerm);
       }
 
-      const response = await fetch(url.toString(), {
+      const response = await fetch(`${API_ENDPOINTS.MEDIA}?${params.toString()}`, {
+        credentials: 'include',
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -71,6 +82,9 @@ export default function MediaPage() {
       if (response.ok) {
         const result = await response.json();
         setMedia(result.data);
+        if (result.meta) {
+          setTotalPages(result.meta.pages || 1);
+        }
       }
     } catch (error) {
       console.error('Error fetching media:', error);
@@ -232,11 +246,10 @@ export default function MediaPage() {
 
       {/* Upload Area */}
       <div
-        className={`mb-6 border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
-          dragActive
-            ? 'border-teal-500 bg-teal-50'
-            : 'border-gray-300 bg-gray-50'
-        }`}
+        className={`mb-6 border-2 border-dashed rounded-lg p-8 text-center transition-colors ${dragActive
+          ? 'border-teal-500 bg-teal-50'
+          : 'border-gray-300 bg-gray-50'
+          }`}
         onDragEnter={handleDrag}
         onDragLeave={handleDrag}
         onDragOver={handleDrag}
@@ -281,56 +294,64 @@ export default function MediaPage() {
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-          {media.map((item) => (
-            <div
-              key={item.id}
-              className="group relative bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow"
-            >
-              <div className="aspect-square relative bg-gray-100">
-                <img
-                  src={`http://localhost:5001${encodeURI(item.urls.thumbnail)}`}
-                  alt={item.alt_text || item.original_filename}
-                  className="w-full h-full object-cover"
-                />
-                
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100">
-                  <button
-                    onClick={() => openPreview(item)}
-                    className="p-2 bg-white text-gray-700 rounded-lg hover:bg-gray-100"
-                    title="Preview"
-                  >
-                    <Eye size={18} />
-                  </button>
-                  <button
-                    onClick={() => openEdit(item)}
-                    className="p-2 bg-white text-gray-700 rounded-lg hover:bg-gray-100"
-                    title="Edit"
-                  >
-                    <Edit size={18} />
-                  </button>
-                  <button
-                    onClick={() => handleDelete(item.id)}
-                    className="p-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
-                    title="Delete"
-                  >
-                    <Trash2 size={18} />
-                  </button>
+        <>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+            {media.map((item) => (
+              <div
+                key={item.id}
+                className="group relative bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow"
+              >
+                <div className="aspect-square relative bg-gray-100">
+                  <img
+                    src={`http://localhost:5001${encodeURI(item.urls.thumbnail)}`}
+                    alt={item.alt_text || item.original_filename}
+                    className="w-full h-full object-cover"
+                  />
+
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100">
+                    <button
+                      onClick={() => openPreview(item)}
+                      className="p-2 bg-white text-gray-700 rounded-lg hover:bg-gray-100"
+                      title="Preview"
+                    >
+                      <Eye size={18} />
+                    </button>
+                    <button
+                      onClick={() => openEdit(item)}
+                      className="p-2 bg-white text-gray-700 rounded-lg hover:bg-gray-100"
+                      title="Edit"
+                    >
+                      <Edit size={18} />
+                    </button>
+                    <button
+                      onClick={() => handleDelete(item.id)}
+                      className="p-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+                      title="Delete"
+                    >
+                      <Trash2 size={18} />
+                    </button>
+                  </div>
+                </div>
+
+                <div className="p-2">
+                  <p className="text-xs text-gray-600 truncate" title={item.original_filename}>
+                    {item.original_filename}
+                  </p>
+                  <p className="text-xs text-gray-400">
+                    {formatFileSize(item.file_size)}
+                  </p>
                 </div>
               </div>
-              
-              <div className="p-2">
-                <p className="text-xs text-gray-600 truncate" title={item.original_filename}>
-                  {item.original_filename}
-                </p>
-                <p className="text-xs text-gray-400">
-                  {formatFileSize(item.file_size)}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+          />
+        </>
       )}
 
       {/* Preview Modal */}
@@ -346,14 +367,14 @@ export default function MediaPage() {
                 <X size={20} />
               </button>
             </div>
-            
+
             <div className="p-6">
               <img
                 src={getUploadUrl(selectedMedia.urls.optimized)}
                 alt={selectedMedia.alt_text || selectedMedia.original_filename}
                 className="w-full rounded-lg mb-4"
               />
-              
+
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div>
                   <p className="text-gray-600">Original Filename:</p>
@@ -420,7 +441,7 @@ export default function MediaPage() {
                 <X size={20} />
               </button>
             </div>
-            
+
             <div className="p-6">
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 mb-2">

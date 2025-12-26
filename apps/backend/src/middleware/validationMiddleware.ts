@@ -98,6 +98,45 @@ export const validateBlog: ValidationChain[] = [
 ];
 
 /**
+ * Validation middleware for Contact Form
+ */
+export const validateContact: ValidationChain[] = [
+    body('name')
+        .trim()
+        .notEmpty()
+        .withMessage('Name is required')
+        .isLength({ max: 100 })
+        .withMessage('Name must be less than 100 characters')
+        .escape(), // Basic XSS protection
+    body('email')
+        .trim()
+        .notEmpty()
+        .withMessage('Email is required')
+        .isEmail()
+        .withMessage('Must be a valid email address')
+        .normalizeEmail(),
+    body('phone')
+        .optional()
+        .trim()
+        .isLength({ max: 20 })
+        .withMessage('Phone number too long')
+        .escape(),
+    body('subject')
+        .optional()
+        .trim()
+        .isLength({ max: 200 })
+        .withMessage('Subject must be less than 200 characters')
+        .escape(),
+    body('message')
+        .trim()
+        .notEmpty()
+        .withMessage('Message is required')
+        .isLength({ max: 5000 })
+        .withMessage('Message must be less than 5000 characters')
+        .escape(),
+];
+
+/**
  * Handle validation errors
  */
 export const handleValidationErrors = (

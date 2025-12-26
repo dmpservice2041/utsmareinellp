@@ -144,6 +144,11 @@ Media.init(
         tableName: 'media',
         timestamps: true,
         underscored: true,
+        indexes: [
+            { fields: ['created_at'] },
+            { fields: ['original_filename'] },
+            { fields: ['mime_type'] },
+        ],
     }
 );
 

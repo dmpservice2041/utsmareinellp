@@ -11,15 +11,17 @@ import {
     disable2FA,
     get2FAStatus,
     getCurrentUser,
-    logout
+    logout,
+    getCsrfToken
 } from '../controllers/authController';
 import { authenticateToken } from '../middleware/authMiddleware';
 
 import { authLimiter } from '../middleware/rateLimitMiddleware';
 const router = Router();
 
+router.get('/csrf', getCsrfToken as any); // Public endpoint to get CSRF cookie
 router.post('/login', authLimiter, login as any);
-router.post('/register', authLimiter, register as any);
+// router.post('/register', authLimiter, register as any); // Disabled for security
 router.post('/forgot-password', authLimiter, forgotPassword as any);
 router.post('/reset-password', authLimiter, resetPassword as any);
 router.post('/change-password', authenticateToken, changePassword as any);

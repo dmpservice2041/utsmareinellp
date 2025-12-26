@@ -12,7 +12,9 @@ if (!process.env.JWT_SECRET || process.env.JWT_SECRET.length < 32) {
 }
 
 const app: Express = express();
-const port = process.env.PORT || 5000;
+// Use PORT from env if provided (VPS), otherwise default to 5001 (Local).
+// CAUTION: Ensure your local .env file does NOT set PORT=5000 on macOS as it conflicts with ControlCenter.
+const port = process.env.PORT || 5001;
 
 // Environment variables for URLs
 const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';
@@ -23,7 +25,13 @@ const getAllowedOrigins = (): string[] => {
     if (process.env.CORS_ORIGINS) {
         return process.env.CORS_ORIGINS.split(',').map(origin => origin.trim());
     }
-    return [FRONTEND_URL, BACKEND_URL];
+    return [
+        FRONTEND_URL,
+        BACKEND_URL,
+        'http://localhost:3001',
+        'http://localhost:3002',
+        'http://localhost:3003'
+    ];
 };
 
 // Middleware
@@ -31,15 +39,18 @@ app.use(cors({
     origin: getAllowedOrigins(),
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-CSRF-Token'],
     exposedHeaders: ['Content-Length', 'Content-Type'],
 }));
 app.use(helmet({
     contentSecurityPolicy: {
         directives: {
             defaultSrc: ["'self'"],
-            scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"], // 'unsafe-inline' needed for React runtime
-            styleSrc: ["'self'", "'unsafe-inline'"],
+            // Only allow unsafe-inline/eval in development
+            scriptSrc: process.env.NODE_ENV === 'production'
+                ? ["'self'", FRONTEND_URL]
+                : ["'self'", "'unsafe-inline'", "'unsafe-eval'", FRONTEND_URL],
+            styleSrc: ["'self'", "'unsafe-inline'"], // Needed for many UI libs
             imgSrc: ["'self'", "data:", "https:", FRONTEND_URL],
             connectSrc: ["'self'", FRONTEND_URL],
             objectSrc: ["'none'"],
@@ -52,12 +63,14 @@ app.use(helmet({
     crossOriginEmbedderPolicy: false,
 }));
 import cookieParser from 'cookie-parser';
+import compression from 'compression';
 
+app.use(compression()); // Compress all responses
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// Static files - serve all upload versions with CORS headers
+// Static files - serve all upload versions
 const uploadsPath = path.join(__dirname, '../public/uploads');
 console.log('[server]: Uploads directory:', uploadsPath);
 console.log('[server]: Uploads directory exists:', require('fs').existsSync(uploadsPath));
@@ -81,7 +94,8 @@ app.use('/uploads', (req: Request, res: Response, next: express.NextFunction) =>
     next();
 }, express.static(uploadsPath, {
     setHeaders: (res) => {
-        res.setHeader('Access-Control-Allow-Origin', '*');
+        // Remove wildcard. Allow specific origins or let global CORS handle it (via OPTIONS).
+        // Since this is static, we can use a safer policy:
         res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
         res.setHeader('Cache-Control', 'public, max-age=31536000');
     }
@@ -97,7 +111,12 @@ import publicRoutes from './routes/publicRoutes';
 import adminRoutes from './routes/adminRoutes';
 import { errorHandler } from './middleware/errorHandler';
 
+import { apiLimiter } from './middleware/rateLimitMiddleware';
+import { csrfProtection } from './middleware/csrfMiddleware';
+
 // Public routes (no auth required)
+app.use('/api', apiLimiter); // Apply rate limiting to all API routes
+app.use('/api', csrfProtection); // Apply CSRF protection (GET/HEAD/OPTIONS skipped)
 app.use('/api', publicRoutes);
 
 // Auth routes
@@ -125,7 +144,8 @@ app.get('/', (req: Request, res: Response) => {
 app.use(errorHandler);
 
 app.listen(port, () => {
-    console.log(`[server]: Server is running at ${BACKEND_URL}`);
+    console.log(`[server]: Server is running on port ${port}`);
+    console.log(`[server]: Backend URL: ${BACKEND_URL}`);
     console.log(`[server]: Frontend URL: ${FRONTEND_URL}`);
     console.log(`[server]: CORS Origins: ${getAllowedOrigins().join(', ')}`);
 });

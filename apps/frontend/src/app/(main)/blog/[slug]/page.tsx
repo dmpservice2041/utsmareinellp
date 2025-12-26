@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import { API_ENDPOINTS, getUploadUrl } from '@/config/api';
 import ProductInquiryForm from '@/components/products/ProductInquiryForm';
 
@@ -51,12 +52,7 @@ export default async function BlogPost({
     const blog = await getBlog(slug, preview === 'true');
 
     if (!blog) {
-        return (
-            <div className="pt-36 text-center text-gray-600">
-                <h1 className="text-2xl font-bold">Article Not Found</h1>
-                <Link href="/blog" className="text-teal-600 hover:underline mt-4 block">Back to Blog</Link>
-            </div>
-        );
+        notFound();
     }
 
     const featuredImage = blog.thumbnail || blog.featured_image 

@@ -208,6 +208,12 @@ Blog.init(
                 }
             },
         },
+        indexes: [
+            { fields: ['status'] },
+            { fields: ['category'] },
+            { fields: ['published_at'] },
+            { fields: ['created_at'] },
+        ],
     }
 );
 

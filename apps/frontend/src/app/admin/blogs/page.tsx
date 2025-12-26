@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Plus, Edit, Trash2, Eye, Search } from 'lucide-react';
 import { API_ENDPOINTS } from '@/config/api';
+import Pagination from '@/components/admin/Pagination';
 
 interface Blog {
   id: number;
@@ -20,21 +21,30 @@ export default function BlogsPage() {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+
+  useEffect(() => {
+    setCurrentPage(1); // Reset to page 1 when filters change
+  }, [statusFilter]);
 
   useEffect(() => {
     fetchBlogs();
-  }, [statusFilter]);
+  }, [statusFilter, currentPage]);
 
   const fetchBlogs = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      let url = API_ENDPOINTS.BLOGS;
-      
+      const params = new URLSearchParams();
+      params.append('page', currentPage.toString());
+      params.append('limit', '20');
+
       if (statusFilter !== 'all') {
-        url += `?status=${statusFilter}`;
+        params.append('status', statusFilter);
       }
 
-      const response = await fetch(url, {
+      const response = await fetch(`${API_ENDPOINTS.BLOGS}?${params.toString()}`, {
+        credentials: 'include',
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -43,6 +53,9 @@ export default function BlogsPage() {
       if (response.ok) {
         const data = await response.json();
         setBlogs(Array.isArray(data.data) ? data.data : data.data?.data || []);
+        if (data.meta) {
+          setTotalPages(data.meta.pages || 1);
+        }
       }
     } catch (error) {
       console.error('Error fetching blogs:', error);
@@ -198,7 +211,7 @@ export default function BlogsPage() {
                       <div className="flex items-center justify-end gap-2">
                         <button
                           onClick={() => {
-                            const url = blog.status === 'published' 
+                            const url = blog.status === 'published'
                               ? `/blog/${blog.slug}`
                               : `/blog/${blog.slug}?preview=true`;
                             window.open(url, '_blank');
@@ -230,6 +243,12 @@ export default function BlogsPage() {
             </tbody>
           </table>
         </div>
+
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
       </div>
     </div>
   );

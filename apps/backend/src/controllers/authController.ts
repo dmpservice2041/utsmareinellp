@@ -10,6 +10,8 @@ import { AuthRequest } from '../middleware/authMiddleware';
 
 dotenv.config();
 
+import { generateCsrfToken } from '../middleware/csrfMiddleware';
+
 export const login = async (req: Request, res: Response) => {
     try {
         const { email, password, otp } = req.body;
@@ -63,9 +65,9 @@ export const login = async (req: Request, res: Response) => {
                         if (user.two_factor_otp === otp) {
                             verified = true;
                             // Clear OTP after use (optional but good security)
-                            // user.two_factor_otp = null;
-                            // user.two_factor_otp_expiry = null;
-                            // await user.save();
+                            user.two_factor_otp = null;
+                            user.two_factor_otp_expiry = null;
+                            await user.save();
                         }
                     }
                 } else {
@@ -93,17 +95,31 @@ export const login = async (req: Request, res: Response) => {
             { expiresIn: '1d' }
         );
 
-        // Set HttpOnly cookie
+
+
+        // Generate CSRF Token
+        const csrfToken = generateCsrfToken();
+
+        // Set HttpOnly cookie for JWT
         res.cookie('token', token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production', // true in production
+            secure: process.env.NODE_ENV === 'production',
             maxAge: 24 * 60 * 60 * 1000, // 1 day
+            sameSite: 'strict' // CSRF protection helper
+        });
+
+        // Set Non-HttpOnly cookie for CSRF (readable by frontend)
+        res.cookie('csrf_token', csrfToken, {
+            httpOnly: false, // JS needs to read this
+            secure: process.env.NODE_ENV === 'production',
+            maxAge: 24 * 60 * 60 * 1000,
             sameSite: 'strict'
         });
 
         return res.json({
             user: { id: user.id, email: user.email, role: user.role },
-            message: 'Login successful'
+            message: 'Login successful',
+            // Token removed from response body for security
         });
     } catch (error) {
         console.error('Login error:', error);
@@ -112,9 +128,11 @@ export const login = async (req: Request, res: Response) => {
 };
 
 export const register = async (req: Request, res: Response) => {
-    // This endpoint should be protected or disabled in production if not needed
-    // For setup, we'll verify if any user exists or allow creation with a secret key?
-    // Simply implementing for now.
+    // Registration disabled for security. Use database access or enable temporarily if needed.
+    return res.status(403).json({ message: 'Registration is currently disabled.' });
+
+    /* 
+    // OLD LOGIC (Disabled)
     try {
         const { email, password } = req.body;
 
@@ -134,6 +152,7 @@ export const register = async (req: Request, res: Response) => {
         console.error('Register error:', error);
         return res.status(500).json({ message: 'Internal server error' });
     }
+    */
 };
 
 // Generate 6-digit OTP
@@ -204,7 +223,7 @@ export const resetPassword = async (req: Request, res: Response) => {
         }
 
         // Reset password
-        user.password = newPassword;
+        user.set('password', newPassword);
         user.password_reset_otp = null;
         user.password_reset_expiry = null;
         await user.save();
@@ -245,7 +264,7 @@ export const changePassword = async (req: AuthRequest, res: Response) => {
         }
 
         // Update password
-        user.password = newPassword;
+        user.set('password', newPassword);
         await user.save();
 
         return res.json({ message: 'Password changed successfully' });
@@ -523,6 +542,21 @@ export const changeEmail = async (req: AuthRequest, res: Response) => {
 
 export const logout = (req: Request, res: Response) => {
     res.clearCookie('token');
+    res.clearCookie('csrf_token');
     return res.json({ message: 'Logged out successfully' });
+};
+
+export const getCsrfToken = (req: Request, res: Response) => {
+    const csrfToken = generateCsrfToken();
+
+    // Set Non-HttpOnly cookie for CSRF
+    res.cookie('csrf_token', csrfToken, {
+        httpOnly: false,
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: 24 * 60 * 60 * 1000,
+        sameSite: 'strict'
+    });
+
+    return res.json({ csrfToken });
 };
 

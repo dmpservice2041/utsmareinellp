@@ -62,7 +62,7 @@ export default function BlogPreview() {
                             key={blog.id}
                             title={blog.title}
                             excerpt={blog.excerpt}
-                            date={new Date(blog.published_at || blog.createdAt).toLocaleDateString()}
+                            date={blog.published_at || blog.createdAt || new Date().toISOString()}
                             image={blog.featured_image || 'https://images.unsplash.com/photo-1541963463532-d68292c34b19?q=80&w=2576&auto=format&fit=crop'}
                             slug={blog.slug}
                         />

@@ -59,6 +59,11 @@ ActivityLog.init(
         timestamps: true,
         updatedAt: false,
         underscored: true,
+        indexes: [
+            { fields: ['user_id'] },
+            { fields: ['entity_type', 'entity_id'] },
+            { fields: ['created_at'] },
+        ],
     }
 );
 

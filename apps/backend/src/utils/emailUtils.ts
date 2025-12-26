@@ -28,6 +28,22 @@ export const getEmailTransporter = () => {
     return nodemailer.createTransport(transporterConfig);
 };
 
+/**
+ * Basic HTML encoding to prevent XSS in email templates
+ */
+export const encodeHTML = (str: string): string => {
+    return str.replace(/[&<>"']/g, (tag) => {
+        const chars: { [key: string]: string } = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;',
+        };
+        return chars[tag] || tag;
+    });
+};
+
 export const sendPasswordResetOTP = async (email: string, otp: string): Promise<boolean> => {
     try {
         if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {

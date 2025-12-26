@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Lock, Mail, X } from 'lucide-react';
 import { API_ENDPOINTS } from '@/config/api';
@@ -23,6 +23,28 @@ export default function AdminLogin() {
   const [loginOtp, setLoginOtp] = useState('');
   const [twoFactorMethod, setTwoFactorMethod] = useState<'app' | 'email'>('app');
   const [twoFactorMessage, setTwoFactorMessage] = useState('');
+  const [csrfToken, setCsrfToken] = useState('');
+
+  useEffect(() => {
+    // Fetch CSRF token on mount
+    const fetchCsrf = async () => {
+      try {
+        // Start with localhost fallback if API_ENDPOINTS is not fully handy, or assume relative
+        // Using relative path assuming proxy or same-origin
+        // If API_ENDPOINTS.LOGIN is 'http://localhost:5001/api/auth/login', we need '.../csrf'
+        // For safety, let's try to parse the LOGIN url or just hardcode the likely path
+        const baseUrl = API_ENDPOINTS.LOGIN.replace('/login', '');
+        const response = await fetch(`${baseUrl}/csrf`, { credentials: 'include' });
+        if (response.ok) {
+          const data = await response.json();
+          setCsrfToken(data.csrfToken);
+        }
+      } catch (e) {
+        console.error('Failed to fetch CSRF token', e);
+      }
+    };
+    fetchCsrf();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,6 +61,7 @@ export default function AdminLogin() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'X-CSRF-Token': csrfToken,
         },
         credentials: 'include', // Important for cookies
         body: JSON.stringify(body),
@@ -54,7 +77,10 @@ export default function AdminLogin() {
             setTwoFactorMessage(data.message);
           }
         } else {
-          // Cookie is set automatically
+
+          // Token is in HttpOnly cookie now
+          // Removed: localStorage.setItem('adminToken', data.token);
+
           router.push('/admin/dashboard');
         }
       } else {

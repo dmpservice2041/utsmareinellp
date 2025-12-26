@@ -2,23 +2,38 @@
 
 import { useEffect, useState } from 'react';
 import { API_ENDPOINTS } from '@/config/api';
+import Pagination from '@/components/admin/Pagination';
 
 export default function AdminMessages() {
-    const [messages, setMessages] = useState([]);
+    const [messages, setMessages] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
 
     useEffect(() => {
         fetchMessages();
-    }, []);
+    }, [currentPage]);
 
     const fetchMessages = async () => {
         try {
-            const res = await fetch(API_ENDPOINTS.CONTACT, {
+            const params = new URLSearchParams();
+            params.append('page', currentPage.toString());
+            params.append('limit', '20');
+
+            const res = await fetch(`${API_ENDPOINTS.CONTACT}?${params.toString()}`, {
                 credentials: 'include',
             });
             if (res.ok) {
-                const data = await res.json();
-                setMessages(data || []);
+                const result = await res.json();
+                // Handle both old array format (fallback) and new object format
+                if (Array.isArray(result)) {
+                    setMessages(result);
+                } else {
+                    setMessages(result.data || []);
+                    if (result.meta) {
+                        setTotalPages(result.meta.pages || 1);
+                    }
+                }
             }
             setLoading(false);
         } catch (error) {
@@ -66,6 +81,12 @@ export default function AdminMessages() {
                     </table>
                 )}
             </div>
+
+            <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={setCurrentPage}
+            />
         </div>
     );
 }

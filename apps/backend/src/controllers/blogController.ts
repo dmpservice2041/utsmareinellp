@@ -29,6 +29,7 @@ export const getPublicList = asyncHandler(async (req: Request, res: Response) =>
 
     const { count, rows } = await Blog.findAndCountAll({
         where: whereClause,
+        attributes: { exclude: ['content', 'schema_overrides'] },
         include: [{ model: Tag, as: 'blogTags', through: { attributes: [] } }],
         limit,
         offset,

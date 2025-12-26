@@ -258,10 +258,10 @@ export default function Contact() {
                                                                 +91 8460565550
                                                             </a>
                                                         </div>
-                                                        <div className="p-4 bg-gradient-to-r from-teal-100 via-teal-50 to-teal-100 rounded-xl border-2 border-teal-300 shadow-md hover:shadow-lg transition-all duration-300 group/contact">
-                                                            <div className="text-xs text-gray-600 mb-1.5 font-bold uppercase tracking-wide">Contact Person</div>
+                                                        <div className="p-4 bg-gradient-to-r from-teal-50 to-teal-50/50 rounded-xl border border-teal-100 hover:border-teal-300 hover:shadow-lg transition-all duration-300 group/contact">
+                                                            <div className="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">Contact Person</div>
                                                             <div className="font-bold text-gray-900 mb-2 text-base">Yashin Lakhani</div>
-                                                            <a href="tel:919825750060" className="text-teal-700 hover:text-teal-800 font-bold transition-colors text-base inline-flex items-center gap-2">
+                                                            <a href="tel:919825750060" className="text-teal-600 hover:text-teal-700 font-bold transition-colors text-base inline-flex items-center gap-2">
                                                                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                                                     <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                                                                 </svg>
@@ -407,8 +407,8 @@ export default function Contact() {
                                             type="submit"
                                             disabled={status === 'loading'}
                                             className={`w-full py-4 px-6 text-white font-bold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:transform-none disabled:cursor-not-allowed ${status === 'loading'
-                                                    ? 'bg-gray-400'
-                                                    : 'bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800'
+                                                ? 'bg-gray-400'
+                                                : 'bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800'
                                                 }`}
                                         >
                                             {status === 'loading' ? (

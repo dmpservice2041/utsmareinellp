@@ -29,3 +29,18 @@ export const authLimiter = rateLimit({
         message: 'Too many login attempts from this IP, please try again after 15 minutes'
     }
 });
+
+/**
+ * Very strict rate limiter for Contact Form
+ * 5 requests per hour to prevent spam
+ */
+export const contactLimiter = rateLimit({
+    windowMs: 60 * 60 * 1000, // 1 hour
+    max: 5,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: {
+        success: false,
+        message: 'Too many contact requests from this IP, please try again after an hour'
+    }
+});

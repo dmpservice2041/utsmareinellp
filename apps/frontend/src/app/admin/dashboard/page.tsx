@@ -30,11 +30,8 @@ export default function AdminDashboard() {
 
   const fetchStats = async () => {
     try {
-      const token = localStorage.getItem('adminToken');
       const response = await fetch(API_ENDPOINTS.DASHBOARD_STATS, {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
+        credentials: 'include', // Use HttpOnly cookie
       });
 
       if (response.ok) {

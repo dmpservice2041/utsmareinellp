@@ -9,6 +9,7 @@ export const getProducts = async (req: Request, res: Response) => {
 
         const { count, rows } = await Product.findAndCountAll({
             where: { is_active: true },
+            attributes: { exclude: ['long_description', 'specifications', 'technical_details'] },
             include: [{ model: ProductImage, as: 'images' }],
             limit,
             offset,

@@ -35,10 +35,17 @@ export default function BlogCard({ title, excerpt, date, image, slug, category }
     // Format date
     const formatDate = (dateString: string) => {
         try {
+            if (!dateString) {
+                return '';
+            }
             const date = new Date(dateString);
+            // Check if date is valid
+            if (isNaN(date.getTime())) {
+                return '';
+            }
             return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
         } catch {
-            return dateString;
+            return '';
         }
     };
 
@@ -68,9 +75,11 @@ export default function BlogCard({ title, excerpt, date, image, slug, category }
                         {category}
                     </span>
                 )}
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-gray-700 text-xs font-semibold px-3 py-1 rounded shadow z-10">
-                    {formatDate(date)}
-                </div>
+                {formatDate(date) && (
+                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-gray-700 text-xs font-semibold px-3 py-1 rounded shadow z-10">
+                        {formatDate(date)}
+                    </div>
+                )}
             </div>
             <div className="p-6">
                 <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-teal-600 transition-colors line-clamp-2">

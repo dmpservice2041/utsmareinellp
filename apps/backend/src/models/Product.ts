@@ -192,6 +192,14 @@ Product.init(
                 }
             },
         },
+        indexes: [
+            { fields: ['status'] },
+            { fields: ['category'] },
+            { fields: ['is_featured'] },
+            { fields: ['priority'] },
+            { fields: ['status', 'priority'] }, // For improved sorting/filtering
+            { fields: ['created_at'] },
+        ],
     }
 );
 

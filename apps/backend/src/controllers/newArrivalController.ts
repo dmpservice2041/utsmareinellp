@@ -29,6 +29,7 @@ export const getPublicList = asyncHandler(async (req: Request, res: Response) =>
 
     const { count, rows } = await Product.findAndCountAll({
         where: whereClause,
+        attributes: { exclude: ['long_description', 'specifications', 'technical_details', 'schema_overrides'] },
         include: [
             { model: ProductImage, as: 'images', limit: 1 },
             { model: Tag, as: 'tags', through: { attributes: [] } },
@@ -116,10 +117,10 @@ export const getBySlug = asyncHandler(async (req: Request, res: Response) => {
     }
 
     const productData = product.toJSON();
-    
+
     // Generate schema server-side from schema_overrides
     const schema = generateProductSchema(product, product.schema_overrides);
-    
+
     // Validate schema
     const { validateSchemaJSON } = await import('../utils/seoUtils');
     const schemaValidation = validateSchemaJSON(schema, product.schema_type);
@@ -305,12 +306,12 @@ export const create = asyncHandler(async (req: AuthRequest, res: Response) => {
     // Sanitize HTML content
     const sanitizedLongDescription = long_description
         ? sanitizeHtml(long_description, {
-              allowedTags: ['p', 'br', 'strong', 'em', 'ul', 'ol', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'a', 'img'],
-              allowedAttributes: {
-                  a: ['href'],
-                  img: ['src', 'alt'],
-              },
-          })
+            allowedTags: ['p', 'br', 'strong', 'em', 'ul', 'ol', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'a', 'img'],
+            allowedAttributes: {
+                a: ['href'],
+                img: ['src', 'alt'],
+            },
+        })
         : null;
 
     // Create product

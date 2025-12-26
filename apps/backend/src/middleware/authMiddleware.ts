@@ -18,6 +18,7 @@ export const authenticateToken = (
     next: NextFunction
 ) => {
     const authHeader = req.headers['authorization'];
+
     let token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
 
     if (!token && req.cookies && req.cookies.token) {
@@ -48,6 +49,24 @@ export const authenticateToken = (
             error: {
                 code: 'INVALID_TOKEN',
                 message: 'Invalid or expired token.'
+            }
+        });
+    }
+};
+
+export const requireAdmin = (
+    req: AuthRequest,
+    res: Response,
+    next: NextFunction
+) => {
+    if (req.user && req.user.role === 'admin') {
+        next();
+    } else {
+        return res.status(403).json({
+            success: false,
+            error: {
+                code: 'FORBIDDEN',
+                message: 'Access denied. Admin privileges required.'
             }
         });
     }

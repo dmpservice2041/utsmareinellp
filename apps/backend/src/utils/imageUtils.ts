@@ -41,6 +41,14 @@ export async function processImageOnUpload(
     const filenameWithoutExt = path.parse(originalFilename).name;
     const ext = path.parse(originalFilename).ext || '.jpg';
 
+    // STRICT VALIDATION: Try to decode the image buffer first to ensure it's valid
+    // This rejects polyglot files (image + script) by forcing a decode
+    try {
+        const buffer = await sharp(filePath).toBuffer();
+    } catch (error) {
+        throw new Error('Invalid image file: Failed to decode');
+    }
+
     // Move original to original directory
     const originalFinalPath = path.join(originalDir, originalFilename);
     await fs.rename(filePath, originalFinalPath);

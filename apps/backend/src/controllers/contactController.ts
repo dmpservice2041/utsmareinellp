@@ -19,7 +19,7 @@ export const submitContact = async (req: Request, res: Response) => {
         // Send Email Notification
         // Admin email (where inquiries are sent) - defaults to EMAIL_USER if not set
         const adminEmail = process.env.ADMIN_EMAIL || process.env.EMAIL_USER || 'sales@utsmarinellp.com';
-        
+
         if (adminEmail && process.env.EMAIL_USER && process.env.EMAIL_PASS) {
             try {
                 // Configure SMTP transporter
@@ -93,8 +93,26 @@ export const submitContact = async (req: Request, res: Response) => {
 
 export const getMessages = async (req: Request, res: Response) => {
     try {
-        const messages = await Message.findAll({ order: [['createdAt', 'DESC']] });
-        return res.json(messages);
+        const page = parseInt(req.query.page as string) || 1;
+        const limit = parseInt(req.query.limit as string) || 20;
+        const offset = (page - 1) * limit;
+
+        const { count, rows } = await Message.findAndCountAll({
+            limit,
+            offset,
+            order: [['createdAt', 'DESC']]
+        });
+
+        return res.json({
+            success: true,
+            data: rows,
+            meta: {
+                page,
+                limit,
+                total: count,
+                pages: Math.ceil(count / limit),
+            }
+        });
     } catch (error) {
         console.error('Get messages error:', error);
         return res.status(500).json({ message: 'Internal server error' });

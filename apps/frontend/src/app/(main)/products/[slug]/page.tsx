@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import DOMPurify from 'isomorphic-dompurify';
 import { API_ENDPOINTS, getUploadUrl } from '@/config/api';
 import ProductInquiryForm from '@/components/products/ProductInquiryForm';
@@ -52,12 +53,7 @@ export default async function ProductDetail({
     const product = await getProduct(slug, preview === 'true');
 
     if (!product) {
-        return (
-            <div className="pt-36 text-center text-gray-600">
-                <h1 className="text-2xl font-bold">Product Not Found</h1>
-                <Link href="/" className="text-teal-600 hover:underline mt-4 block">Back to Home</Link>
-            </div>
-        );
+        notFound();
     }
 
     // Get image from featured_image first, then from images array

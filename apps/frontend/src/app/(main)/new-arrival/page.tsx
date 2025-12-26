@@ -5,8 +5,8 @@ import ScrollReveal from '@/components/shared/ScrollReveal';
 
 async function getProducts() {
     try {
-        const res = await fetch(`${API_ENDPOINTS.PUBLIC_PRODUCTS}?limit=100`, { 
-            cache: 'no-store',
+        const res = await fetch(`${API_ENDPOINTS.PUBLIC_PRODUCTS}?limit=100`, {
+            next: { revalidate: 3600 },
             headers: {
                 'Content-Type': 'application/json',
             }
@@ -27,7 +27,7 @@ export default async function NewArrival() {
         <main className="pt-24 sm:pt-28">
             {/* Banner Header */}
             <section className="relative h-[400px] lg:h-[500px] overflow-hidden">
-                <div 
+                <div
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                     style={{ backgroundImage: "url('https://images.unsplash.com/photo-1580910543623-1d9865672808?q=80&w=2070&auto=format&fit=crop')" }}
                 >
@@ -57,7 +57,7 @@ export default async function NewArrival() {
             <section className="py-20 lg:py-32 bg-gray-50 relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-96 h-96 bg-teal-100/30 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2" />
                 <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-100/30 rounded-full blur-3xl translate-y-1/2 translate-x-1/2" />
-                
+
                 <div className="container mx-auto px-4 relative z-10">
                     {products.length > 0 ? (
                         <>
@@ -81,9 +81,9 @@ export default async function NewArrival() {
                                     const imagePath = product.featured_image && product.featured_image.trim() !== ''
                                         ? product.featured_image
                                         : product.images && product.images.length > 0 && product.images[0].url && product.images[0].url.trim() !== ''
-                                        ? product.images[0].url
-                                        : '';
-                                    
+                                            ? product.images[0].url
+                                            : '';
+
                                     return (
                                         <ScrollReveal key={product.id} delay={index * 50}>
                                             <ProductCard

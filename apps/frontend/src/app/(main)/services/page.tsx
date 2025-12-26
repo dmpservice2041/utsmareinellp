@@ -36,37 +36,37 @@ export default function ServicesPage() {
         {
             title: 'Magnetic Particle Inspection (MPI)',
             description: 'For detecting surface and near-surface discontinuities in ferromagnetic materials',
-            icon: '🔍'
+            image: '/images/service/MPI.jpg'
         },
         {
             title: 'Ultrasonic Testing (UT)',
             description: 'For internal flaw detection and thickness measurements',
-            icon: '📡'
+            image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070&auto=format&fit=crop'
         },
         {
             title: 'Hardness Testing',
             description: 'Brinell, Rockwell, and Vickers hardness testing for material verification',
-            icon: '⚖️'
+            image: '/images/service/Hardness_Testing.jpg'
         },
         {
             title: 'Hydraulic Pressure Testing',
             description: 'For valves, pumps, and hydraulic components',
-            icon: '💧'
+            image: 'https://images.unsplash.com/photo-1621905252507-b35492ccba0b?q=80&w=2069&auto=format&fit=crop'
         },
         {
             title: 'Calibration Services',
             description: 'Precision calibration for instruments and equipment',
-            icon: '🎯'
+            image: '/images/service/Calibration_Services.jpg'
         },
         {
             title: 'Trueness Testing',
             description: 'Dimensional accuracy verification',
-            icon: '📏'
+            image: '/images/service/Trueness_Testing.jpg'
         },
         {
             title: 'Leak Detection Testing',
             description: 'For valves, heat exchangers, and pressure vessels',
-            icon: '🔬'
+            image: 'https://images.unsplash.com/photo-1581092335397-9583eb92d232?q=80&w=2070&auto=format&fit=crop'
         }
     ];
 
@@ -97,7 +97,7 @@ export default function ServicesPage() {
         <main className="pt-24 sm:pt-28">
             {/* Banner Header */}
             <section className="relative h-[400px] lg:h-[500px] overflow-hidden">
-                <div 
+                <div
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                     style={{ backgroundImage: "url('https://images.unsplash.com/photo-1580910543623-1d9865672808?q=80&w=2070&auto=format&fit=crop')" }}
                 >
@@ -119,45 +119,81 @@ export default function ServicesPage() {
 
             {/* Quality Assurance Section */}
             <section className="py-20 lg:py-32 bg-white relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-96 h-96 bg-teal-100/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-                
+                {/* Decorative Background Elements */}
+                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-teal-50/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gray-50/50 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3 pointer-events-none" />
+
                 <div className="container mx-auto px-4 relative z-10">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
                         <ScrollReveal delay={0}>
                             <div>
-                                <div className="inline-block mb-6 px-6 py-3 bg-teal-100 rounded-full">
-                                    <span className="text-teal-600 text-sm font-semibold uppercase tracking-wider">Our Commitment</span>
+                                <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 border border-teal-100 rounded-full mb-8">
+                                    <span className="w-2 h-2 rounded-full bg-teal-500 animate-pulse" />
+                                    <span className="text-teal-700 text-sm font-semibold uppercase tracking-wider">Our Commitment</span>
                                 </div>
+
                                 <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                                    UTS Quality Assurance
+                                    Uncompromising <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-teal-800">Quality Assurance</span>
                                 </h2>
-                                <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                                    At UTS Marine LLP, we believe that the correct path towards sustainable business growth is through continuous improvement in product quality and service excellence. We adhere to international quality standards at all levels of our operations, from procurement and storage to testing and delivery.
+
+                                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                                    At UTS Marine LLP, quality isn't just a checkbox—it's the foundation of everything we do. From rigorous material selection to final inspection, we adhere to the highest international standards to ensure reliability at sea.
                                 </p>
-                                <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                                    Our dedicated team of quality auditors and certified engineers conduct stringent tests at every stage, ensuring that only the best quality products reach our customers. As an <strong className="text-teal-600">ISO 9001:2015 certified</strong> company, we maintain rigorous quality management systems that govern every aspect of our operations.
-                                </p>
-                                <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                                    Our vision is to be the leading marine ship spares supplier globally, setting the highest standards in the industry. We continuously enhance our service levels and maintain strict adherence to international maritime standards, ensuring compliance with <strong className="text-teal-600">IACS</strong> (International Association of Classification Societies) requirements.
-                                </p>
+
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+                                    {[
+                                        { title: 'ISO 9001:2015', desc: 'Certified Management System' },
+                                        { title: 'IACS Compliant', desc: 'Meeting Class Requirements' },
+                                        { title: 'Material Traceability', desc: 'Full Documentation Trail' },
+                                        { title: 'Expert Team', desc: 'Level II & III Engineers' }
+                                    ].map((item, i) => (
+                                        <div key={i} className="flex items-start gap-4 p-4 rounded-xl bg-gray-50 hover:bg-white border border-transparent hover:border-gray-100 hover:shadow-lg transition-all duration-300 group">
+                                            <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-teal-100 group-hover:bg-teal-600 transition-colors duration-300 flex items-center justify-center text-teal-600 group-hover:text-white">
+                                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <h4 className="font-bold text-gray-900 text-sm mb-1">{item.title}</h4>
+                                                <p className="text-xs text-gray-500">{item.desc}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         </ScrollReveal>
 
                         <ScrollReveal delay={200}>
                             <div className="relative">
-                                <div className="bg-gradient-to-br from-teal-50 to-white rounded-2xl p-8 lg:p-12 shadow-2xl border border-gray-100 h-full flex flex-col items-center justify-center">
-                                    <div className="w-32 h-32 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center mb-6 shadow-xl">
-                                        <svg className="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                                        </svg>
-                                    </div>
-                                    <h3 className="text-3xl font-bold text-gray-900 mb-3">ISO 9001:2015</h3>
-                                    <p className="text-xl text-gray-600 text-center">Certified Quality Management System</p>
-                                    <div className="mt-6 flex items-center gap-2 text-teal-600">
-                                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                                        </svg>
-                                        <span className="font-semibold">Certified</span>
+                                {/* Abstract background shape */}
+                                <div className="absolute inset-0 bg-teal-600/5 rounded-[2rem] rotate-3 scale-105" />
+
+                                <div className="relative bg-white/60 backdrop-blur-xl rounded-[2rem] p-8 border border-white/50 shadow-2xl">
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                        {/* Certificates */}
+                                        {[
+                                            { src: '/images/service/ISO_CERTIFICATE.jpg', title: 'ISO 9001:2015', sub: 'Quality Management' },
+                                            { src: '/images/service/IMPA_Certificate.jpg', title: 'IMPA Member', sub: 'Certified Supplier' }
+                                        ].map((cert, idx) => (
+                                            <div key={idx} className="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100">
+                                                <div className="aspect-[210/297] relative overflow-hidden bg-gray-50">
+                                                    <img
+                                                        src={cert.src}
+                                                        alt={cert.title}
+                                                        className="relative z-10 w-full h-full object-contain p-2 transition-transform duration-700 group-hover:scale-105"
+                                                    />
+                                                    <div className="absolute inset-0 z-20 bg-gradient-to-t from-teal-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+                                                        <span className="px-4 py-2 bg-white/95 backdrop-blur text-teal-900 text-xs font-bold uppercase tracking-wider rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 shadow-lg">
+                                                            Verified
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div className="p-4 text-center bg-white border-t border-gray-50 relative z-10">
+                                                    <h3 className="font-bold text-gray-900 text-sm mb-0.5 group-hover:text-teal-600 transition-colors">{cert.title}</h3>
+                                                    <p className="text-xs text-gray-500">{cert.sub}</p>
+                                                </div>
+                                            </div>
+                                        ))}
                                     </div>
                                 </div>
                             </div>
@@ -167,9 +203,7 @@ export default function ServicesPage() {
             </section>
 
             {/* NDT Facility Section */}
-            <section className="py-20 lg:py-32 bg-gradient-to-br from-gray-50 via-white to-teal-50/30 relative overflow-hidden">
-                <div className="absolute bottom-0 left-0 w-96 h-96 bg-teal-100/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
-                
+            <section className="py-20 lg:py-32 bg-gray-50 relative overflow-hidden">
                 <div className="container mx-auto px-4 relative z-10">
                     <ScrollReveal delay={0}>
                         <div className="text-center mb-16">
@@ -180,24 +214,41 @@ export default function ServicesPage() {
                                 Comprehensive Non-Destructive Testing (NDT) Facility
                             </h2>
                             <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-                                We maintain a state-of-the-art testing facility with qualified Level II and Level III NDT engineers in our premises. This in-house capability eliminates the need for external testing services, significantly reducing turnaround time and ensuring faster delivery of parts to our clients.
+                                We maintain a state-of-the-art testing facility with qualified Level II and Level III NDT engineers in our premises.
                             </p>
                         </div>
                     </ScrollReveal>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                    <div className="space-y-24 mb-24">
                         {ndtServices.map((service, index) => (
-                            <ScrollReveal key={index} delay={index * 100}>
-                                <div className="group bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-teal-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                                    <div className="flex items-start gap-4">
-                                        <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-teal-50 to-teal-100 rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300">
-                                            {service.icon}
+                            <ScrollReveal key={index} delay={0} direction={index % 2 === 0 ? 'left' : 'right'}>
+                                <div className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12 lg:gap-20`}>
+                                    {/* Image Side */}
+                                    <div className="w-full lg:w-1/2">
+                                        <div className="relative group rounded-2xl overflow-hidden shadow-2xl">
+                                            <div className="aspect-[4/3] overflow-hidden">
+                                                <img
+                                                    src={service.image}
+                                                    alt={service.title}
+                                                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                                                />
+                                            </div>
+                                            <div className="absolute inset-0 bg-teal-900/10 group-hover:bg-transparent transition-colors duration-300" />
                                         </div>
-                                        <div className="flex-1">
-                                            <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors">
+                                    </div>
+
+                                    {/* Content Side */}
+                                    <div className="w-full lg:w-1/2">
+                                        <div className={`flex flex-col ${index % 2 === 0 ? 'lg:items-start text-left' : 'lg:items-end lg:text-right text-left items-start'}`}>
+                                            <div className="inline-block p-3 bg-teal-50 rounded-xl mb-6">
+                                                <span className="text-3xl filter grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                                                    ✨
+                                                </span>
+                                            </div>
+                                            <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
                                                 {service.title}
                                             </h3>
-                                            <p className="text-gray-600 leading-relaxed text-sm">
+                                            <p className="text-lg text-gray-600 leading-relaxed mb-8 max-w-xl">
                                                 {service.description}
                                             </p>
                                         </div>
@@ -208,7 +259,7 @@ export default function ServicesPage() {
                     </div>
 
                     <ScrollReveal delay={700}>
-                        <div className="bg-gradient-to-r from-teal-50 to-teal-100 rounded-xl p-6 border-l-4 border-teal-600 max-w-4xl mx-auto">
+                        <div className="bg-gradient-to-r from-teal-50 to-teal-100 rounded-xl p-6 border-l-4 border-teal-600 w-full">
                             <p className="text-gray-700 leading-relaxed">
                                 <strong className="text-teal-600">All tests are conducted</strong> according to ASTM, ISO, and classification society standards. We provide detailed test certificates with each tested component, complete with test data, technician signatures, and our quality stamp.
                             </p>
@@ -220,7 +271,7 @@ export default function ServicesPage() {
             {/* Additional Quality Services */}
             <section className="py-20 lg:py-32 bg-white relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-teal-100/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-                
+
                 <div className="container mx-auto px-4 relative z-10">
                     <ScrollReveal delay={0}>
                         <div className="text-center mb-16">
@@ -271,7 +322,7 @@ export default function ServicesPage() {
                     <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl" />
                     <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl" />
                 </div>
-                
+
                 <div className="container mx-auto px-4 relative z-10">
                     <ScrollReveal delay={0}>
                         <div className="max-w-4xl mx-auto text-center">
@@ -281,7 +332,7 @@ export default function ServicesPage() {
                             <p className="text-xl text-white/90 leading-relaxed mb-12">
                                 Our quality assurance process includes comprehensive documentation, traceability of all parts from source to delivery, and detailed inspection reports. We work closely with ship owners, ship managers, and shipping companies worldwide to understand their specific requirements and deliver parts that meet or exceed OEM specifications.
                             </p>
-                            
+
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                                 {[
                                     { title: 'Documentation', desc: 'Complete traceability' },
@@ -320,7 +371,7 @@ export default function ServicesPage() {
                                 </p>
                             </div>
                         </ScrollReveal>
-                        
+
                         <div className="space-y-6">
                             {serviceFAQs.map((faq, index) => (
                                 <ScrollReveal key={index} delay={index * 100}>
@@ -344,7 +395,7 @@ export default function ServicesPage() {
                                 </ScrollReveal>
                             ))}
                         </div>
-                        
+
                         <ScrollReveal delay={600}>
                             <div className="mt-12 text-center">
                                 <p className="text-lg text-gray-700 mb-6">
