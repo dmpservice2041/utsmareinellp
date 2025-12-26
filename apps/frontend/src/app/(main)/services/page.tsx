@@ -221,7 +221,7 @@ export default function ServicesPage() {
 
                     <div className="space-y-24 mb-24">
                         {ndtServices.map((service, index) => (
-                            <ScrollReveal key={index} delay={0} direction={index % 2 === 0 ? 'left' : 'right'}>
+                            <ScrollReveal key={index} delay={0}>
                                 <div className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12 lg:gap-20`}>
                                     {/* Image Side */}
                                     <div className="w-full lg:w-1/2">
