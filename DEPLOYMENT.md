@@ -22,24 +22,34 @@ This tells Vercel to:
 - Look for `package.json` in that directory
 - Use `.next` as the output directory automatically
 
-## Alternative: If Root Directory Setting Doesn't Work
+## Current Configuration
 
-If setting the Root Directory doesn't work, you can try:
+- **Root Directory**: Must be set to `apps/frontend` in Vercel dashboard
+- **vercel.json**: Located in `apps/frontend/vercel.json` (minimal config)
+- **Framework**: Auto-detected as `nextjs`
+- **Output Directory**: `.next` (relative to root directory)
+- **Build Command**: Auto-detected as `npm run build`
+- **Install Command**: Auto-detected as `npm install`
 
-1. Remove the root `vercel.json` file
-2. Keep only `apps/frontend/vercel.json`
-3. Vercel should auto-detect the Next.js project in that directory
+## Troubleshooting Build Errors
 
-## Build Commands
+If you see "npm error Lifecycle script `build` failed":
+1. **Check the actual error in Vercel build logs** - Click on the failed deployment to see the full error message
+2. **Verify Root Directory is set** to `apps/frontend` in Vercel dashboard
+3. **Clear build cache** in Vercel dashboard (Settings → General → Clear Build Cache)
+4. **Check Node.js version** - Ensure it's 18+ (specified in package.json engines)
+5. **Verify all dependencies** are in `apps/frontend/package.json`
 
-The current configuration uses:
-- **Build Command**: `npm run build:frontend` (runs from root, uses npm --prefix)
-- **Output Directory**: `apps/frontend/.next`
-- **Framework**: `nextjs`
+## Local Build Test
 
-## Troubleshooting
+To test the build locally (should match Vercel):
+```bash
+cd apps/frontend
+npm install
+npm run build
+```
 
-If you see errors like "cd apps/frontend: No such file or directory":
-1. Check that the Root Directory is set correctly in Vercel dashboard
-2. Verify that `apps/frontend` exists in your repository
-3. Clear Vercel build cache and redeploy
+If local build works but Vercel fails, check:
+- Root Directory setting in Vercel dashboard
+- Environment variables (if any are required)
+- Build cache issues
