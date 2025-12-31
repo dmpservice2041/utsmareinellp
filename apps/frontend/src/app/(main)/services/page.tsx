@@ -143,8 +143,8 @@ export default function ServicesPage() {
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
                                     {[
                                         { title: 'ISO 9001:2015', desc: 'Certified Management System' },
+                                        { title: 'IMPA Member', desc: 'Certified Supplier Member' },
                                         { title: 'IACS Compliant', desc: 'Meeting Class Requirements' },
-                                        { title: 'Material Traceability', desc: 'Full Documentation Trail' },
                                         { title: 'Expert Team', desc: 'Level II & III Engineers' }
                                     ].map((item, i) => (
                                         <div key={i} className="flex items-start gap-4 p-4 rounded-xl bg-gray-50 hover:bg-white border border-transparent hover:border-gray-100 hover:shadow-lg transition-all duration-300 group">

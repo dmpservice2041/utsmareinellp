@@ -49,16 +49,13 @@ export default function MediaGalleryPicker({
 
     setLoading(true);
     try {
-      const token = localStorage.getItem('adminToken');
       const url = new URL(API_ENDPOINTS.MEDIA);
       if (search) {
         url.searchParams.append('search', search);
       }
 
       const response = await fetch(url.toString(), {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        credentials: 'include',
         signal,
       });
 

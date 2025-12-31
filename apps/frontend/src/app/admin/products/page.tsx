@@ -35,7 +35,6 @@ export default function ProductsPage() {
 
   const fetchProducts = async () => {
     try {
-      const token = localStorage.getItem('adminToken');
       const params = new URLSearchParams();
       params.append('page', currentPage.toString());
       params.append('limit', '20');
@@ -46,9 +45,6 @@ export default function ProductsPage() {
 
       const response = await fetch(`${API_ENDPOINTS.PRODUCTS}?${params.toString()}`, {
         credentials: 'include',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
       });
 
       if (response.ok) {
@@ -69,12 +65,9 @@ export default function ProductsPage() {
     if (!confirm('Are you sure you want to delete this product?')) return;
 
     try {
-      const token = localStorage.getItem('adminToken');
       const response = await fetch(API_ENDPOINTS.PRODUCT(id), {
         method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
+        credentials: 'include',
       });
 
       if (response.ok) {

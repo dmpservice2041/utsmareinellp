@@ -33,7 +33,6 @@ export default function NewProductPage() {
     setError('');
 
     try {
-      const token = localStorage.getItem('adminToken');
       const productData = {
         title: formData.title,
         short_description: formData.short_description || null,
@@ -50,9 +49,9 @@ export default function NewProductPage() {
 
       const response = await fetch(API_ENDPOINTS.PRODUCTS, {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify(productData),
       });

@@ -39,11 +39,8 @@ export default function EditBlogPage() {
 
   const fetchBlog = async () => {
     try {
-      const token = localStorage.getItem('adminToken');
       const response = await fetch(API_ENDPOINTS.BLOG(blogId), {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
+        credentials: 'include',
       });
 
       if (response.ok) {
@@ -80,7 +77,6 @@ export default function EditBlogPage() {
     setError('');
 
     try {
-      const token = localStorage.getItem('adminToken');
       const blogData = {
         ...formData,
         tags: formData.tags ? formData.tags.split(',').map(t => t.trim()).filter(t => t) : [],
@@ -88,9 +84,9 @@ export default function EditBlogPage() {
 
       const response = await fetch(API_ENDPOINTS.BLOG(blogId), {
         method: 'PUT',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify(blogData),
       });

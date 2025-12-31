@@ -38,11 +38,8 @@ export default function EditProductPage() {
 
   const fetchProduct = async () => {
     try {
-      const token = localStorage.getItem('adminToken');
       const response = await fetch(API_ENDPOINTS.PRODUCT(productId), {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
+        credentials: 'include',
       });
 
       if (response.ok) {
@@ -79,7 +76,6 @@ export default function EditProductPage() {
     setError('');
 
     try {
-      const token = localStorage.getItem('adminToken');
       const productData = {
         title: formData.title,
         short_description: formData.short_description || null,
@@ -96,9 +92,9 @@ export default function EditProductPage() {
 
       const response = await fetch(API_ENDPOINTS.PRODUCT(productId), {
         method: 'PUT',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify(productData),
       });

@@ -63,7 +63,6 @@ export default function MediaPage() {
 
   const fetchMedia = async () => {
     try {
-      const token = localStorage.getItem('adminToken');
       const params = new URLSearchParams();
       params.append('page', currentPage.toString());
       params.append('limit', '20');
@@ -74,9 +73,6 @@ export default function MediaPage() {
 
       const response = await fetch(`${API_ENDPOINTS.MEDIA}?${params.toString()}`, {
         credentials: 'include',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
       });
 
       if (response.ok) {
@@ -103,15 +99,12 @@ export default function MediaPage() {
   const uploadFile = async (file: File) => {
     setUploading(true);
     try {
-      const token = localStorage.getItem('adminToken');
       const formData = new FormData();
       formData.append('file', file);
 
-      const response = await fetch('http://localhost:5001/api/admin/media/upload', {
+      const response = await fetch(API_ENDPOINTS.MEDIA_UPLOAD, {
         method: 'POST',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        credentials: 'include',
         body: formData,
       });
 
@@ -153,12 +146,9 @@ export default function MediaPage() {
     if (!confirm('Are you sure you want to delete this image?')) return;
 
     try {
-      const token = localStorage.getItem('adminToken');
       const response = await fetch(API_ENDPOINTS.MEDIA_ITEM(id), {
         method: 'DELETE',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        credentials: 'include',
       });
 
       if (response.ok) {
@@ -174,14 +164,13 @@ export default function MediaPage() {
     if (!selectedMedia) return;
 
     try {
-      const token = localStorage.getItem('adminToken');
       const response = await fetch(
         API_ENDPOINTS.MEDIA_ITEM(selectedMedia.id),
         {
           method: 'PUT',
+          credentials: 'include',
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(editData),
         }

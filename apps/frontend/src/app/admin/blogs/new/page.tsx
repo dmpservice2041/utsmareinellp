@@ -34,7 +34,6 @@ export default function NewBlogPage() {
     setError('');
 
     try {
-      const token = localStorage.getItem('adminToken');
       const blogData = {
         ...formData,
         tags: formData.tags.split(',').map(t => t.trim()).filter(t => t),
@@ -42,9 +41,9 @@ export default function NewBlogPage() {
 
       const response = await fetch(API_ENDPOINTS.BLOGS, {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify(blogData),
       });

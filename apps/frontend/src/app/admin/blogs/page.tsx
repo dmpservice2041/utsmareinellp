@@ -34,7 +34,6 @@ export default function BlogsPage() {
 
   const fetchBlogs = async () => {
     try {
-      const token = localStorage.getItem('adminToken');
       const params = new URLSearchParams();
       params.append('page', currentPage.toString());
       params.append('limit', '20');
@@ -45,9 +44,6 @@ export default function BlogsPage() {
 
       const response = await fetch(`${API_ENDPOINTS.BLOGS}?${params.toString()}`, {
         credentials: 'include',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
       });
 
       if (response.ok) {
@@ -68,12 +64,9 @@ export default function BlogsPage() {
     if (!confirm('Are you sure you want to delete this blog post?')) return;
 
     try {
-      const token = localStorage.getItem('adminToken');
       const response = await fetch(API_ENDPOINTS.BLOG(id), {
         method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
+        credentials: 'include',
       });
 
       if (response.ok) {
