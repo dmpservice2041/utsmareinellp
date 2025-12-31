@@ -93,6 +93,25 @@ export default function About() {
         'https://images.unsplash.com/photo-1574689049597-7e6fabd218d5?q=80&w=2669&auto=format&fit=crop',
     ];
 
+    const countries = [
+        { name: 'Greece', flag: '🇬🇷' },
+        { name: 'Italy', flag: '🇮🇹' },
+        { name: 'Germany', flag: '🇩🇪' },
+        { name: 'Cyprus', flag: '🇨🇾' },
+        { name: 'Netherlands', flag: '🇳🇱' },
+        { name: 'USA', flag: '🇺🇸' },
+        { name: 'UK', flag: '🇬🇧' },
+        { name: 'Poland', flag: '🇵🇱' },
+        { name: 'Turkey', flag: '🇹🇷' },
+        { name: 'U.A.E', flag: '🇦🇪' },
+        { name: 'South Africa', flag: '🇿🇦' },
+        { name: 'Singapore', flag: '🇸🇬' },
+        { name: 'Bangladesh', flag: '🇧🇩' },
+        { name: 'Philippines', flag: '🇵🇭' },
+        { name: 'Indonesia', flag: '🇮🇩' },
+        { name: 'Sri Lanka', flag: '🇱🇰' },
+    ];
+
     return (
         <main className="pt-24 sm:pt-28">
             {/* Hero Banner Section */}
@@ -516,17 +535,50 @@ export default function About() {
             </section>
 
             {/* Global Presence Section */}
-            <section className="py-20 lg:py-32 bg-white relative overflow-hidden">
+            <section className="py-20 lg:py-32 bg-gradient-to-br from-gray-50 via-white to-teal-50/30 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-96 h-96 bg-teal-100/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+                <div className="absolute bottom-0 left-0 w-96 h-96 bg-teal-50/30 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+                
                 <div className="container mx-auto px-4 relative z-10">
                     <ScrollReveal delay={0}>
-                        <div className="text-center mb-12">
+                        <div className="text-center mb-16">
                             <div className="inline-block mb-6 px-6 py-3 bg-teal-100 rounded-full">
                                 <span className="text-teal-600 text-sm font-semibold uppercase tracking-wider">Global Reach</span>
                         </div>
-                            <h3 className="text-4xl font-bold text-gray-900 mb-6">UTS Global Presence</h3>
-                            <p className="text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto">
-                                We have a very strong global presence and serve many international clients in countries like <strong className="text-teal-600">Greece, Italy, Germany, Cyprus, Netherlands, USA, UK, Poland, Turkey, U.A.E, South Africa, Singapore, Bangladesh, Philippines, Indonesia, Sri Lanka</strong> & many more...
+                            <h3 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">UTS Global Presence</h3>
+                            <p className="text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto mb-4">
+                                We have a very strong global presence and serve many international clients across the world
                             </p>
+                            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                                Our network spans across <strong className="text-teal-600">{countries.length}+ countries</strong> and continues to grow
+                        </p>
+                    </div>
+                    </ScrollReveal>
+
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4 lg:gap-6 max-w-6xl mx-auto">
+                        {countries.map((country, index) => (
+                                    <ScrollReveal key={index} delay={index * 50}>
+                                <div className="group bg-white rounded-2xl p-6 border-2 border-gray-200 hover:border-teal-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 text-center">
+                                    <div className="text-5xl mb-3 transform group-hover:scale-110 transition-transform duration-300">
+                                        {country.flag}
+                                    </div>
+                                    <h4 className="text-lg font-bold text-gray-900 group-hover:text-teal-600 transition-colors">
+                                        {country.name}
+                                    </h4>
+                                            </div>
+                                        </ScrollReveal>
+                                    ))}
+                                </div>
+
+                    <ScrollReveal delay={countries.length * 50 + 100}>
+                        <div className="mt-12 text-center">
+                            <div className="inline-flex items-center gap-2 px-6 py-3 bg-teal-50 rounded-full border border-teal-200">
+                                <svg className="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                </svg>
+                                <span className="text-teal-700 font-semibold">And many more countries worldwide</span>
+                            </div>
                         </div>
                     </ScrollReveal>
                 </div>
