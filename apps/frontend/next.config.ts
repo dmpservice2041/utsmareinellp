@@ -1,6 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Set root directory for monorepo
+  experimental: {
+    turbo: {
+      root: process.cwd(),
+    },
+  },
   // Image optimization configuration
   images: {
     formats: ['image/avif', 'image/webp'],
