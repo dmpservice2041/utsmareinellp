@@ -93,7 +93,7 @@ export default function About() {
         'https://images.unsplash.com/photo-1574689049597-7e6fabd218d5?q=80&w=2669&auto=format&fit=crop',
     ];
 
-    const countries = [
+    const countries: Array<{ name: string; flag: string }> = [
         { name: 'Greece', flag: '🇬🇷' },
         { name: 'Italy', flag: '🇮🇹' },
         { name: 'Germany', flag: '🇩🇪' },
@@ -564,7 +564,7 @@ export default function About() {
                                     </div>
                                     <h4 className="text-lg font-bold text-gray-900 group-hover:text-teal-600 transition-colors">
                                         {country.name}
-                                    </h4>
+                                                            </h4>
                                             </div>
                                         </ScrollReveal>
                                     ))}
