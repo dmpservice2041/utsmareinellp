@@ -9,6 +9,8 @@
   "scripts": {
     "dev": "npm run dev --workspaces",
     "build": "npm run build --workspaces",
+    "build:frontend": "cd apps/frontend && npm install && npm run build",
+    "install:frontend": "cd apps/frontend && npm install",
     "start": "npm run start --workspaces",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
