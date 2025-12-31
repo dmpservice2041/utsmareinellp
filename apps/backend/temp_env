@@ -1,0 +1,15 @@
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=
+DB_NAME=marinellp
+JWT_SECRET=yvJ9HlhOIvy8wh//pgoH+DhoIHtU8ukQv1iaA0ip3e4=
+
+# SMTP Email Configuration
+SMTP_HOST=mail.dpinfoserver.co.in
+SMTP_PORT=587
+SMTP_SECURE=false
+EMAIL_USER=no-reply@utsmarine.com
+EMAIL_PASS=Uts@2011
+ADMIN_EMAIL=sales@utsmarinellp.com
+EMAIL_FROM_NAME=UTS Marine LLP
+PORT=5000
