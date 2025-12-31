@@ -1,13 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Set root directory for monorepo
-  experimental: {
-    turbo: {
-      root: process.cwd(),
-    },
-  },
-  // Image optimization configuration
   images: {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
@@ -31,7 +24,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Optimize video and media files
   async headers() {
     return [
       {
@@ -60,7 +52,6 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      // Cache static images
       {
         source: '/:path*.jpg',
         headers: [
