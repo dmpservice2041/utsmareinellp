@@ -1,58 +1,45 @@
-# Deployment Instructions
+# Vercel Deployment Configuration
 
-## Build Package Contents
+## Monorepo Setup
 
-The `marinellp-build.zip` file contains:
-- `.next/` - Production build output
-- `public/` - Static assets (images, videos, etc.)
-- `src/` - Source code
-- Configuration files (package.json, next.config.ts, etc.)
+This project uses a monorepo structure with the frontend in `apps/frontend/`.
 
-## Deployment Steps
+## Required Vercel Configuration
 
-### Option 1: Deploy to Vercel (Recommended)
+**IMPORTANT:** You must configure the Root Directory in your Vercel project settings:
 
-1. Go to [Vercel](https://vercel.com)
-2. Import your GitHub repository: `https://github.com/dmpservice2041/utsmareinellp.git`
-3. Set **Root Directory** to: `apps/frontend`
-4. Vercel will automatically detect Next.js and deploy
+1. Go to your Vercel project dashboard: https://vercel.com/dashboard
+2. Select your project
+3. Navigate to **Settings** → **General**
+4. Scroll down to **Root Directory**
+5. Set it to: `apps/frontend`
+6. Click **Save**
+7. Redeploy your project
 
-### Option 2: Deploy to Any Node.js Server
+This tells Vercel to:
+- Treat `apps/frontend` as the project root
+- Run all commands from that directory
+- Look for `package.json` in that directory
+- Use `.next` as the output directory automatically
 
-1. Extract the zip file
-2. Navigate to the extracted folder
-3. Install dependencies:
-   ```bash
-   npm install --production
-   ```
-4. Start the server:
-   ```bash
-   npm start
-   ```
+## Alternative: If Root Directory Setting Doesn't Work
 
-### Option 3: Static Hosting (Limited - Some features may not work)
+If setting the Root Directory doesn't work, you can try:
 
-For static hosting, you'll need to:
-1. Extract the zip
-2. Install dependencies: `npm install`
-3. The `.next` folder contains the built application
-4. Configure your web server to serve the Next.js application
+1. Remove the root `vercel.json` file
+2. Keep only `apps/frontend/vercel.json`
+3. Vercel should auto-detect the Next.js project in that directory
 
-## Environment Variables
+## Build Commands
 
-If needed, create a `.env.local` file with:
-```
-NEXT_PUBLIC_API_URL=your_api_url
-```
+The current configuration uses:
+- **Build Command**: `npm run build:frontend` (runs from root, uses npm --prefix)
+- **Output Directory**: `apps/frontend/.next`
+- **Framework**: `nextjs`
 
-## Build Information
+## Troubleshooting
 
-- **Framework**: Next.js 16.0.8
-- **React**: 19.2.1
-- **Build Date**: $(date)
-
-## Notes
-
-- The build includes all product images
-- All pages are pre-rendered where possible
-- Dynamic routes (blog, products) require server-side rendering
+If you see errors like "cd apps/frontend: No such file or directory":
+1. Check that the Root Directory is set correctly in Vercel dashboard
+2. Verify that `apps/frontend` exists in your repository
+3. Clear Vercel build cache and redeploy
