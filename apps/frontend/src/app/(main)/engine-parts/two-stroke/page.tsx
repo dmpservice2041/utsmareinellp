@@ -75,12 +75,12 @@ export default function TwoStrokePage() {
     ];
 
     return (
-        <main className="pt-24 sm:pt-28">
+        <main>
             {/* Banner Header */}
             <section className="relative h-[400px] lg:h-[500px] overflow-hidden">
                 <div 
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                    style={{ backgroundImage: "url('https://images.unsplash.com/photo-1558486012-817176f84c6d?q=80&w=1970&auto=format&fit=crop')" }}
+                    style={{ backgroundImage: "url('/Two_Stroke.jpeg')" }}
                 >
                     <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40" />
                 </div>

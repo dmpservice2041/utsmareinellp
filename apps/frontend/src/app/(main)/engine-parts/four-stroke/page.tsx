@@ -102,12 +102,12 @@ export default function FourStrokePage() {
     ];
 
     return (
-        <main className="pt-24 sm:pt-28">
+        <main>
             {/* Banner Header */}
             <section className="relative h-[400px] lg:h-[500px] overflow-hidden">
                 <div 
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                    style={{ backgroundImage: "url('https://images.unsplash.com/photo-1565492987258-45ec33918544?q=80&w=2670&auto=format&fit=crop')" }}
+                    style={{ backgroundImage: "url('/Four_Stroke.jpeg')" }}
                 >
                     <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40" />
                 </div>
