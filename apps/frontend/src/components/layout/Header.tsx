@@ -94,14 +94,14 @@ export default function Header() {
                                 <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50">
                                     <Link 
                                         href="/engine-parts/two-stroke" 
-                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900 transition-colors"
+                                        className="block px-4 py-3 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 hover:text-blue-700 transition-colors rounded-lg mx-2"
                                         onClick={() => setActiveDropdown(null)}
                                     >
                                         Two Stroke
                                     </Link>
                                     <Link 
                                         href="/engine-parts/four-stroke" 
-                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900 transition-colors"
+                                        className="block px-4 py-3 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 hover:text-blue-700 transition-colors rounded-lg mx-2"
                                         onClick={() => setActiveDropdown(null)}
                                     >
                                         Four Stroke
@@ -128,9 +128,13 @@ export default function Header() {
                             </button>
                             {activeDropdown === 'ship' && (
                                 <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50">
-                                    <div className="px-4 py-2 text-sm text-gray-500 italic">
-                                        Coming Soon
-                                    </div>
+                                    <Link 
+                                        href="/ship-machinery/main-auxiliary-engine" 
+                                        className="block px-4 py-3 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 hover:text-blue-700 transition-colors rounded-lg mx-2"
+                                        onClick={() => setActiveDropdown(null)}
+                                    >
+                                        Main/Auxiliary Engine
+                                    </Link>
                                 </div>
                             )}
                         </div>
@@ -219,17 +223,17 @@ export default function Header() {
                                     </svg>
                                 </button>
                                 {activeDropdown === 'engine-mobile' && (
-                                    <div className="mt-2 pl-4 space-y-2">
+                                    <div className="mt-2 pl-4 space-y-1">
                                         <Link 
                                             href="/engine-parts/two-stroke" 
-                                            className="block py-2 text-sm text-gray-700 hover:text-blue-900 transition-colors"
+                                            className="block py-2.5 px-4 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 hover:text-blue-700 transition-colors rounded-lg"
                                             onClick={() => setIsMobileMenuOpen(false)}
                                         >
                                             Two Stroke
                                         </Link>
                                         <Link 
                                             href="/engine-parts/four-stroke" 
-                                            className="block py-2 text-sm text-gray-700 hover:text-blue-900 transition-colors"
+                                            className="block py-2.5 px-4 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 hover:text-blue-700 transition-colors rounded-lg"
                                             onClick={() => setIsMobileMenuOpen(false)}
                                         >
                                             Four Stroke
@@ -255,10 +259,14 @@ export default function Header() {
                                     </svg>
                                 </button>
                                 {activeDropdown === 'ship-mobile' && (
-                                    <div className="mt-2 pl-4 space-y-2">
-                                        <div className="py-2 text-sm text-gray-500 italic">
-                                            Coming Soon
-                                        </div>
+                                    <div className="mt-2 pl-4 space-y-1">
+                                        <Link 
+                                            href="/ship-machinery/main-auxiliary-engine" 
+                                            className="block py-2.5 px-4 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 hover:text-blue-700 transition-colors rounded-lg"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                        >
+                                            Main/Auxiliary Engine
+                                        </Link>
                                     </div>
                                 )}
                             </div>

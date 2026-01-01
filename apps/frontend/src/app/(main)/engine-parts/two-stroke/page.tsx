@@ -218,7 +218,7 @@ export default function TwoStrokePage() {
                                                         className="group relative bg-gradient-to-br from-gray-50 to-white p-4 rounded-xl text-center text-sm font-semibold text-gray-700 border-2 border-gray-200 hover:border-teal-500 hover:bg-gradient-to-br hover:from-teal-50 hover:to-white transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
                                                     >
                                                         <div className="absolute top-2 right-2 w-2 h-2 rounded-full bg-teal-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                                        {model}
+                                                        {brand.name} {model}
                                                     </div>
                                                 ))}
                                             </div>
