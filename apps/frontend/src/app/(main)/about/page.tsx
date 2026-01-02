@@ -86,11 +86,11 @@ export default function About() {
     ];
 
     const galleryImages = [
-        'https://images.unsplash.com/photo-1558486012-817176f84c6d?q=80&w=1970&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1549106765-3d312a9425e1?q=80&w=2076&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1580910543623-1d9865672808?q=80&w=2070&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1565492987258-45ec33918544?q=80&w=2670&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1574689049597-7e6fabd218d5?q=80&w=2669&auto=format&fit=crop',
+        '/ABout_us_1.jpg',
+        '/ABout_us_2.jpg',
+        '/ABout_us_3.jpg',
+        '/ABout_us_4.jpg',
+        '/ABout_us_5.jpg',
     ];
 
     const countries: Array<{ name: string; flag: string }> = [
