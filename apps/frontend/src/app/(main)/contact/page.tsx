@@ -79,14 +79,13 @@ export default function Contact() {
     return (
         <main className="pt-24 sm:pt-28">
             {/* Banner Header */}
-            <section className="relative h-[450px] lg:h-[550px] overflow-hidden">
+            <section className="relative h-[400px] lg:h-[500px] overflow-hidden">
                 <div
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                    style={{ backgroundImage: "url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2070&auto=format&fit=crop')" }}
+                    style={{ backgroundImage: "url('/Contact_us_header.jpg')" }}
                 >
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40" />
                 </div>
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(20,184,166,0.1),transparent_50%)]" />
                 <div className="relative z-10 h-full flex items-center justify-center">
                     <div className="container mx-auto px-4 text-center">
                         <ScrollReveal delay={0}>

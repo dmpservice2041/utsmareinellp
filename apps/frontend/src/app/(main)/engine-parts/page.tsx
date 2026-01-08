@@ -33,7 +33,7 @@ export default function EnginePartsPage() {
             <section className="relative h-[400px] lg:h-[500px] overflow-hidden">
                 <div 
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                    style={{ backgroundImage: "url('https://images.unsplash.com/photo-1549106765-3d312a9425e1?q=80&w=2076&auto=format&fit=crop')" }}
+                    style={{ backgroundImage: "url('/Engine_Parts_header.jpg')" }}
                 >
                     <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40" />
                 </div>
