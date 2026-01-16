@@ -105,7 +105,7 @@ export default function FourStrokePage() {
         <main>
             {/* Banner Header */}
             <section className="relative h-[400px] lg:h-[500px] overflow-hidden">
-                <div 
+                <div
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                     style={{ backgroundImage: "url('/Four_Stroke.jpeg')" }}
                 >
@@ -154,19 +154,20 @@ export default function FourStrokePage() {
             {/* Introduction Section */}
             <section className="py-20 lg:py-32 bg-white relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-teal-100/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-                
+
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                         {/* Sidebar */}
-                        <ScrollReveal delay={0}>
-                            <div className="lg:col-span-1">
+                        <div className="lg:col-span-1">
+                            <ScrollReveal delay={0}>
                                 <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 shadow-xl border border-gray-200 sticky top-28">
                                     <div className="mb-6">
-                                        <div className="w-full h-64 bg-gradient-to-br from-teal-50 to-teal-100 rounded-xl flex items-center justify-center overflow-hidden relative">
-                                            <div className="absolute inset-0 bg-gradient-to-br from-teal-500/20 to-teal-600/20"></div>
-                                            <svg className="w-32 h-32 text-teal-600 relative z-10" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
-                                            </svg>
+                                        <div className="w-full h-64 bg-gradient-to-br from-teal-50 to-teal-100 rounded-xl overflow-hidden relative shadow-lg">
+                                            <img
+                                                src="/four-stroke-sidebar.jpg"
+                                                alt="Four Stroke Engine"
+                                                className="w-full h-full object-cover rounded-xl"
+                                            />
                                         </div>
                                     </div>
                                     <h3 className="text-2xl font-bold text-gray-900 mb-4">Engine Components</h3>
@@ -179,7 +180,7 @@ export default function FourStrokePage() {
                                         ))}
                                     </ul>
                                     <div className="pt-6 border-t border-gray-300">
-                                        <p className="text-sm text-gray-600 mb-3">Need two-stroke engine parts?</p>
+                                        <p className="text-sm text-gray-600 mb-3">Looking for two-stroke engine parts?</p>
                                         <Link href="/engine-parts/two-stroke" className="inline-flex items-center gap-2 text-teal-600 hover:text-teal-700 font-semibold text-sm transition-colors">
                                             View Two-Stroke Parts
                                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -188,8 +189,8 @@ export default function FourStrokePage() {
                                         </Link>
                                     </div>
                                 </div>
-                            </div>
-                        </ScrollReveal>
+                            </ScrollReveal>
+                        </div>
 
                         {/* Main Content */}
                         <div className="lg:col-span-2">
@@ -240,7 +241,7 @@ export default function FourStrokePage() {
                                             </div>
                                             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                                                 {brand.models.map((model, modelIndex) => (
-                                                    <div 
+                                                    <div
                                                         key={modelIndex}
                                                         className="group relative bg-gradient-to-br from-gray-50 to-white p-4 rounded-xl text-center text-sm font-semibold text-gray-700 border-2 border-gray-200 hover:border-teal-500 hover:bg-gradient-to-br hover:from-teal-50 hover:to-white transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
                                                     >
@@ -270,13 +271,13 @@ export default function FourStrokePage() {
                                 With over {totalModels}+ engine models in our inventory, we can supply parts for virtually any four-stroke marine engine. Contact our team for detailed specifications, availability, and competitive pricing.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <Link 
+                                <Link
                                     href="/contact"
                                     className="px-8 py-4 bg-teal-600 text-white font-semibold rounded-lg hover:bg-teal-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
                                 >
                                     Request a Quote
                                 </Link>
-                                <Link 
+                                <Link
                                     href="/services"
                                     className="px-8 py-4 bg-white border-2 border-teal-600 text-teal-600 font-semibold rounded-lg hover:bg-teal-50 transition-all"
                                 >

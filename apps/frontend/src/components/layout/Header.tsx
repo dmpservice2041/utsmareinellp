@@ -11,12 +11,12 @@ export default function Header() {
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             const target = event.target as HTMLElement;
-            
+
             // Close mobile menu
             if (!target.closest('.mobile-menu') && !target.closest('.mobile-menu-button')) {
                 setIsMobileMenuOpen(false);
             }
-            
+
             // Close dropdowns
             if (!target.closest('.dropdown-menu') && !target.closest('.dropdown-button')) {
                 setActiveDropdown(null);
@@ -44,31 +44,31 @@ export default function Header() {
                 <nav className="bg-white rounded-2xl shadow-lg px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-                        <img 
-                            src="/logo.png" 
-                            alt="UTS Marine LLP" 
+                        <img
+                            src="/logo.png"
+                            alt="UTS Marine LLP"
                             className="h-8 sm:h-10 md:h-12 w-auto object-contain"
                         />
                     </Link>
 
                     {/* Desktop Navigation */}
                     <div className="hidden lg:flex items-center gap-1 xl:gap-2 flex-1 justify-center">
-                        <Link 
-                            href="/" 
+                        <Link
+                            href="/"
                             className="px-4 py-2 text-sm font-semibold tracking-wide text-blue-900 hover:text-blue-700 transition-colors rounded-lg hover:bg-blue-50"
                         >
                             Home
                         </Link>
-                        
-                        <Link 
-                            href="/about" 
+
+                        <Link
+                            href="/about"
                             className="px-4 py-2 text-sm font-semibold tracking-wide text-blue-900 hover:text-blue-700 transition-colors rounded-lg hover:bg-blue-50"
                         >
                             About Us
                         </Link>
 
-                        <Link 
-                            href="/services" 
+                        <Link
+                            href="/services"
                             className="px-4 py-2 text-sm font-semibold tracking-wide text-blue-900 hover:text-blue-700 transition-colors rounded-lg hover:bg-blue-50"
                         >
                             Services
@@ -81,10 +81,10 @@ export default function Header() {
                                 className="px-4 py-2 text-sm font-semibold tracking-wide text-blue-900 hover:text-blue-700 transition-colors rounded-lg hover:bg-blue-50 flex items-center gap-1 dropdown-button"
                             >
                                 Engine Parts
-                                <svg 
-                                    className={`w-4 h-4 transition-transform ${activeDropdown === 'engine' ? 'rotate-180' : ''}`} 
-                                    fill="none" 
-                                    viewBox="0 0 24 24" 
+                                <svg
+                                    className={`w-4 h-4 transition-transform ${activeDropdown === 'engine' ? 'rotate-180' : ''}`}
+                                    fill="none"
+                                    viewBox="0 0 24 24"
                                     stroke="currentColor"
                                 >
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -92,15 +92,15 @@ export default function Header() {
                             </button>
                             {activeDropdown === 'engine' && (
                                 <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50">
-                                    <Link 
-                                        href="/engine-parts/two-stroke" 
+                                    <Link
+                                        href="/engine-parts/two-stroke"
                                         className="block px-4 py-3 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 hover:text-blue-700 transition-colors rounded-lg mx-2"
                                         onClick={() => setActiveDropdown(null)}
                                     >
                                         Two Stroke
                                     </Link>
-                                    <Link 
-                                        href="/engine-parts/four-stroke" 
+                                    <Link
+                                        href="/engine-parts/four-stroke"
                                         className="block px-4 py-3 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 hover:text-blue-700 transition-colors rounded-lg mx-2"
                                         onClick={() => setActiveDropdown(null)}
                                     >
@@ -115,44 +115,93 @@ export default function Header() {
                             <button
                                 onClick={() => handleDropdownToggle('ship')}
                                 className="px-4 py-2 text-sm font-semibold tracking-wide text-blue-900 hover:text-blue-700 transition-colors rounded-lg hover:bg-blue-50 flex items-center gap-1 dropdown-button"
-                        >
-                            Ship Machinery
-                                <svg 
-                                    className={`w-4 h-4 transition-transform ${activeDropdown === 'ship' ? 'rotate-180' : ''}`} 
-                                    fill="none" 
-                                    viewBox="0 0 24 24" 
+                            >
+                                Ship Machinery
+                                <svg
+                                    className={`w-4 h-4 transition-transform ${activeDropdown === 'ship' ? 'rotate-180' : ''}`}
+                                    fill="none"
+                                    viewBox="0 0 24 24"
                                     stroke="currentColor"
                                 >
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                                 </svg>
                             </button>
                             {activeDropdown === 'ship' && (
-                                <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50">
-                                    <Link 
-                                        href="/ship-machinery/main-auxiliary-engine" 
+                                <div className="absolute top-full left-0 mt-2 w-72 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50">
+                                    <Link
+                                        href="/ship-machinery/main-auxiliary-engine"
                                         className="block px-4 py-3 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 hover:text-blue-700 transition-colors rounded-lg mx-2"
                                         onClick={() => setActiveDropdown(null)}
                                     >
                                         Main/Auxiliary Engine
                                     </Link>
+                                    <Link
+                                        href="/ship-machinery/oil-purifiers"
+                                        className="block px-4 py-3 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 hover:text-blue-700 transition-colors rounded-lg mx-2"
+                                        onClick={() => setActiveDropdown(null)}
+                                    >
+                                        Oil Purifiers
+                                    </Link>
+                                    <Link
+                                        href="/ship-machinery/air-compressor"
+                                        className="block px-4 py-3 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 hover:text-blue-700 transition-colors rounded-lg mx-2"
+                                        onClick={() => setActiveDropdown(null)}
+                                    >
+                                        Air Compressor
+                                    </Link>
+                                    <Link
+                                        href="/ship-machinery/marine-turbochargers"
+                                        className="block px-4 py-3 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 hover:text-blue-700 transition-colors rounded-lg mx-2"
+                                        onClick={() => setActiveDropdown(null)}
+                                    >
+                                        Marine Turbochargers
+                                    </Link>
+                                    <Link
+                                        href="/ship-machinery/refrigeration-compressors"
+                                        className="block px-4 py-3 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 hover:text-blue-700 transition-colors rounded-lg mx-2"
+                                        onClick={() => setActiveDropdown(null)}
+                                    >
+                                        Refrigeration Compressors
+                                    </Link>
+                                    <Link
+                                        href="/ship-machinery/marine-pumps"
+                                        className="block px-4 py-3 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 hover:text-blue-700 transition-colors rounded-lg mx-2"
+                                        onClick={() => setActiveDropdown(null)}
+                                    >
+                                        Marine Pumps
+                                    </Link>
+                                    <Link
+                                        href="/ship-machinery/hydraulic-pumps-motors"
+                                        className="block px-4 py-3 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 hover:text-blue-700 transition-colors rounded-lg mx-2"
+                                        onClick={() => setActiveDropdown(null)}
+                                    >
+                                        Hydraulic Pumps & Motors
+                                    </Link>
+                                    <Link
+                                        href="/ship-machinery/fresh-water-generators-heat-exchangers"
+                                        className="block px-4 py-3 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 hover:text-blue-700 transition-colors rounded-lg mx-2"
+                                        onClick={() => setActiveDropdown(null)}
+                                    >
+                                        FWG & Heat Exchangers
+                                    </Link>
                                 </div>
                             )}
                         </div>
 
-                        <Link 
-                            href="/new-arrival" 
+                        <Link
+                            href="/new-arrival"
                             className="px-4 py-2 text-sm font-semibold tracking-wide text-blue-900 hover:text-blue-700 transition-colors rounded-lg hover:bg-blue-50"
                         >
                             New Arrival
                         </Link>
-                        <Link 
-                            href="/blog" 
+                        <Link
+                            href="/blog"
                             className="px-4 py-2 text-sm font-semibold tracking-wide text-blue-900 hover:text-blue-700 transition-colors rounded-lg hover:bg-blue-50"
                         >
                             Blog
                         </Link>
-                        <Link 
-                            href="/contact" 
+                        <Link
+                            href="/contact"
                             className="px-4 py-2 text-sm font-semibold tracking-wide text-blue-900 hover:text-blue-700 transition-colors rounded-lg hover:bg-blue-50"
                         >
                             Contact Us
@@ -165,10 +214,10 @@ export default function Header() {
                         className="lg:hidden p-2 text-blue-900 hover:bg-blue-50 rounded-lg transition-colors mobile-menu-button"
                         aria-label="Toggle menu"
                     >
-                        <svg 
-                            className="w-6 h-6" 
-                            fill="none" 
-                            viewBox="0 0 24 24" 
+                        <svg
+                            className="w-6 h-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
                             stroke="currentColor"
                         >
                             {isMobileMenuOpen ? (
@@ -184,28 +233,28 @@ export default function Header() {
                 {isMobileMenuOpen && (
                     <div className="lg:hidden mt-4 bg-white rounded-2xl shadow-xl border border-gray-100 py-4 mobile-menu">
                         <div className="flex flex-col">
-                            <Link 
-                                href="/" 
+                            <Link
+                                href="/"
                                 className="px-6 py-3 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 transition-colors"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 Home
                             </Link>
-                            <Link 
-                                href="/about" 
+                            <Link
+                                href="/about"
                                 className="px-6 py-3 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 transition-colors"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 About Us
                             </Link>
-                            <Link 
-                                href="/services" 
+                            <Link
+                                href="/services"
                                 className="px-6 py-3 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 transition-colors"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 Services
                             </Link>
-                            
+
                             {/* Engine Parts Mobile Submenu */}
                             <div className="px-6 py-3">
                                 <button
@@ -213,10 +262,10 @@ export default function Header() {
                                     className="w-full flex items-center justify-between text-sm font-semibold tracking-wide text-blue-900"
                                 >
                                     Engine Parts
-                                    <svg 
-                                        className={`w-4 h-4 transition-transform ${activeDropdown === 'engine-mobile' ? 'rotate-180' : ''}`} 
-                                        fill="none" 
-                                        viewBox="0 0 24 24" 
+                                    <svg
+                                        className={`w-4 h-4 transition-transform ${activeDropdown === 'engine-mobile' ? 'rotate-180' : ''}`}
+                                        fill="none"
+                                        viewBox="0 0 24 24"
                                         stroke="currentColor"
                                     >
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -224,15 +273,15 @@ export default function Header() {
                                 </button>
                                 {activeDropdown === 'engine-mobile' && (
                                     <div className="mt-2 pl-4 space-y-1">
-                                        <Link 
-                                            href="/engine-parts/two-stroke" 
+                                        <Link
+                                            href="/engine-parts/two-stroke"
                                             className="block py-2.5 px-4 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 hover:text-blue-700 transition-colors rounded-lg"
                                             onClick={() => setIsMobileMenuOpen(false)}
                                         >
                                             Two Stroke
                                         </Link>
-                                        <Link 
-                                            href="/engine-parts/four-stroke" 
+                                        <Link
+                                            href="/engine-parts/four-stroke"
                                             className="block py-2.5 px-4 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 hover:text-blue-700 transition-colors rounded-lg"
                                             onClick={() => setIsMobileMenuOpen(false)}
                                         >
@@ -249,10 +298,10 @@ export default function Header() {
                                     className="w-full flex items-center justify-between text-sm font-semibold tracking-wide text-blue-900"
                                 >
                                     Ship Machinery
-                                    <svg 
-                                        className={`w-4 h-4 transition-transform ${activeDropdown === 'ship-mobile' ? 'rotate-180' : ''}`} 
-                                        fill="none" 
-                                        viewBox="0 0 24 24" 
+                                    <svg
+                                        className={`w-4 h-4 transition-transform ${activeDropdown === 'ship-mobile' ? 'rotate-180' : ''}`}
+                                        fill="none"
+                                        viewBox="0 0 24 24"
                                         stroke="currentColor"
                                     >
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -260,33 +309,82 @@ export default function Header() {
                                 </button>
                                 {activeDropdown === 'ship-mobile' && (
                                     <div className="mt-2 pl-4 space-y-1">
-                                        <Link 
-                                            href="/ship-machinery/main-auxiliary-engine" 
+                                        <Link
+                                            href="/ship-machinery/main-auxiliary-engine"
                                             className="block py-2.5 px-4 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 hover:text-blue-700 transition-colors rounded-lg"
                                             onClick={() => setIsMobileMenuOpen(false)}
                                         >
                                             Main/Auxiliary Engine
                                         </Link>
+                                        <Link
+                                            href="/ship-machinery/oil-purifiers"
+                                            className="block py-2.5 px-4 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 hover:text-blue-700 transition-colors rounded-lg"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                        >
+                                            Oil Purifiers
+                                        </Link>
+                                        <Link
+                                            href="/ship-machinery/air-compressor"
+                                            className="block py-2.5 px-4 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 hover:text-blue-700 transition-colors rounded-lg"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                        >
+                                            Air Compressor
+                                        </Link>
+                                        <Link
+                                            href="/ship-machinery/marine-turbochargers"
+                                            className="block py-2.5 px-4 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 hover:text-blue-700 transition-colors rounded-lg"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                        >
+                                            Marine Turbochargers
+                                        </Link>
+                                        <Link
+                                            href="/ship-machinery/refrigeration-compressors"
+                                            className="block py-2.5 px-4 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 hover:text-blue-700 transition-colors rounded-lg"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                        >
+                                            Refrigeration Compressors
+                                        </Link>
+                                        <Link
+                                            href="/ship-machinery/marine-pumps"
+                                            className="block py-2.5 px-4 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 hover:text-blue-700 transition-colors rounded-lg"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                        >
+                                            Marine Pumps
+                                        </Link>
+                                        <Link
+                                            href="/ship-machinery/hydraulic-pumps-motors"
+                                            className="block py-2.5 px-4 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 hover:text-blue-700 transition-colors rounded-lg"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                        >
+                                            Hydraulic Pumps & Motors
+                                        </Link>
+                                        <Link
+                                            href="/ship-machinery/fresh-water-generators-heat-exchangers"
+                                            className="block py-2.5 px-4 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 hover:text-blue-700 transition-colors rounded-lg"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                        >
+                                            FWG & Heat Exchangers
+                                        </Link>
                                     </div>
                                 )}
                             </div>
 
-                            <Link 
-                                href="/new-arrival" 
+                            <Link
+                                href="/new-arrival"
                                 className="px-6 py-3 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 transition-colors"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 New Arrival
                             </Link>
-                            <Link 
-                                href="/blog" 
+                            <Link
+                                href="/blog"
                                 className="px-6 py-3 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 transition-colors"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 Blog
                             </Link>
-                            <Link 
-                                href="/contact" 
+                            <Link
+                                href="/contact"
                                 className="px-6 py-3 text-sm font-semibold tracking-wide text-blue-900 hover:bg-blue-50 transition-colors"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >

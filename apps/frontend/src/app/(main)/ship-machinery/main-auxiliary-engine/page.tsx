@@ -58,12 +58,18 @@ export default function MainAuxiliaryEnginePage() {
 
     return (
         <main>
-            {/* Hero Section - Without Banner Image */}
+            {/* Hero Section - With Banner Image */}
             <section className="py-20 lg:py-32 bg-gradient-to-br from-teal-600 to-teal-700 relative overflow-hidden">
-                <div className="absolute inset-0 opacity-10">
-                    <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl" />
-                    <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl" />
+                {/* Background Image */}
+                <div className="absolute inset-0">
+                    <img
+                        src="/engine-hero.jpg"
+                        alt="Marine Engine"
+                        className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40"></div>
                 </div>
+
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-4xl mx-auto text-center">
                         <ScrollReveal delay={0}>
@@ -72,9 +78,6 @@ export default function MainAuxiliaryEnginePage() {
                             </h1>
                             <p className="text-xl lg:text-2xl text-white/90 mb-6 leading-relaxed">
                                 Marine Engines – Quality. Reliability. Value.
-                            </p>
-                            <p className="text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
-                                UTSMARINE LLP supplies premium used marine main and auxiliary engines to shipowners, power plants, and industrial facilities worldwide. Every engine is thoroughly inspected, complete, and ready for installation.
                             </p>
                             <div className="flex justify-center text-sm text-white/80 space-x-2 mt-8">
                                 <Link href="/" className="hover:text-white transition-colors">Home</Link>
@@ -112,7 +115,7 @@ export default function MainAuxiliaryEnginePage() {
             {/* Introduction Section */}
             <section className="py-20 lg:py-32 bg-white relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-teal-100/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-                
+
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                         {/* Sidebar */}
@@ -120,34 +123,12 @@ export default function MainAuxiliaryEnginePage() {
                             <div className="lg:col-span-1">
                                 <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 shadow-xl border border-gray-200 sticky top-28">
                                     <div className="mb-6">
-                                        <div className="w-full h-64 bg-gradient-to-br from-teal-50 to-teal-100 rounded-xl flex items-center justify-center overflow-hidden relative">
-                                            <div className="absolute inset-0 bg-gradient-to-br from-teal-500/20 to-teal-600/20"></div>
-                                            {/* SVG Placeholder - Replace with: <img src="/path-to-image.jpg" alt="Main/Auxiliary Engine" className="w-full h-full object-cover" /> */}
-                                            <svg 
-                                                className="w-full h-full text-teal-600/30" 
-                                                fill="none" 
-                                                viewBox="0 0 1200 675" 
-                                                xmlns="http://www.w3.org/2000/svg"
-                                            >
-                                                <rect width="1200" height="675" fill="url(#gradient)" />
-                                                <defs>
-                                                    <linearGradient id="gradient" x1="0" y1="0" x2="1200" y2="675" gradientUnits="userSpaceOnUse">
-                                                        <stop offset="0%" stopColor="#f0fdfa" />
-                                                        <stop offset="100%" stopColor="#ccfbf1" />
-                                                    </linearGradient>
-                                                </defs>
-                                                {/* Engine Icon */}
-                                                <g transform="translate(600, 337.5)">
-                                                    <circle cx="0" cy="0" r="80" fill="none" stroke="currentColor" strokeWidth="3" opacity="0.3" />
-                                                    <circle cx="0" cy="0" r="120" fill="none" stroke="currentColor" strokeWidth="2" opacity="0.2" />
-                                                    <path 
-                                                        d="M-60 -20 L-40 -20 L-40 -40 L40 -40 L40 -20 L60 -20 L60 20 L40 20 L40 40 L-40 40 L-40 20 L-60 20 Z" 
-                                                        fill="currentColor" 
-                                                        opacity="0.4"
-                                                    />
-                                                    <circle cx="0" cy="0" r="15" fill="currentColor" opacity="0.5" />
-                                                </g>
-                                            </svg>
+                                        <div className="w-full h-64 bg-gradient-to-br from-teal-50 to-teal-100 rounded-xl overflow-hidden relative shadow-lg">
+                                            <img
+                                                src="/engine-sidebar.jpg"
+                                                alt="Main/Auxiliary Engine"
+                                                className="w-full h-full object-cover rounded-xl"
+                                            />
                                         </div>
                                     </div>
                                     <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Advantage</h3>
@@ -207,7 +188,7 @@ export default function MainAuxiliaryEnginePage() {
                                     </div>
                                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                                         {engineBrands.map((brand, index) => (
-                                            <div 
+                                            <div
                                                 key={index}
                                                 className="group relative bg-gradient-to-br from-gray-50 to-white p-4 rounded-xl text-center text-sm font-semibold text-gray-700 border-2 border-gray-200 hover:border-teal-500 hover:bg-gradient-to-br hover:from-teal-50 hover:to-white transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
                                             >
@@ -265,13 +246,13 @@ export default function MainAuxiliaryEnginePage() {
                                 Contact us with your engine requirements today. Our team will provide you with detailed information, pricing, and availability for premium used marine main and auxiliary engines.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <Link 
+                                <Link
                                     href="/contact"
                                     className="px-8 py-4 bg-teal-600 text-white font-semibold rounded-lg hover:bg-teal-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
                                 >
                                     Contact Us Today
                                 </Link>
-                                <Link 
+                                <Link
                                     href="/services"
                                     className="px-8 py-4 bg-white border-2 border-teal-600 text-teal-600 font-semibold rounded-lg hover:bg-teal-50 transition-all"
                                 >

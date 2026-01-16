@@ -31,9 +31,9 @@ export default function EnginePartsPage() {
         <main className="pt-24 sm:pt-28">
             {/* Banner Header */}
             <section className="relative h-[400px] lg:h-[500px] overflow-hidden">
-                <div 
+                <div
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                    style={{ backgroundImage: "url('/Engine_Parts_header.jpg')" }}
+                    style={{ backgroundImage: "url('/Engine_Parts_1.jpg')" }}
                 >
                     <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40" />
                 </div>
@@ -54,7 +54,7 @@ export default function EnginePartsPage() {
             {/* Main Content */}
             <section className="py-20 lg:py-32 bg-white relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-teal-100/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-                
+
                 <div className="container mx-auto px-4 relative z-10">
                     <ScrollReveal delay={0}>
                         <div className="text-center mb-16">

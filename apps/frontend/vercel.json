@@ -1,5 +1,4 @@
 {
-  "buildCommand": "npm run build 2>&1",
   "outputDirectory": ".next",
   "framework": "nextjs"
 }
