@@ -137,7 +137,7 @@ export default function TwoStrokePage() {
                                     <div className="mb-6">
                                         <div className="w-full h-64 bg-gradient-to-br from-teal-50 to-teal-100 rounded-xl overflow-hidden relative shadow-lg">
                                             <img
-                                                src="/two-stroke-sidebar.jpg"
+                                                src="/Two_Stroke_Side_Panel.jpg"
                                                 alt="Two Stroke Engine"
                                                 className="w-full h-full object-cover rounded-xl"
                                             />

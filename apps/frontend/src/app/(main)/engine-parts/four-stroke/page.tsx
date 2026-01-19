@@ -164,7 +164,7 @@ export default function FourStrokePage() {
                                     <div className="mb-6">
                                         <div className="w-full h-64 bg-gradient-to-br from-teal-50 to-teal-100 rounded-xl overflow-hidden relative shadow-lg">
                                             <img
-                                                src="/four-stroke-sidebar.jpg"
+                                                src="/Four_Stroke_Side_Panel.jpg"
                                                 alt="Four Stroke Engine"
                                                 className="w-full h-full object-cover rounded-xl"
                                             />
