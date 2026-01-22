@@ -136,31 +136,13 @@ export default function MarinePumpsPage() {
                             <div className="lg:col-span-1">
                                 <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 shadow-xl border border-gray-200 sticky top-28">
                                     <div className="mb-6">
-                                        <div className="w-full h-64 bg-gradient-to-br from-teal-50 to-teal-100 rounded-xl flex items-center justify-center overflow-hidden relative">
+                                        <div className="w-full h-64 bg-gradient-to-br from-teal-50 to-teal-100 rounded-xl overflow-hidden relative">
+                                            <img
+                                                src="/images/service/pump.jpg"
+                                                alt="Marine Pump"
+                                                className="w-full h-full object-cover rounded-xl"
+                                            />
                                             <div className="absolute inset-0 bg-gradient-to-br from-teal-500/20 to-teal-600/20"></div>
-                                            {/* SVG Placeholder */}
-                                            <svg
-                                                className="w-full h-full text-teal-600/30"
-                                                fill="none"
-                                                viewBox="0 0 1200 675"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                            >
-                                                <rect width="1200" height="675" fill="url(#gradient)" />
-                                                <defs>
-                                                    <linearGradient id="gradient" x1="0" y1="0" x2="1200" y2="675" gradientUnits="userSpaceOnUse">
-                                                        <stop offset="0%" stopColor="#f0fdfa" />
-                                                        <stop offset="100%" stopColor="#ccfbf1" />
-                                                    </linearGradient>
-                                                </defs>
-                                                {/* Pump Icon */}
-                                                <g transform="translate(600, 337.5)">
-                                                    <circle cx="0" cy="0" r="70" fill="none" stroke="currentColor" strokeWidth="4" opacity="0.4" />
-                                                    <rect x="-30" y="-15" width="60" height="30" rx="4" fill="currentColor" opacity="0.3" />
-                                                    <path d="M-70 0 L-100 0 M70 0 L100 0" stroke="currentColor" strokeWidth="6" opacity="0.4" />
-                                                    <circle cx="-85" cy="0" r="5" fill="currentColor" opacity="0.4" />
-                                                    <circle cx="85" cy="0" r="5" fill="currentColor" opacity="0.4" />
-                                                </g>
-                                            </svg>
                                         </div>
                                     </div>
                                     <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Advantage</h3>

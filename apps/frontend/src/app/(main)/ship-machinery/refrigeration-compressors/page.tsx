@@ -146,30 +146,13 @@ export default function RefrigerationCompressorsPage() {
                             <div className="lg:col-span-1">
                                 <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 shadow-xl border border-gray-200 sticky top-28">
                                     <div className="mb-6">
-                                        <div className="w-full h-64 bg-gradient-to-br from-teal-50 to-teal-100 rounded-xl flex items-center justify-center overflow-hidden relative">
+                                        <div className="w-full h-64 bg-gradient-to-br from-teal-50 to-teal-100 rounded-xl overflow-hidden relative">
+                                            <img
+                                                src="/images/service/Ref_com.jpg"
+                                                alt="Refrigeration Compressor"
+                                                className="w-full h-full object-cover rounded-xl"
+                                            />
                                             <div className="absolute inset-0 bg-gradient-to-br from-teal-500/20 to-teal-600/20"></div>
-                                            {/* SVG Placeholder */}
-                                            <svg
-                                                className="w-full h-full text-teal-600/30"
-                                                fill="none"
-                                                viewBox="0 0 1200 675"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                            >
-                                                <rect width="1200" height="675" fill="url(#gradient)" />
-                                                <defs>
-                                                    <linearGradient id="gradient" x1="0" y1="0" x2="1200" y2="675" gradientUnits="userSpaceOnUse">
-                                                        <stop offset="0%" stopColor="#f0fdfa" />
-                                                        <stop offset="100%" stopColor="#ccfbf1" />
-                                                    </linearGradient>
-                                                </defs>
-                                                {/* Refrigeration Icon */}
-                                                <g transform="translate(600, 337.5)">
-                                                    <rect x="-70" y="-90" width="140" height="180" rx="8" fill="none" stroke="currentColor" strokeWidth="4" opacity="0.4" />
-                                                    <path d="M-50 -70 L50 -70 M-50 -40 L50 -40 M-50 -10 L50 -10 M-50 20 L50 20 M-50 50 L50 50" stroke="currentColor" strokeWidth="2" opacity="0.3" />
-                                                    <circle cx="0" cy="-60" r="8" fill="currentColor" opacity="0.3" />
-                                                    <path d="M-30 -100 L-30 -120 M0 -100 L0 -120 M30 -100 L30 -120" stroke="currentColor" strokeWidth="3" opacity="0.4" />
-                                                </g>
-                                            </svg>
                                         </div>
                                     </div>
                                     <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Advantage</h3>

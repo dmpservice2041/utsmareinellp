@@ -146,7 +146,7 @@ export default function About() {
                         <div className="relative">
                                 <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                                 <img
-                                    src="https://images.unsplash.com/photo-1558486012-817176f84c6d?q=80&w=1970&auto=format&fit=crop"
+                                    src="/images/service/ABT_srq.jpg"
                                         alt="UTS Marine"
                                     className="absolute inset-0 w-full h-full object-cover"
                                 />

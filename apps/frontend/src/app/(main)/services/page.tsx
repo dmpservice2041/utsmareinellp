@@ -41,7 +41,7 @@ export default function ServicesPage() {
         {
             title: 'Ultrasonic Testing (UT)',
             description: 'For internal flaw detection and thickness measurements',
-            image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070&auto=format&fit=crop'
+            image: '/images/service/UT.jpg'
         },
         {
             title: 'Hardness Testing',
@@ -51,7 +51,7 @@ export default function ServicesPage() {
         {
             title: 'Hydraulic Pressure Testing',
             description: 'For valves, pumps, and hydraulic components',
-            image: 'https://images.unsplash.com/photo-1621905252507-b35492ccba0b?q=80&w=2069&auto=format&fit=crop'
+            image: '/images/service/LDT.jpg'
         },
         {
             title: 'Calibration Services',
@@ -66,7 +66,7 @@ export default function ServicesPage() {
         {
             title: 'Leak Detection Testing',
             description: 'For valves, heat exchangers, and pressure vessels',
-            image: 'https://images.unsplash.com/photo-1581092335397-9583eb92d232?q=80&w=2070&auto=format&fit=crop'
+            image: '/images/service/LDT.jpg'
         }
     ];
 
