@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: apps/backend/Dockerfile
+    container_name: marinellp-backend
+    restart: always
+    ports:
+      - "8002:8002"
+    env_file:
+      - apps/backend/.env
+    environment:
+      - PORT=8002
+
+  frontend:
+    build:
+      context: .
+      dockerfile: apps/frontend/Dockerfile
+    container_name: marinellp-frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    env_file:
+      - apps/frontend/.env.local
+    environment:
+      - PORT=3000
+      # Ensure frontend knows public URL for client side and internal for server side?
+      # During docker build, NEXT_PUBLIC_ vars are baked in!
+      # We need to ensure .env.local used during build has the right values.
