@@ -64,7 +64,7 @@ export const logActivity = async (
             if (responseData && responseData.data && responseData.data.id) {
                 entityId = responseData.data.id;
             } else if (req.params.id) {
-                entityId = parseInt(req.params.id);
+                entityId = parseInt(req.params.id as string);
             }
 
             // Only log if we have meaningful action

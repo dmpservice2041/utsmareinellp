@@ -93,7 +93,7 @@ export const uploadFile = asyncHandler(async (req: AuthRequest, res: Response) =
         const validation = validateImageFile(req.file);
         if (!validation.valid) {
             // Clean up uploaded file
-            await fs.unlink(req.file.path).catch(() => {});
+            await fs.unlink(req.file.path).catch(() => { });
             return res.status(400).json({
                 success: false,
                 error: {
@@ -145,7 +145,7 @@ export const uploadFile = asyncHandler(async (req: AuthRequest, res: Response) =
             });
         } catch (error: any) {
             // Clean up uploaded file on error
-            await fs.unlink(req.file.path).catch(() => {});
+            await fs.unlink(req.file.path).catch(() => { });
             throw createError(
                 `Image processing failed: ${error.message}`,
                 500,
@@ -159,7 +159,7 @@ export const uploadFile = asyncHandler(async (req: AuthRequest, res: Response) =
  * Get media by ID (admin)
  */
 export const getById = asyncHandler(async (req: AuthRequest, res: Response) => {
-    const { id } = req.params;
+    const id = req.params.id as string;
 
     const media = await Media.findByPk(id);
     if (!media) {
@@ -183,7 +183,7 @@ export const getById = asyncHandler(async (req: AuthRequest, res: Response) => {
  * Update media metadata (admin) - no re-processing
  */
 export const update = asyncHandler(async (req: AuthRequest, res: Response) => {
-    const { id } = req.params;
+    const id = req.params.id as string;
     const { alt_text, caption } = req.body;
 
     const media = await Media.findByPk(id);
@@ -214,7 +214,7 @@ export const update = asyncHandler(async (req: AuthRequest, res: Response) => {
  * Delete media (admin) - removes all versions
  */
 export const deleteMedia = asyncHandler(async (req: AuthRequest, res: Response) => {
-    const { id } = req.params;
+    const id = req.params.id as string;
 
     const media = await Media.findByPk(id);
     if (!media) {
@@ -249,7 +249,7 @@ export const deleteMedia = asyncHandler(async (req: AuthRequest, res: Response) 
  * Get all version URLs (admin)
  */
 export const getUrls = asyncHandler(async (req: AuthRequest, res: Response) => {
-    const { id } = req.params;
+    const id = req.params.id as string;
 
     const media = await Media.findByPk(id);
     if (!media) {

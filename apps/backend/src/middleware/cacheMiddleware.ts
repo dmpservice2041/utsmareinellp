@@ -58,7 +58,7 @@ export const invalidateCache = async (
             }
 
             if (req.params.id) {
-                entityId = parseInt(req.params.id);
+                entityId = parseInt(req.params.id as string);
             } else if (res.locals.entityId) {
                 entityId = res.locals.entityId;
             }

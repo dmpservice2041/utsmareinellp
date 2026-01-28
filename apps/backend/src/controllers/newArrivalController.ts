@@ -222,7 +222,7 @@ export const getAll = asyncHandler(async (req: AuthRequest, res: Response) => {
  * Get single New Arrival by ID (admin)
  */
 export const getById = asyncHandler(async (req: AuthRequest, res: Response) => {
-    const { id } = req.params;
+    const id = req.params.id as string;
 
     const product = await Product.findByPk(id, {
         include: [
@@ -366,7 +366,7 @@ export const create = asyncHandler(async (req: AuthRequest, res: Response) => {
  * Update New Arrival (admin)
  */
 export const update = asyncHandler(async (req: AuthRequest, res: Response) => {
-    const { id } = req.params;
+    const id = req.params.id as string;
     const updateData = req.body;
 
     const product = await Product.findByPk(id);
@@ -444,7 +444,7 @@ export const update = asyncHandler(async (req: AuthRequest, res: Response) => {
  * Delete New Arrival (admin)
  */
 export const deleteProduct = asyncHandler(async (req: AuthRequest, res: Response) => {
-    const { id } = req.params;
+    const id = req.params.id as string;
 
     const product = await Product.findByPk(id);
     if (!product) {
@@ -463,7 +463,7 @@ export const deleteProduct = asyncHandler(async (req: AuthRequest, res: Response
  * Update status (admin)
  */
 export const updateStatus = asyncHandler(async (req: AuthRequest, res: Response) => {
-    const { id } = req.params;
+    const id = req.params.id as string;
     const { status } = req.body;
 
     if (!['draft', 'published', 'disabled'].includes(status)) {
@@ -509,7 +509,7 @@ export const updateStatus = asyncHandler(async (req: AuthRequest, res: Response)
  * Update priority (admin)
  */
 export const updatePriority = asyncHandler(async (req: AuthRequest, res: Response) => {
-    const { id } = req.params;
+    const id = req.params.id as string;
     const { priority } = req.body;
 
     if (typeof priority !== 'number' || priority < 0) {

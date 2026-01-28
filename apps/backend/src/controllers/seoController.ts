@@ -8,7 +8,8 @@ import { asyncHandler, createError } from '../middleware/errorHandler';
  * Validate SEO fields (admin)
  */
 export const validate = asyncHandler(async (req: AuthRequest, res: Response) => {
-    const { entityType, id } = req.params;
+    const { entityType } = req.params;
+    const id = req.params.id as string;
 
     let entity: Product | Blog | null = null;
 
@@ -53,7 +54,8 @@ export const validate = asyncHandler(async (req: AuthRequest, res: Response) => 
  * Auto-generate SEO fields (admin)
  */
 export const generate = asyncHandler(async (req: AuthRequest, res: Response) => {
-    const { entityType, id } = req.params;
+    const { entityType } = req.params;
+    const id = req.params.id as string;
 
     let entity: Product | Blog | null = null;
 
@@ -72,7 +74,7 @@ export const generate = asyncHandler(async (req: AuthRequest, res: Response) => 
     // Generate defaults
     const metaDefaults = generateMetaDefaults(
         entity.title,
-        entityType === 'product' 
+        entityType === 'product'
             ? ((entity as Product).short_description || undefined)
             : ((entity as Blog).excerpt || undefined)
     );
@@ -110,7 +112,8 @@ export const generate = asyncHandler(async (req: AuthRequest, res: Response) => 
  * Validate JSON-LD schema (admin)
  */
 export const validateSchema = asyncHandler(async (req: AuthRequest, res: Response) => {
-    const { entityType, id } = req.params;
+    const { entityType } = req.params;
+    const id = req.params.id as string;
 
     let entity: Product | Blog | null = null;
 

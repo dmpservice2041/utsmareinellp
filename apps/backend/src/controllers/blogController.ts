@@ -182,7 +182,7 @@ export const getAll = asyncHandler(async (req: AuthRequest, res: Response) => {
  * Get single blog by ID (admin)
  */
 export const getById = asyncHandler(async (req: AuthRequest, res: Response) => {
-    const { id } = req.params;
+    const id = req.params.id as string;
 
     const blog = await Blog.findByPk(id, {
         include: [{ model: Tag, as: 'blogTags', through: { attributes: [] } }],
@@ -321,7 +321,7 @@ export const create = asyncHandler(async (req: AuthRequest, res: Response) => {
  * Update blog (admin)
  */
 export const update = asyncHandler(async (req: AuthRequest, res: Response) => {
-    const { id } = req.params;
+    const id = req.params.id as string;
     const updateData = req.body;
 
     const blog = await Blog.findByPk(id);
@@ -396,7 +396,7 @@ export const update = asyncHandler(async (req: AuthRequest, res: Response) => {
  * Delete blog (admin)
  */
 export const deleteBlog = asyncHandler(async (req: AuthRequest, res: Response) => {
-    const { id } = req.params;
+    const id = req.params.id as string;
 
     const blog = await Blog.findByPk(id);
     if (!blog) {
@@ -415,7 +415,7 @@ export const deleteBlog = asyncHandler(async (req: AuthRequest, res: Response) =
  * Update status (admin)
  */
 export const updateStatus = asyncHandler(async (req: AuthRequest, res: Response) => {
-    const { id } = req.params;
+    const id = req.params.id as string;
     const { status } = req.body;
 
     if (!['draft', 'published', 'disabled'].includes(status)) {
