@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import { getBlogs, getBlogBySlug, createBlog } from '../controllers/blogController';
+import { getPublicList, getBySlug, create } from '../controllers/blogController';
 import { authenticateToken } from '../middleware/authMiddleware';
 
 const router = Router();
 
-router.get('/', getBlogs as any);
-router.get('/:slug', getBlogBySlug as any);
-router.post('/', authenticateToken, createBlog as any); // Protected
+router.get('/', getPublicList as any);
+router.get('/:slug', getBySlug as any);
+router.post('/', authenticateToken, create as any); // Protected
 
 export default router;
