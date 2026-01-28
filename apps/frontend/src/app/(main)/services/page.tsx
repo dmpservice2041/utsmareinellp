@@ -234,6 +234,15 @@ export default function ServicesPage() {
                                                 />
                                             </div>
                                             <div className="absolute inset-0 bg-teal-900/10 group-hover:bg-transparent transition-colors duration-300" />
+
+                                            {/* Watermark */}
+                                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20 group-hover:opacity-10 transition-opacity duration-300">
+                                                <img
+                                                    src="/logo.png"
+                                                    alt="UTS Marine Watermark"
+                                                    className="w-1/2 max-w-[200px] h-auto object-contain filter grayscale brightness-200"
+                                                />
+                                            </div>
                                         </div>
                                     </div>
 
