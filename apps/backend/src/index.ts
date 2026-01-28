@@ -12,9 +12,13 @@ if (!process.env.JWT_SECRET || process.env.JWT_SECRET.length < 32) {
 }
 
 const app: Express = express();
+
+// Trust proxy is required when running behind Nginx (or other proxies)
+// to correctly identify the client IP address.
+app.set('trust proxy', 1);
 // Use PORT from env if provided (VPS), otherwise default to 5001 (Local).
 // CAUTION: Ensure your local .env file does NOT set PORT=5000 on macOS as it conflicts with ControlCenter.
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 8002;
 
 // Environment variables for URLs
 const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';

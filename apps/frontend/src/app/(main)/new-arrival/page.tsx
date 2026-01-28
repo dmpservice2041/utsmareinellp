@@ -6,7 +6,7 @@ import ScrollReveal from '@/components/shared/ScrollReveal';
 async function getProducts() {
     try {
         const res = await fetch(`${API_ENDPOINTS.PUBLIC_PRODUCTS}?limit=100`, {
-            next: { revalidate: 3600 },
+            next: { revalidate: 60 },
             headers: {
                 'Content-Type': 'application/json',
             }

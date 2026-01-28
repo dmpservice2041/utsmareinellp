@@ -38,6 +38,18 @@ export async function generateMetadata({ params, searchParams }: {
     return {
         title: product.seo_title || product.meta_title || product.title,
         description: product.seo_description || product.meta_description || product.short_description,
+        openGraph: {
+            title: product.seo_title || product.meta_title || product.title,
+            description: product.seo_description || product.meta_description || product.short_description,
+            type: 'website',
+            images: product.featured_image ? [getUploadUrl(product.featured_image)] : [],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: product.seo_title || product.meta_title || product.title,
+            description: product.seo_description || product.meta_description || product.short_description,
+            images: product.featured_image ? [getUploadUrl(product.featured_image)] : [],
+        }
     };
 }
 
@@ -122,8 +134,32 @@ export default async function ProductDetail({
         ? formatDescription(product.long_description)
         : '';
 
+    // JSON-LD Schema
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        name: product.title,
+        description: product.short_description || product.title,
+        image: mainImage ? [mainImage] : [],
+        brand: {
+            '@type': 'Brand',
+            name: 'UTS Marine LLP'
+        },
+        offers: {
+            '@type': 'Offer',
+            availability: 'https://schema.org/InStock',
+            priceCurrency: 'USD',
+            price: '0'
+        }
+    };
+
     return (
         <main className="pt-24 sm:pt-28 bg-gray-50 min-h-screen">
+            {/* Structured Data */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             {/* Breadcrumb */}
             <div className="bg-white border-b border-gray-200">
                 <div className="container mx-auto px-4 py-3">

@@ -141,6 +141,14 @@ export default function TwoStrokePage() {
                                                 alt="Two Stroke Engine"
                                                 className="w-full h-full object-cover rounded-xl"
                                             />
+                                            {/* Watermark Overlay */}
+                                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
+                                                <img
+                                                    src="/logo.png"
+                                                    alt="UTS Marine Watermark"
+                                                    className="w-1/2 max-w-[150px] h-auto object-contain filter grayscale brightness-200"
+                                                />
+                                            </div>
                                         </div>
                                     </div>
                                     <h3 className="text-2xl font-bold text-gray-900 mb-4">Engine Components</h3>

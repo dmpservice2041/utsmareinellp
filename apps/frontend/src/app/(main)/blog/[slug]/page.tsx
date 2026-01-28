@@ -1,14 +1,15 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import DOMPurify from 'isomorphic-dompurify';
 import { API_ENDPOINTS, getUploadUrl } from '@/config/api';
 import ProductInquiryForm from '@/components/products/ProductInquiryForm';
 
 async function getBlog(slug: string, preview?: boolean) {
     try {
-        const url = preview 
+        const url = preview
             ? `${API_ENDPOINTS.PUBLIC_BLOG_BY_SLUG(slug)}?preview=true`
             : API_ENDPOINTS.PUBLIC_BLOG_BY_SLUG(slug);
-        const res = await fetch(url, { 
+        const res = await fetch(url, {
             cache: 'no-store',
             headers: {
                 'Content-Type': 'application/json',
@@ -24,7 +25,7 @@ async function getBlog(slug: string, preview?: boolean) {
     }
 }
 
-export async function generateMetadata({ params, searchParams }: { 
+export async function generateMetadata({ params, searchParams }: {
     params: Promise<{ slug: string }>;
     searchParams: Promise<{ preview?: string }>;
 }) {
@@ -36,13 +37,27 @@ export async function generateMetadata({ params, searchParams }: {
     return {
         title: blog.seo_title || blog.meta_title || blog.title,
         description: blog.seo_description || blog.meta_description || blog.excerpt,
+        openGraph: {
+            title: blog.seo_title || blog.meta_title || blog.title,
+            description: blog.seo_description || blog.meta_description || blog.excerpt,
+            type: 'article',
+            publishedTime: blog.published_at,
+            authors: ['UTS Marine LLP'],
+            images: blog.featured_image ? [getUploadUrl(blog.featured_image)] : [],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: blog.seo_title || blog.meta_title || blog.title,
+            description: blog.seo_description || blog.meta_description || blog.excerpt,
+            images: blog.featured_image ? [getUploadUrl(blog.featured_image)] : [],
+        }
     };
 }
 
-export default async function BlogPost({ 
-    params, 
-    searchParams 
-}: { 
+export default async function BlogPost({
+    params,
+    searchParams
+}: {
     params: Promise<{ slug: string }>;
     searchParams?: Promise<{ preview?: string }>;
 }) {
@@ -55,12 +70,45 @@ export default async function BlogPost({
         notFound();
     }
 
-    const featuredImage = blog.thumbnail || blog.featured_image 
+    const featuredImage = blog.thumbnail || blog.featured_image
         ? getUploadUrl(blog.thumbnail || blog.featured_image)
         : null;
 
+    // JSON-LD Schema
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: blog.title,
+        description: blog.excerpt,
+        image: featuredImage ? [featuredImage] : [],
+        datePublished: blog.published_at,
+        dateModified: blog.updatedAt || blog.published_at,
+        author: {
+            '@type': 'Organization',
+            name: 'UTS Marine LLP',
+            url: 'https://utsmarinellp.com'
+        },
+        publisher: {
+            '@type': 'Organization',
+            name: 'UTS Marine LLP',
+            logo: {
+                '@type': 'ImageObject',
+                url: 'https://utsmarinellp.com/logo.png'
+            }
+        },
+        mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': `https://utsmarinellp.com/blog/${blog.slug}`
+        }
+    };
+
     return (
         <main className="pt-24 sm:pt-28 bg-gray-50 min-h-screen">
+            {/* Structured Data */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             {/* Breadcrumb */}
             <div className="bg-white border-b border-gray-200">
                 <div className="container mx-auto px-4 py-3">
@@ -88,10 +136,10 @@ export default async function BlogPost({
                                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                         </svg>
-                                        {new Date(blog.published_at).toLocaleDateString('en-US', { 
-                                            year: 'numeric', 
-                                            month: 'long', 
-                                            day: 'numeric' 
+                                        {new Date(blog.published_at).toLocaleDateString('en-US', {
+                                            year: 'numeric',
+                                            month: 'long',
+                                            day: 'numeric'
                                         })}
                                     </span>
                                 )}
@@ -117,9 +165,9 @@ export default async function BlogPost({
                             {/* Featured Image */}
                             {featuredImage && (
                                 <div className="mb-10 rounded-lg overflow-hidden shadow-lg">
-                                    <img 
-                                        src={featuredImage} 
-                                        alt={blog.title} 
+                                    <img
+                                        src={featuredImage}
+                                        alt={blog.title}
                                         className="w-full h-auto object-cover"
                                     />
                                 </div>
@@ -135,16 +183,12 @@ export default async function BlogPost({
                             )}
 
                             {/* Content */}
-                            <div 
+                            <div
                                 className="prose prose-lg max-w-none text-gray-700 leading-relaxed blog-content"
-                                style={{
-                                    wordWrap: 'break-word',
-                                    overflowWrap: 'break-word',
-                                    whiteSpace: 'pre-wrap',
+                                dangerouslySetInnerHTML={{
+                                    __html: DOMPurify.sanitize(blog.content || '')
                                 }}
-                            >
-                                {blog.content || ''}
-                            </div>
+                            />
 
                             {/* Tags */}
                             {blog.tags && Array.isArray(blog.tags) && blog.tags.length > 0 && (
@@ -152,7 +196,7 @@ export default async function BlogPost({
                                     <h3 className="text-sm font-semibold text-gray-700 mb-4 uppercase tracking-wide">Tags</h3>
                                     <div className="flex flex-wrap gap-2">
                                         {blog.tags.map((tag: string, index: number) => (
-                                            <span 
+                                            <span
                                                 key={index}
                                                 className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full hover:bg-teal-100 hover:text-teal-700 transition-colors"
                                             >
@@ -170,8 +214,8 @@ export default async function BlogPost({
 
                             {/* Back Link */}
                             <div className="mt-12 pt-8 border-t border-gray-200">
-                                <Link 
-                                    href="/blog" 
+                                <Link
+                                    href="/blog"
                                     className="inline-flex items-center gap-2 text-teal-600 font-semibold hover:text-teal-700 transition-colors"
                                 >
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
