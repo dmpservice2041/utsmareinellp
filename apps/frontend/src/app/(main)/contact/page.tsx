@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { countries } from '@/data/countries';
 import { API_ENDPOINTS } from '@/config/api';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 
@@ -50,7 +51,7 @@ export default function Contact() {
         },
         {
             question: "Do you ship internationally?",
-            answer: "Yes, we ship marine spare parts worldwide to over 50 countries including Greece, Italy, Germany, Cyprus, Netherlands, USA, UK, Turkey, UAE, Singapore, Bangladesh, Philippines, Indonesia, Sri Lanka, and many more. We handle all export documentation, customs clearance, and provide door-to-door delivery services. Our experienced logistics team ensures smooth international shipping."
+            answer: `Yes, we ship marine spare parts worldwide to over ${countries.length} countries including Greece, Italy, Germany, Cyprus, Netherlands, USA, UK, Turkey, UAE, Singapore, Bangladesh, Philippines, Indonesia, Sri Lanka, and many more. We handle all export documentation, customs clearance, and provide door-to-door delivery services. Our experienced logistics team ensures smooth international shipping.`
         },
         {
             question: "What payment methods do you accept?",
@@ -72,7 +73,7 @@ export default function Contact() {
 
     const stats = [
         { number: 'Expert', label: 'Team Support', icon: '👥' },
-        { number: '50+', label: 'Countries Served', icon: '🌍' },
+        { number: `${countries.length}+`, label: 'Countries Served', icon: '🌍' },
         { number: '<24hrs', label: 'Response Time', icon: '⚡' }
     ];
 

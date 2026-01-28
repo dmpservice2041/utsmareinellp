@@ -66,7 +66,7 @@ export default function ServicesPage() {
         {
             title: 'Leak Detection Testing',
             description: 'For valves, heat exchangers, and pressure vessels',
-            image: '/images/service/LDT.jpg'
+            image: '/images/service/Leak_Detection_Testing.jpg'
         }
     ];
 

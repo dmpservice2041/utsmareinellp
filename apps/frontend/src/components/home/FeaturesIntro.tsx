@@ -2,12 +2,13 @@
 
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import { useEffect, useRef, useState } from 'react';
+import { countries } from '@/data/countries';
 
 export default function FeaturesIntro() {
     const stats = [
-        { number: '9+', label: 'Years Experience', icon: '🏆' },
+        { number: '10+', label: 'Years Experience', icon: '🏆' },
         { number: '1000+', label: 'Products', icon: '📦' },
-        { number: '50+', label: 'Countries', icon: '🌍' },
+        { number: `${countries.length}+`, label: 'Countries', icon: '🌍' },
         { number: '24/7', label: 'Support', icon: '🛟' }
     ];
 
@@ -49,7 +50,7 @@ export default function FeaturesIntro() {
                             We are well-known Exporter & Stockiest of Marine Ship Spare Parts (Genuine & OEM). Today we are an independent, modern and ISO 9001 certified company providing one-stop technical Solutions for Diesel engines to our Shipping, Industrial Power Plants and Offshore Clients which includes Ship Owners, Ship Managers, Ship Repairers, Traders/Stockiest all over the globe with our own Warehouse and Workshop.
                         </p>
                         <p className="text-lg text-gray-600 leading-relaxed">
-                            With our large stock we can deliver required spare parts in shortest possible time. With more than 9 years in-depth Work Experience, Consistency and Flexibility are the center of attention of all our Services and Products.
+                            With our large stock we can deliver required spare parts in shortest possible time. With more than 10+ years in-depth Work Experience, Consistency and Flexibility are the center of attention of all our Services and Products.
                         </p>
                     </div>
                 </ScrollReveal>
