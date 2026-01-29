@@ -26,11 +26,26 @@ export default function AdminSettings() {
   const [show2FASetup, setShow2FASetup] = useState(false);
   const [verifyToken, setVerifyToken] = useState('');
   const [copied, setCopied] = useState(false);
+  const [csrfToken, setCsrfToken] = useState('');
 
   useEffect(() => {
+    fetchCsrfToken();
     fetchCurrentUser();
     fetch2FAStatus();
   }, []);
+
+  const fetchCsrfToken = async () => {
+    try {
+      const baseUrl = API_ENDPOINTS.CHANGE_EMAIL.replace('/auth/change-email', '');
+      const response = await fetch(`${baseUrl}/auth/csrf`, { credentials: 'include' });
+      if (response.ok) {
+        const data = await response.json();
+        setCsrfToken(data.csrfToken);
+      }
+    } catch (error) {
+      console.error('Failed to fetch CSRF token', error);
+    }
+  };
 
   const decodeJWT = (token: string) => {
     try {
@@ -121,6 +136,7 @@ export default function AdminSettings() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'X-CSRF-Token': csrfToken,
         },
         credentials: 'include',
         body: JSON.stringify({
@@ -198,6 +214,7 @@ export default function AdminSettings() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'X-CSRF-Token': csrfToken,
         },
         credentials: 'include',
         body: JSON.stringify({
@@ -232,6 +249,7 @@ export default function AdminSettings() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'X-CSRF-Token': csrfToken,
         },
         credentials: 'include',
         body: JSON.stringify({ method: twoFactorMethod }),
@@ -273,6 +291,7 @@ export default function AdminSettings() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'X-CSRF-Token': csrfToken,
         },
         credentials: 'include',
         body: JSON.stringify({ token: verifyToken }),
@@ -308,6 +327,9 @@ export default function AdminSettings() {
     try {
       const response = await fetch(API_ENDPOINTS.DISABLE_2FA, {
         method: 'POST',
+        headers: {
+          'X-CSRF-Token': csrfToken,
+        },
         credentials: 'include',
       });
 
