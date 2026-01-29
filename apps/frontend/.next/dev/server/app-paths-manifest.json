@@ -1,3 +1,8 @@
 {
-  "/(main)/page": "app/(main)/page.js"
+  "/(main)/engine-parts/four-stroke/page": "app/(main)/engine-parts/four-stroke/page.js",
+  "/(main)/page": "app/(main)/page.js",
+  "/(main)/products/[slug]/page": "app/(main)/products/[slug]/page.js",
+  "/(main)/ship-machinery/air-compressor/page": "app/(main)/ship-machinery/air-compressor/page.js",
+  "/(main)/ship-machinery/hydraulic-pumps-motors/page": "app/(main)/ship-machinery/hydraulic-pumps-motors/page.js",
+  "/(main)/ship-machinery/marine-turbochargers/page": "app/(main)/ship-machinery/marine-turbochargers/page.js"
 }

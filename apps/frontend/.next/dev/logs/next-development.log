@@ -1,9 +1,29 @@
-[00:00:02.683] Server  LOG      ✓ Ready in 2.2s
-[00:01:12.248] Browser ERROR   Failed to fetch blogs: {}
-[00:11:14.401] Server  LOG      ✓ Compiled in 232ms
-[00:12:48.485] Server  LOG      ✓ Compiled in 125ms
-[00:12:48.650] Server  ERROR    ⨯ ReferenceError: Script is not defined
-[00:12:49.212] Browser ERROR   uncaughtError: ReferenceError: Script is not defined
-[00:12:50.551] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:12:52.208] Browser ERROR   Failed to fetch blogs: {}
-[00:19:33.709] Server  LOG      ✓ Compiled in 371ms
+[00:00:01.242] Server  LOG      ✓ Ready in 914ms
+[00:10:44.611] Server  LOG      ✓ Compiled in 572ms
+[00:10:45.700] Server  LOG      ✓ Compiled in 211ms
+[00:10:45.824] Browser ERROR   ./marinellpnew/apps/frontend/src/components/shared/ProductCard.tsx:76:17
+Parsing ecmascript source code failed
+  74 |                 href={customLink || `/products/${slug}`}
+  75 |                 className="inline-block text-sm font-semibold text-teal-600 hover:text-teal-800"
+> 76 |                 >
+     |                 ^
+  77 |                 View Details →
+  78 |             </Link>
+  79 |         </div>
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./marinellpnew/apps/frontend/src/components/shared/ProductCard.tsx [Client Component Browser]
+    ./marinellpnew/apps/frontend/src/components/home/ProductHighlights.tsx [Client Component Browser]
+    ./marinellpnew/apps/frontend/src/components/home/ProductHighlights.tsx [Server Component]
+    ./marinellpnew/apps/frontend/src/app/(main)/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./marinellpnew/apps/frontend/src/components/shared/ProductCard.tsx [Client Component SSR]
+    ./marinellpnew/apps/frontend/src/components/home/ProductHighlights.tsx [Client Component SSR]
+    ./marinellpnew/apps/frontend/src/components/home/ProductHighlights.tsx [Server Component]
+    ./marinellpnew/apps/frontend/src/app/(main)/page.tsx [Server Component]
+[00:11:04.455] Server  LOG      ✓ Compiled in 93ms
+[00:11:06.000] Server  LOG      ✓ Compiled in 80ms
