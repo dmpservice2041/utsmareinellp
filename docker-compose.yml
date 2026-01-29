@@ -1,7 +1,6 @@
-version: '3.8'
-
 services:
   backend:
+    image: dpinfosystem/marinellp-backend:latest
     build:
       context: .
       dockerfile: apps/backend/Dockerfile
@@ -15,6 +14,7 @@ services:
       - PORT=8002
 
   frontend:
+    image: dpinfosystem/marinellp-frontend:latest
     build:
       context: .
       dockerfile: apps/frontend/Dockerfile
@@ -26,6 +26,5 @@ services:
       - apps/frontend/.env.local
     environment:
       - PORT=3000
-      # Ensure frontend knows public URL for client side and internal for server side?
-      # During docker build, NEXT_PUBLIC_ vars are baked in!
-      # We need to ensure .env.local used during build has the right values.
+    depends_on:
+      - backend
