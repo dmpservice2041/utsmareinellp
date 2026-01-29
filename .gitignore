@@ -6,8 +6,8 @@ node_modules/
 # Testing
 /coverage
 
-# Next.js
-/.next/
+# Next.js - TRACKED FOR DEPLOYMENT (VPS has low memory)
+# /.next/
 /out/
 
 # Production
