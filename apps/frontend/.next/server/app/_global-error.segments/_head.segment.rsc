@@ -1,0 +1,8 @@
+1:"$Sreact.fragment"
+2:I[41149,["/_next/static/chunks/6c52ae4a313d98ce.js","/_next/static/chunks/16f85a111b8c72d9.js"],"ViewportBoundary"]
+4:I[41149,["/_next/static/chunks/6c52ae4a313d98ce.js","/_next/static/chunks/16f85a111b8c72d9.js"],"MetadataBoundary"]
+5:"$Sreact.suspense"
+7:I[75347,["/_next/static/chunks/6c52ae4a313d98ce.js","/_next/static/chunks/16f85a111b8c72d9.js"],"IconMark"]
+0:{"buildId":"TLlupmTx2QRcIu31DpRjW","rsc":["$","$1","h",{"children":[null,["$","$L2",null,{"children":"$@3"}],["$","div",null,{"hidden":true,"children":["$","$L4",null,{"children":["$","$5",null,{"name":"Next.Metadata","children":"$@6"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"loading":null,"isPartial":false}
+3:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+6:[["$","link","0",{"rel":"icon","href":"/favicon.ico?favicon.78af5940.ico","sizes":"31x38","type":"image/x-icon"}],["$","$L7","1",{}]]

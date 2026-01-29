@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(main)/layout,_N_T_/(main)/ship-machinery/layout,_N_T_/(main)/ship-machinery/hydraulic-pumps-motors/layout,_N_T_/(main)/ship-machinery/hydraulic-pumps-motors/page,_N_T_/ship-machinery/hydraulic-pumps-motors"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/!KG1haW4p/ship-machinery/hydraulic-pumps-motors/__PAGE__",
+    "/!KG1haW4p/ship-machinery/hydraulic-pumps-motors",
+    "/!KG1haW4p/ship-machinery",
+    "/!KG1haW4p",
+    "/_index",
+    "/_head"
+  ]
+}

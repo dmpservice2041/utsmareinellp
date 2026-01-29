@@ -1,0 +1,354 @@
+{
+  "version": 3,
+  "pages404": true,
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "priority": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/:path*",
+      "headers": [
+        {
+          "key": "X-DNS-Prefetch-Control",
+          "value": "on"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "origin-when-cross-origin"
+        }
+      ],
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?(?:/)?$"
+    },
+    {
+      "source": "/drone-video.:ext",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        },
+        {
+          "key": "Content-Type",
+          "value": "video/webm"
+        }
+      ],
+      "regex": "^/drone-video(?:\\.((?:(?!\\.)[^/])+?))(?:/)?$"
+    },
+    {
+      "source": "/drone-video.mp4",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        },
+        {
+          "key": "Content-Type",
+          "value": "video/mp4"
+        }
+      ],
+      "regex": "^/drone-video\\.mp4(?:/)?$"
+    },
+    {
+      "source": "/:path*.jpg",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ],
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?\\.jpg(?:/)?$"
+    },
+    {
+      "source": "/:path*.png",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ],
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?\\.png(?:/)?$"
+    }
+  ],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
+  "dynamicRoutes": [
+    {
+      "page": "/admin/blogs/[id]/edit",
+      "regex": "^/admin/blogs/([^/]+?)/edit(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/admin/blogs/(?<nxtPid>[^/]+?)/edit(?:/)?$"
+    },
+    {
+      "page": "/admin/products/[id]/edit",
+      "regex": "^/admin/products/([^/]+?)/edit(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/admin/products/(?<nxtPid>[^/]+?)/edit(?:/)?$"
+    },
+    {
+      "page": "/blog/[slug]",
+      "regex": "^/blog/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/blog/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/products/[slug]",
+      "regex": "^/products/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/products/(?<nxtPslug>[^/]+?)(?:/)?$"
+    }
+  ],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_global-error",
+      "regex": "^/_global\\-error(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_global\\-error(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/about",
+      "regex": "^/about(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/about(?:/)?$"
+    },
+    {
+      "page": "/admin",
+      "regex": "^/admin(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin(?:/)?$"
+    },
+    {
+      "page": "/admin/blogs",
+      "regex": "^/admin/blogs(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/blogs(?:/)?$"
+    },
+    {
+      "page": "/admin/blogs/new",
+      "regex": "^/admin/blogs/new(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/blogs/new(?:/)?$"
+    },
+    {
+      "page": "/admin/dashboard",
+      "regex": "^/admin/dashboard(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/dashboard(?:/)?$"
+    },
+    {
+      "page": "/admin/login",
+      "regex": "^/admin/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/login(?:/)?$"
+    },
+    {
+      "page": "/admin/media",
+      "regex": "^/admin/media(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/media(?:/)?$"
+    },
+    {
+      "page": "/admin/messages",
+      "regex": "^/admin/messages(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/messages(?:/)?$"
+    },
+    {
+      "page": "/admin/products",
+      "regex": "^/admin/products(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/products(?:/)?$"
+    },
+    {
+      "page": "/admin/products/new",
+      "regex": "^/admin/products/new(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/products/new(?:/)?$"
+    },
+    {
+      "page": "/admin/settings",
+      "regex": "^/admin/settings(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/settings(?:/)?$"
+    },
+    {
+      "page": "/blog",
+      "regex": "^/blog(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/blog(?:/)?$"
+    },
+    {
+      "page": "/contact",
+      "regex": "^/contact(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/contact(?:/)?$"
+    },
+    {
+      "page": "/engine-parts",
+      "regex": "^/engine\\-parts(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/engine\\-parts(?:/)?$"
+    },
+    {
+      "page": "/engine-parts/four-stroke",
+      "regex": "^/engine\\-parts/four\\-stroke(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/engine\\-parts/four\\-stroke(?:/)?$"
+    },
+    {
+      "page": "/engine-parts/two-stroke",
+      "regex": "^/engine\\-parts/two\\-stroke(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/engine\\-parts/two\\-stroke(?:/)?$"
+    },
+    {
+      "page": "/favicon.ico",
+      "regex": "^/favicon\\.ico(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/favicon\\.ico(?:/)?$"
+    },
+    {
+      "page": "/new-arrival",
+      "regex": "^/new\\-arrival(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/new\\-arrival(?:/)?$"
+    },
+    {
+      "page": "/robots.txt",
+      "regex": "^/robots\\.txt(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/robots\\.txt(?:/)?$"
+    },
+    {
+      "page": "/services",
+      "regex": "^/services(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/services(?:/)?$"
+    },
+    {
+      "page": "/ship-machinery",
+      "regex": "^/ship\\-machinery(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ship\\-machinery(?:/)?$"
+    },
+    {
+      "page": "/ship-machinery/air-compressor",
+      "regex": "^/ship\\-machinery/air\\-compressor(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ship\\-machinery/air\\-compressor(?:/)?$"
+    },
+    {
+      "page": "/ship-machinery/fresh-water-generators-heat-exchangers",
+      "regex": "^/ship\\-machinery/fresh\\-water\\-generators\\-heat\\-exchangers(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ship\\-machinery/fresh\\-water\\-generators\\-heat\\-exchangers(?:/)?$"
+    },
+    {
+      "page": "/ship-machinery/hydraulic-pumps-motors",
+      "regex": "^/ship\\-machinery/hydraulic\\-pumps\\-motors(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ship\\-machinery/hydraulic\\-pumps\\-motors(?:/)?$"
+    },
+    {
+      "page": "/ship-machinery/main-auxiliary-engine",
+      "regex": "^/ship\\-machinery/main\\-auxiliary\\-engine(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ship\\-machinery/main\\-auxiliary\\-engine(?:/)?$"
+    },
+    {
+      "page": "/ship-machinery/marine-pumps",
+      "regex": "^/ship\\-machinery/marine\\-pumps(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ship\\-machinery/marine\\-pumps(?:/)?$"
+    },
+    {
+      "page": "/ship-machinery/marine-turbochargers",
+      "regex": "^/ship\\-machinery/marine\\-turbochargers(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ship\\-machinery/marine\\-turbochargers(?:/)?$"
+    },
+    {
+      "page": "/ship-machinery/oil-purifiers",
+      "regex": "^/ship\\-machinery/oil\\-purifiers(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ship\\-machinery/oil\\-purifiers(?:/)?$"
+    },
+    {
+      "page": "/ship-machinery/refrigeration-compressors",
+      "regex": "^/ship\\-machinery/refrigeration\\-compressors(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ship\\-machinery/refrigeration\\-compressors(?:/)?$"
+    },
+    {
+      "page": "/sitemap.xml",
+      "regex": "^/sitemap\\.xml(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/sitemap\\.xml(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSuffix": ".prefetch.rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments",
+    "clientParamParsing": false,
+    "dynamicRSCPrerender": false
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}

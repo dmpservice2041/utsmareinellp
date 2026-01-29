@@ -1,0 +1,9 @@
+[00:00:02.683] Server  LOG      ✓ Ready in 2.2s
+[00:01:12.248] Browser ERROR   Failed to fetch blogs: {}
+[00:11:14.401] Server  LOG      ✓ Compiled in 232ms
+[00:12:48.485] Server  LOG      ✓ Compiled in 125ms
+[00:12:48.650] Server  ERROR    ⨯ ReferenceError: Script is not defined
+[00:12:49.212] Browser ERROR   uncaughtError: ReferenceError: Script is not defined
+[00:12:50.551] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:12:52.208] Browser ERROR   Failed to fetch blogs: {}
+[00:19:33.709] Server  LOG      ✓ Compiled in 371ms

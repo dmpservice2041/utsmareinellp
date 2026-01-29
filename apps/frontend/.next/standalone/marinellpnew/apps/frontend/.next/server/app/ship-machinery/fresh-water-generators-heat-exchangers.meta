@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(main)/layout,_N_T_/(main)/ship-machinery/layout,_N_T_/(main)/ship-machinery/fresh-water-generators-heat-exchangers/layout,_N_T_/(main)/ship-machinery/fresh-water-generators-heat-exchangers/page,_N_T_/ship-machinery/fresh-water-generators-heat-exchangers"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/!KG1haW4p/ship-machinery/fresh-water-generators-heat-exchangers/__PAGE__",
+    "/!KG1haW4p/ship-machinery/fresh-water-generators-heat-exchangers",
+    "/!KG1haW4p/ship-machinery",
+    "/!KG1haW4p",
+    "/_index",
+    "/_head"
+  ]
+}
