@@ -18,15 +18,14 @@ module.exports = {
         },
         {
             name: 'marinellp-frontend',
-            script: 'npm',
-            args: 'start --prefix apps/frontend',
-            instances: 1, // Next.js manages its own workers usually, but 1 instance is safer for SSG constraints if not using custom server
+            script: 'apps/frontend/.next/standalone/marinellpnew/apps/frontend/server.js',
+            instances: 1,
             autorestart: true,
             watch: false,
             max_memory_restart: '1G',
             env: {
                 NODE_ENV: 'production',
-                PORT: 3002
+                PORT: 3000
             }
         }
     ]
