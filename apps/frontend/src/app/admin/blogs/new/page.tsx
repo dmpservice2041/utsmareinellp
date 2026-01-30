@@ -39,11 +39,18 @@ export default function NewBlogPage() {
         tags: formData.tags.split(',').map(t => t.trim()).filter(t => t),
       };
 
+      // Read CSRF token from cookie
+      const csrfToken = document.cookie
+        .split('; ')
+        .find(row => row.startsWith('csrf_token='))
+        ?.split('=')[1];
+
       const response = await fetch(API_ENDPOINTS.BLOGS, {
         method: 'POST',
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
+          'X-CSRF-Token': csrfToken || '',
         },
         body: JSON.stringify(blogData),
       });
