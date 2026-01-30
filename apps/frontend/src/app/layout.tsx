@@ -53,7 +53,7 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} font-sans antialiased bg-white text-gray-900`}
       >
-        <GoogleAnalytics gaId="G-YN76ZE1QBH" />
+        <GoogleAnalytics gaId="G-7R3LDTY9D7" />
         <script
           id="json-ld-organization"
           type="application/ld+json"
