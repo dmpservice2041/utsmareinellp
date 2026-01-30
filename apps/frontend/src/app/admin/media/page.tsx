@@ -146,9 +146,18 @@ export default function MediaPage() {
     if (!confirm('Are you sure you want to delete this image?')) return;
 
     try {
+      // Read CSRF token from cookie
+      const csrfToken = document.cookie
+        .split('; ')
+        .find(row => row.startsWith('csrf_token='))
+        ?.split('=')[1];
+
       const response = await fetch(API_ENDPOINTS.MEDIA_ITEM(id), {
         method: 'DELETE',
         credentials: 'include',
+        headers: {
+          'X-CSRF-Token': csrfToken || '',
+        },
       });
 
       if (response.ok) {
@@ -292,7 +301,7 @@ export default function MediaPage() {
               >
                 <div className="aspect-square relative bg-gray-100">
                   <img
-                    src={`http://localhost:5001${encodeURI(item.urls.thumbnail)}`}
+                    src={getUploadUrl(item.urls.thumbnail)}
                     alt={item.alt_text || item.original_filename}
                     className="w-full h-full object-cover"
                   />

@@ -4,17 +4,19 @@ import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { getUploadUrl } from '@/config/api';
 
+
 interface ProductCardProps {
     title: string;
     image: string;
     category: string;
     slug: string;
+    customLink?: string;
 }
 
-export default function ProductCard({ title, image, category, slug }: ProductCardProps) {
+export default function ProductCard({ title, image, category, slug, customLink }: ProductCardProps) {
     // Check if image exists and is not empty
     const hasImage = image && image.trim() !== '' && !image.includes('placehold.co');
-    
+
     // Determine image URL: if it's a public folder path (starts with / and not /uploads), use it directly
     // Otherwise, use getUploadUrl for backend-uploaded images
     let imageUrl: string | null = null;
@@ -29,7 +31,7 @@ export default function ProductCard({ title, image, category, slug }: ProductCar
     }
     const imgRef = useRef<HTMLImageElement>(null);
     const [imageError, setImageError] = useState(false);
-    
+
     useEffect(() => {
         if (imgRef.current) {
             const img = imgRef.current;
@@ -41,7 +43,7 @@ export default function ProductCard({ title, image, category, slug }: ProductCar
             return () => img.removeEventListener('error', handleError);
         }
     }, [imageUrl]);
-    
+
     return (
         <div className="bg-white border rounded-lg overflow-hidden hover:shadow-lg transition-shadow group">
             <div className="relative h-64 bg-white overflow-hidden flex items-center justify-center p-4">
@@ -70,12 +72,12 @@ export default function ProductCard({ title, image, category, slug }: ProductCar
             <div className="p-6">
                 <h3 className="text-lg font-bold text-gray-900 mb-2 truncate">{title}</h3>
                 <Link
-                    href={`/products/${slug}`}
+                    href={customLink || `/products/${slug}`}
                     className="inline-block text-sm font-semibold text-teal-600 hover:text-teal-800"
                 >
                     View Details →
                 </Link>
             </div>
-        </div>
+        </div >
     );
 }

@@ -5,10 +5,10 @@ import ScrollReveal from '@/components/shared/ScrollReveal';
 
 export default function ProductHighlights() {
     const products = [
-        { title: "Main Engine Piston", category: "Engine Parts", slug: "piston-ring", image: "/piston.jpg" },
-        { title: "Turbocharger Unit", category: "Machinery", slug: "turbo-unit", image: "/turbocharger.jpg" },
-        { title: "Hydraulic Pump", category: "Hydraulics", slug: "hydraulic-pump", image: "/hydraulic-pump.jpg" },
-        { title: "Air Compressor", category: "Compressors", slug: "air-compressor", image: "/air-compressor.jpg" },
+        { title: "Main Engine Piston", category: "Engine Parts", slug: "piston-ring", image: "/piston.jpg", customLink: "/engine-parts/four-stroke" },
+        { title: "Turbocharger Unit", category: "Machinery", slug: "turbo-unit", image: "/turbocharger.jpg", customLink: "/ship-machinery/marine-turbochargers" },
+        { title: "Hydraulic Pump", category: "Hydraulics", slug: "hydraulic-pump", image: "/hydraulic-pump.jpg", customLink: "/ship-machinery/hydraulic-pumps-motors" },
+        { title: "Air Compressor", category: "Compressors", slug: "air-compressor", image: "/air-compressor.jpg", customLink: "/ship-machinery/air-compressor" },
     ];
 
     return (
