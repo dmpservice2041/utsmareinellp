@@ -1,7 +1,7 @@
 var R=require("../../../../chunks/ssr/[turbopack]_runtime.js")("server/app/(main)/ship-machinery/oil-purifiers/page.js")
 R.c("server/chunks/ssr/[root-of-the-server]__35adcdd5._.js")
 R.c("server/chunks/ssr/_4e8e6fda._.js")
-R.c("server/chunks/ssr/_145c38c4._.js")
+R.c("server/chunks/ssr/_4cdc0e4b._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__4f4ef5d0._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__47094016._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_982e7503._.js")
@@ -12,6 +12,7 @@ R.c("server/chunks/ssr/_912832e7._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_client_components_2fffaa3a._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_client_components_builtin_unauthorized_15817684.js")
 R.c("server/chunks/ssr/apps_frontend_src_e2494d0f._.js")
+R.c("server/chunks/ssr/apps_frontend_src_app_(main)_ship-machinery_oil-purifiers_layout_tsx_da720bd8._.js")
 R.c("server/chunks/ssr/e3b1e_server_app_(main)_ship-machinery_oil-purifiers_page_actions_0ff6239a.js")
-R.m(3274)
-module.exports=R.m(3274).exports
+R.m(5229)
+module.exports=R.m(5229).exports

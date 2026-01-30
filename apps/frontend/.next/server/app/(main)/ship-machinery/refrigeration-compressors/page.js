@@ -1,7 +1,7 @@
 var R=require("../../../../chunks/ssr/[turbopack]_runtime.js")("server/app/(main)/ship-machinery/refrigeration-compressors/page.js")
 R.c("server/chunks/ssr/[root-of-the-server]__90e00cc8._.js")
 R.c("server/chunks/ssr/_4e8e6fda._.js")
-R.c("server/chunks/ssr/_2f9c0b02._.js")
+R.c("server/chunks/ssr/_59ab436a._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__4f4ef5d0._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__47094016._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_982e7503._.js")
@@ -12,6 +12,7 @@ R.c("server/chunks/ssr/_912832e7._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_client_components_2fffaa3a._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_client_components_builtin_unauthorized_15817684.js")
 R.c("server/chunks/ssr/apps_frontend_src_e2494d0f._.js")
+R.c("server/chunks/ssr/36340_src_app_(main)_ship-machinery_refrigeration-compressors_layout_tsx_18593cb8._.js")
 R.c("server/chunks/ssr/d1166_app_(main)_ship-machinery_refrigeration-compressors_page_actions_c6791c39.js")
-R.m(98250)
-module.exports=R.m(98250).exports
+R.m(2868)
+module.exports=R.m(2868).exports

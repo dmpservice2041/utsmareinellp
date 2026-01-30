@@ -330,10 +330,100 @@ type LayoutConfig<Route extends LayoutRoutes = LayoutRoutes> = {
 
 
 
+// Validate ../../src/app/(main)/engine-parts/four-stroke/layout.tsx
+{
+  type __IsExpected<Specific extends LayoutConfig<"/engine-parts/four-stroke">> = Specific
+  const handler = {} as typeof import("../../src/app/(main)/engine-parts/four-stroke/layout.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/(main)/engine-parts/two-stroke/layout.tsx
+{
+  type __IsExpected<Specific extends LayoutConfig<"/engine-parts/two-stroke">> = Specific
+  const handler = {} as typeof import("../../src/app/(main)/engine-parts/two-stroke/layout.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../src/app/(main)/layout.tsx
 {
   type __IsExpected<Specific extends LayoutConfig<"/">> = Specific
   const handler = {} as typeof import("../../src/app/(main)/layout.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/(main)/ship-machinery/air-compressor/layout.tsx
+{
+  type __IsExpected<Specific extends LayoutConfig<"/ship-machinery/air-compressor">> = Specific
+  const handler = {} as typeof import("../../src/app/(main)/ship-machinery/air-compressor/layout.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/(main)/ship-machinery/fresh-water-generators-heat-exchangers/layout.tsx
+{
+  type __IsExpected<Specific extends LayoutConfig<"/ship-machinery/fresh-water-generators-heat-exchangers">> = Specific
+  const handler = {} as typeof import("../../src/app/(main)/ship-machinery/fresh-water-generators-heat-exchangers/layout.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/(main)/ship-machinery/hydraulic-pumps-motors/layout.tsx
+{
+  type __IsExpected<Specific extends LayoutConfig<"/ship-machinery/hydraulic-pumps-motors">> = Specific
+  const handler = {} as typeof import("../../src/app/(main)/ship-machinery/hydraulic-pumps-motors/layout.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/(main)/ship-machinery/main-auxiliary-engine/layout.tsx
+{
+  type __IsExpected<Specific extends LayoutConfig<"/ship-machinery/main-auxiliary-engine">> = Specific
+  const handler = {} as typeof import("../../src/app/(main)/ship-machinery/main-auxiliary-engine/layout.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/(main)/ship-machinery/marine-pumps/layout.tsx
+{
+  type __IsExpected<Specific extends LayoutConfig<"/ship-machinery/marine-pumps">> = Specific
+  const handler = {} as typeof import("../../src/app/(main)/ship-machinery/marine-pumps/layout.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/(main)/ship-machinery/marine-turbochargers/layout.tsx
+{
+  type __IsExpected<Specific extends LayoutConfig<"/ship-machinery/marine-turbochargers">> = Specific
+  const handler = {} as typeof import("../../src/app/(main)/ship-machinery/marine-turbochargers/layout.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/(main)/ship-machinery/oil-purifiers/layout.tsx
+{
+  type __IsExpected<Specific extends LayoutConfig<"/ship-machinery/oil-purifiers">> = Specific
+  const handler = {} as typeof import("../../src/app/(main)/ship-machinery/oil-purifiers/layout.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/(main)/ship-machinery/refrigeration-compressors/layout.tsx
+{
+  type __IsExpected<Specific extends LayoutConfig<"/ship-machinery/refrigeration-compressors">> = Specific
+  const handler = {} as typeof import("../../src/app/(main)/ship-machinery/refrigeration-compressors/layout.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check

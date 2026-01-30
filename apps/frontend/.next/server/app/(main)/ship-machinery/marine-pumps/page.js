@@ -1,7 +1,7 @@
 var R=require("../../../../chunks/ssr/[turbopack]_runtime.js")("server/app/(main)/ship-machinery/marine-pumps/page.js")
 R.c("server/chunks/ssr/[root-of-the-server]__e5857e69._.js")
 R.c("server/chunks/ssr/_4e8e6fda._.js")
-R.c("server/chunks/ssr/_8e3d8394._.js")
+R.c("server/chunks/ssr/_2906139b._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__4f4ef5d0._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__47094016._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_982e7503._.js")
@@ -12,6 +12,7 @@ R.c("server/chunks/ssr/_912832e7._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_client_components_2fffaa3a._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_client_components_builtin_unauthorized_15817684.js")
 R.c("server/chunks/ssr/apps_frontend_src_e2494d0f._.js")
+R.c("server/chunks/ssr/apps_frontend_src_app_(main)_ship-machinery_marine-pumps_layout_tsx_58713001._.js")
 R.c("server/chunks/ssr/e3b1e_server_app_(main)_ship-machinery_marine-pumps_page_actions_5d699cc7.js")
-R.m(3386)
-module.exports=R.m(3386).exports
+R.m(24262)
+module.exports=R.m(24262).exports

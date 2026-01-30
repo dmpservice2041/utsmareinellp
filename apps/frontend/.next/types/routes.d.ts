@@ -3,7 +3,7 @@
 
 type AppRoutes = "/" | "/about" | "/admin" | "/admin/blogs" | "/admin/blogs/[id]/edit" | "/admin/blogs/new" | "/admin/dashboard" | "/admin/login" | "/admin/media" | "/admin/messages" | "/admin/products" | "/admin/products/[id]/edit" | "/admin/products/new" | "/admin/settings" | "/blog" | "/blog/[slug]" | "/contact" | "/engine-parts" | "/engine-parts/four-stroke" | "/engine-parts/two-stroke" | "/new-arrival" | "/products/[slug]" | "/services" | "/ship-machinery" | "/ship-machinery/air-compressor" | "/ship-machinery/fresh-water-generators-heat-exchangers" | "/ship-machinery/hydraulic-pumps-motors" | "/ship-machinery/main-auxiliary-engine" | "/ship-machinery/marine-pumps" | "/ship-machinery/marine-turbochargers" | "/ship-machinery/oil-purifiers" | "/ship-machinery/refrigeration-compressors"
 type PageRoutes = never
-type LayoutRoutes = "/" | "/admin"
+type LayoutRoutes = "/" | "/admin" | "/engine-parts/four-stroke" | "/engine-parts/two-stroke" | "/ship-machinery/air-compressor" | "/ship-machinery/fresh-water-generators-heat-exchangers" | "/ship-machinery/hydraulic-pumps-motors" | "/ship-machinery/main-auxiliary-engine" | "/ship-machinery/marine-pumps" | "/ship-machinery/marine-turbochargers" | "/ship-machinery/oil-purifiers" | "/ship-machinery/refrigeration-compressors"
 type RedirectRoutes = never
 type RewriteRoutes = never
 type Routes = AppRoutes | PageRoutes | LayoutRoutes | RedirectRoutes | RewriteRoutes
@@ -50,6 +50,16 @@ export type ParamsOf<Route extends Routes> = ParamMap[Route]
 interface LayoutSlotMap {
   "/": never
   "/admin": never
+  "/engine-parts/four-stroke": never
+  "/engine-parts/two-stroke": never
+  "/ship-machinery/air-compressor": never
+  "/ship-machinery/fresh-water-generators-heat-exchangers": never
+  "/ship-machinery/hydraulic-pumps-motors": never
+  "/ship-machinery/main-auxiliary-engine": never
+  "/ship-machinery/marine-pumps": never
+  "/ship-machinery/marine-turbochargers": never
+  "/ship-machinery/oil-purifiers": never
+  "/ship-machinery/refrigeration-compressors": never
 }
 
 
