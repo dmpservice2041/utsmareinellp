@@ -1,0 +1,3 @@
+module.exports=[46659,a=>{"use strict";var b=a.i(87924),c=a.i(72131),d=a.i(50944),e=a.i(49445);function f(){let a=(0,d.useRouter)();return(0,c.useEffect)(()=>{(async()=>{try{(await fetch(e.API_ENDPOINTS.GET_CURRENT_USER,{credentials:"include"})).ok?a.replace("/admin/dashboard"):a.replace("/admin/login")}catch(b){a.replace("/admin/login")}})()},[a]),(0,b.jsx)("div",{className:"flex items-center justify-center min-h-screen",children:(0,b.jsxs)("div",{className:"text-center",children:[(0,b.jsx)("div",{className:"animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600 mx-auto"}),(0,b.jsx)("p",{className:"mt-4 text-gray-600",children:"Redirecting..."})]})})}a.s(["default",()=>f])}];
+
+//# sourceMappingURL=apps_frontend_src_app_admin_page_tsx_ccbc53dc._.js.map

@@ -1,3 +1,0 @@
-module.exports=[30305,a=>{"use strict";var b=a.i(33422),c=a.i(1635);function d({children:a,delay:d=0,className:e=""}){let f=(0,c.useRef)(null);return(0,c.useEffect)(()=>{let a=new IntersectionObserver(b=>{b.forEach(b=>{b.isIntersecting&&(setTimeout(()=>{b.target.classList.add("revealed")},d),a.unobserve(b.target))})},{threshold:.1,rootMargin:"0px 0px -50px 0px"});return f.current&&a.observe(f.current),()=>{f.current&&a.unobserve(f.current)}},[d]),(0,b.jsx)("div",{ref:f,className:`scroll-reveal ${e}`,children:a})}a.s(["default",()=>d])}];
-
-//# sourceMappingURL=marinellpnew_apps_frontend_src_components_shared_ScrollReveal_tsx_96502743._.js.map
