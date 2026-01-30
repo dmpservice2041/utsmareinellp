@@ -102,9 +102,18 @@ export default function MediaPage() {
       const formData = new FormData();
       formData.append('file', file);
 
+      // Read CSRF token from cookie
+      const csrfToken = document.cookie
+        .split('; ')
+        .find(row => row.startsWith('csrf_token='))
+        ?.split('=')[1];
+
       const response = await fetch(API_ENDPOINTS.MEDIA_UPLOAD, {
         method: 'POST',
         credentials: 'include',
+        headers: {
+          'X-CSRF-Token': csrfToken || '',
+        },
         body: formData,
       });
 
