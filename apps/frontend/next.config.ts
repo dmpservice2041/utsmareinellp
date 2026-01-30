@@ -26,6 +26,50 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/products/main-auxiliary-engine',
+        destination: '/ship-machinery/main-auxiliary-engine',
+        permanent: true,
+      },
+      {
+        source: '/products/two-stroke-engine-parts',
+        destination: '/engine-parts/two-stroke',
+        permanent: true,
+      },
+      {
+        source: '/products/four-stroke-engine-parts',
+        destination: '/engine-parts/four-stroke',
+        permanent: true,
+      },
+      {
+        source: '/products/marine-turbochargers',
+        destination: '/ship-machinery/marine-turbochargers',
+        permanent: true,
+      },
+      {
+        source: '/products/oil-purifiers',
+        destination: '/ship-machinery/oil-purifiers',
+        permanent: true,
+      },
+      {
+        source: '/products/air-compressor',
+        destination: '/ship-machinery/air-compressor',
+        permanent: true,
+      },
+      {
+        source: '/products/marine-pumps',
+        destination: '/ship-machinery/marine-pumps',
+        permanent: true,
+      },
+      {
+        source: '/products/hydraulic-pumps-motors',
+        destination: '/ship-machinery/hydraulic-pumps-motors',
+        permanent: true,
+      },
+    ];
+  },
   // Optimize video and media files
   async headers() {
     return [
