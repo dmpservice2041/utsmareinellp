@@ -11,6 +11,54 @@
       "priority": true,
       "statusCode": 308,
       "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    },
+    {
+      "source": "/products/main-auxiliary-engine",
+      "destination": "/ship-machinery/main-auxiliary-engine",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/products/main-auxiliary-engine(?:/)?$"
+    },
+    {
+      "source": "/products/two-stroke-engine-parts",
+      "destination": "/engine-parts/two-stroke",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/products/two-stroke-engine-parts(?:/)?$"
+    },
+    {
+      "source": "/products/four-stroke-engine-parts",
+      "destination": "/engine-parts/four-stroke",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/products/four-stroke-engine-parts(?:/)?$"
+    },
+    {
+      "source": "/products/marine-turbochargers",
+      "destination": "/ship-machinery/marine-turbochargers",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/products/marine-turbochargers(?:/)?$"
+    },
+    {
+      "source": "/products/oil-purifiers",
+      "destination": "/ship-machinery/oil-purifiers",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/products/oil-purifiers(?:/)?$"
+    },
+    {
+      "source": "/products/air-compressor",
+      "destination": "/ship-machinery/air-compressor",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/products/air-compressor(?:/)?$"
+    },
+    {
+      "source": "/products/marine-pumps",
+      "destination": "/ship-machinery/marine-pumps",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/products/marine-pumps(?:/)?$"
+    },
+    {
+      "source": "/products/hydraulic-pumps-motors",
+      "destination": "/ship-machinery/hydraulic-pumps-motors",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/products/hydraulic-pumps-motors(?:/)?$"
     }
   ],
   "headers": [
